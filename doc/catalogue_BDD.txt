@@ -1,0 +1,111 @@
+--- Fonctionnalités de base ---
+
+- USER -
+    Pseudo
+    mdp
+    email
+    nom
+    prénom
+    adresse
+    tel
+    rang
+    avatar
+- FIN USER -
+
+- PAIEMENT -
+    n° cb
+    crypto
+    validité
+- FIN PAIEMENT -
+
+-Produit-
+    id
+    Nom
+    Description
+    Image
+    Logo
+-Fin Produit-
+
+-Achats-
+    id
+    id_user
+    id_produit
+    Date
+-Fin Achats-
+
+(-abonnement/VIP-
+    // si on a envie un jour xD
+-Fin abonnement/VIP-)
+
+---Fin Fonctionnalité de base---
+
+--- SCORE ---
+    id_user
+    score
+    lvl max // level maximum atteinds par joueur
+    // voir enregistrement score avec score max ou enregistrement score par niveau
+--- Fin score ---
+
+--- Actualités ---
+    Auteur
+    titre
+    contenu
+    date
+    // Maj site/jeu events
+    Tableau scores (hebdo/mensuel)
+--- Fin Actualités ---
+
+--- FORUM ---
+    -Partie
+        id
+        Titre
+        description
+        status // indice gestion visibilité/administration
+    -Fin Partie-
+    -Section-
+        id
+        titre
+        description
+        status
+        id_partie
+    -Fin Section-
+    -Sujet-
+        id
+        id_section
+        Titre
+        Description
+        Auteur/pseudo
+        Date
+    -Fin sujet-
+    -Post-
+        id
+        id_sujet
+        Auteur/pseudo
+        Date
+        contenu
+        edition
+        date_edition
+    -Fin Post-
+    -Compte-
+        id
+        id_User
+        rang/groupe
+        mailling_pm
+        (infos // infos complémentaire, facultatif)
+    -Fin Compte-
+    -Message privé-
+        id
+        id_expediteur
+        id_destinataire
+        titre
+        message
+        date
+    -Fin message privé-
+--- FIN FORUM---
+
+
+--- autre idées (facultatives) ---
+chatbox
+produit
+friendlist/blacklist
+social
