@@ -1,4 +1,4 @@
---- Fonctionnalités de base ---
+﻿--- Fonctionnalités de base ---
 
 - USER -
     Pseudo
@@ -85,6 +85,7 @@
         contenu
         edition
         date_edition
+	lu/non lu
     -Fin Post-
     -Compte-
         id
@@ -100,6 +101,7 @@
         titre
         message
         date
+	lu/non
     -Fin message privé-
 --- FIN FORUM---
 
