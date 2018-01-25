@@ -27,6 +27,7 @@
         <div class="smile s2"></div>
         <div class="smile s3"></div>
         <div class="ground"></div>
+        <div id="score">0</div>
     </div>
 </body>
 </html>
