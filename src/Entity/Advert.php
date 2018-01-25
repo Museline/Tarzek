@@ -10,7 +10,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * @ORM\Entity(repositoryClass="App\Repository\AdvertRepository")
  * @ORM\Table(name="advert")
  * @UniqueEntity(
- *     title,
+ *     "title",
  *     message="Ce titre d'annonce a déjà été utilisé. Chaque titre doit être unique."
  * )
  */
