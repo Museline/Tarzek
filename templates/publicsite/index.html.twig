@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Accueil du site</h1>
+
+    <h3>Les dernières annonces</h3>
+    {% for advert in list_advert %}
+        <h4>{{ advert.category }} : {{ advert.title }}</h4>
+        <h6>{{ advert.datePublication|date("m/d/Y") }}</h6>
+        <p>{{ advert.content }}</p>
+    {% endfor %}
+{% endblock %}

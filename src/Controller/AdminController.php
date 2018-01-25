@@ -2,11 +2,11 @@
 
 namespace App\Controller;
 
+use App\Entity\Advert;
+use App\Form\AdvertType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
-use App\Entity\Advert;
-use App\Form\AdvertType;
 
 class AdminController extends Controller
 {
