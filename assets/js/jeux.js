@@ -200,4 +200,5 @@ $(window).keydown(function(event){
             
         });
     }
+        $(".dev").html("X:" + posX + " Y:" + posY);
 });

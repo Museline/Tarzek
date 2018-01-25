@@ -35,6 +35,7 @@
         <div id="ui"></div>
         <div id="lifeTxt">Vie:</div>
         <div id="lifeNumb"></div>
+        <div class="dev"></div>
     </div>
 </body>
 </html>
