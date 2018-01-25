@@ -13,7 +13,15 @@ class AdminController extends Controller
     /**
      * @Route("/admin", name="admin_homepage")
      */
-    public function indexAction(Request $request)
+    public function indexAction()
+    {
+        return $this->render('admin/index.html.twig');
+    }
+
+    /**
+     * @Route("/admin/advert", name="admin_advert")
+     */
+    public function advertAction(Request $request)
     {
         // création d'une nouvelle annonce vide
         $advert = new Advert();
@@ -31,11 +39,16 @@ class AdminController extends Controller
             $em->persist($advert);
             $em->flush();
 
+            $this->addFlash(
+                'success',
+                'L\'annonce a bien été ajouté'
+            );
+
             // redirection vers l'accueil admin
             return $this->redirectToRoute('admin_homepage');
         }
 
-        return $this->render('admin/index.html.twig', array(
+        return $this->render('admin/advert.html.twig', array(
             'form' => $form->createView(),
         ));
     }

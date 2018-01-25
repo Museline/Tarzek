@@ -22,7 +22,7 @@ class AdvertType extends AbstractType
                     'Evènement' => 'event',
                     'Tableau des scores' => 'scoreboard',
                 )))
-            ->add('save', SubmitType::class)
+            ->add('save', SubmitType::class, array('label' => 'Envoyer'))
         ;
     }
 }
