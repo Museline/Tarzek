@@ -14,3 +14,6 @@ Mettre à jour les tables en bdd
 * php bin/console doctrine:migrations:diff
 puis
 * php bin/console doctrine:migrations:migrate
+
+Pour lancer le serveur php :
+* php bin/console server:run
