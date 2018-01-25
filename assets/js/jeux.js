@@ -32,10 +32,14 @@ $('document').ready(function(){
     $("#legend").hide().delay(1500).fadeIn(500);
 });
 setInterval(function(){
-    $(".smile").animate({top: 140}, 800).animate({top: 150},800);
-}, 1600);
-$(".smile").hide().css({top: 170}).delay(2000).fadeIn(200);
+    $(".s1").animate({top: 45}, 800).animate({top: 50},800);}, 1500);
+setInterval(function(){
+    $(".s2").animate({top: 45}, 800).animate({top: 50},800);}, 1000);
+setInterval(function(){
+    $(".s3").animate({top: 45}, 800).animate({top: 50},800);}, 2000);
+$(".smile").hide().css({top: 70}).delay(2000).fadeIn(200);
 
+var score = 0;
 $(window).keydown(function(event){
     var pos = $("#perso").position().left;
     if(event.keyCode == '39'){
@@ -90,25 +94,25 @@ $(window).keydown(function(event){
     if (event.keyCode == '38'){
         if($("#perso").hasClass("dos")){
             if((pos > 60) && (pos < 980)){
-                if((pos<511)&&(pos>461)){
+                if((pos < 511)&&(pos > 461)){
                     $(".c1").delay(160).animate({
                         'top': '210px'
                     }, 200).fadeOut(200, function(){
-                        $(location).attr('href', "#");
+                        $("#score").html(score +=50);
                     });
                 };
                 if((pos < 841) && (pos > 791)){
                     $(".c2").delay(160).animate({
                         'top': '210px'
                     }, 200).fadeOut(200, function(){
-                        $(location).attr('herf', "#");
+                        $("#score").html(score +=50);
                     });
                 };
                 if ((pos < 941) && (pos >891)){
                     $(".c3").delay(160).animate({
                         'top': '210px'
                     }, 200).fadeOut(200, function(){
-                        $(location).attr('href', "#");
+                        $("#score").html(score +=50);
                     });
                 };
                 $("#perso").stop(true, true).css({
@@ -128,21 +132,21 @@ $(window).keydown(function(event){
                     $(".c1").delay(160).animate({
                         'top': '210px'
                     }, 200).fadeOut(200, function(){
-                        $(location).attr('href', "#");
+                        $("#score").html(score +=50);
                     });
                 };
                 if ((pos > 741) && (pos < 791)){
-                    $(".c1").delay(160).animate({
+                    $(".c2").delay(160).animate({
                         'top': '210px'
                     }, 200).fadeOut(200, function(){
-                        $(location).attr('href', "#");
+                        $("#score").html(score +=50);
                     });
                 };
                 if ((pos > 841) && (pos < 891)){
-                    $(".c1").delay(160).animate({
+                    $(".c3").delay(160).animate({
                         'top': '210px'
                     }, 200).fadeOut(200, function(){
-                        $(location).attr('href', "#");
+                        $("#score").html(score +=50);
                     });
                 };
                 $("#perso").stop(true, true).css({

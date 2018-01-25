@@ -49,7 +49,7 @@ body{
 }
 #legend{
     position: absolute;
-    width: 147px;
+    width: 100px;
     height: 100px;
     background: #F5871F;
     top: 20px;
@@ -62,7 +62,7 @@ body{
     text-align: center;
     position: absolute;
     background: #C9C9C9;
-    top: 150px;    
+    top: 50px;    
 }
 .s1{
     left: 435px;
@@ -79,4 +79,12 @@ body{
     width: 1000px;
     height: 178px;
     top: 422px;
+}
+#score{
+    color: #AA3333;
+    position: absolute;
+    top: 10px;
+    left: 950px;
+    font-weight: 900;
+    font-size: 20px;
 }
