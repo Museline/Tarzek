@@ -1,0 +1,82 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 25 janv. 2018, 09:50:22
+    Author     : Khael
+*/
+
+body{
+    margin: 0;
+    font-size: 12px;
+    font-family: Tahoma, Vernada, Geneva, Arial, Helvetica, sans-serif;
+}
+#container{
+    width: 1000px;
+    height: 600px;
+    margin: 0 auto;
+    position: relative;
+    background: #cbefff;
+    overflow: hidden;
+}
+#perso{
+    position: absolute;
+    width: 30px;
+    height: 45px;
+    top: 377px;
+    left: 100px;
+    background: #C82829;
+    overflow: hidden;
+}
+.case{
+    position: absolute;
+    top: 268px;
+    width: 45px;
+    height: 40px;
+    background: #17324f;
+    
+}
+.c1{
+    left: 461px;
+}
+.c2{
+    left: 791px;
+}
+.c3{
+    left: 891px;
+}
+#legend{
+    position: absolute;
+    width: 147px;
+    height: 100px;
+    background: #F5871F;
+    top: 20px;
+    left: 20px;
+}
+.smile{
+    width: 95px;
+    height: 51px;
+    padding-top: 50px;
+    text-align: center;
+    position: absolute;
+    background: #C9C9C9;
+    top: 150px;    
+}
+.s1{
+    left: 435px;
+}
+.s2{
+    left: 765px;
+}
+.s3{
+    left: 865px;
+}
+.ground{
+    background: brown;
+    position: absolute;
+    width: 1000px;
+    height: 178px;
+    top: 422px;
+}
