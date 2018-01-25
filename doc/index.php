@@ -26,8 +26,11 @@
         <div class="smile s1"></div>
         <div class="smile s2"></div>
         <div class="smile s3"></div>
-        <div class="ground"></div>
+        <div class="ground1"></div>
+        <div class="ground2"></div>
         <div id="score">0</div>
+        <div id="posV"></div>
+        <div id="gameOver">Game Over</div>
     </div>
 </body>
 </html>

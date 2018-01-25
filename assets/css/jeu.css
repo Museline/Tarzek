@@ -8,6 +8,9 @@ and open the template in the editor.
     Author     : Khael
 */
 
+/*{
+    border: 1px solid black;
+}*/
 body{
     margin: 0;
     font-size: 12px;
@@ -29,6 +32,7 @@ body{
     left: 100px;
     background: #C82829;
     overflow: hidden;
+    z-index: 5;
 }
 .case{
     position: absolute;
@@ -73,12 +77,22 @@ body{
 .s3{
     left: 865px;
 }
-.ground{
-    background: brown;
+.ground1{
+    background: #9c8855;
     position: absolute;
-    width: 1000px;
+    width: 600px;
     height: 178px;
     top: 422px;
+    border-top-right-radius: 20px;
+}
+.ground2{
+    background: #9c8855;
+    position: absolute;
+    width: 450px;
+    height: 178px;
+    top: 422px;
+    left: 650px;
+    border-top-left-radius: 20px;
 }
 #score{
     color: #AA3333;
@@ -87,4 +101,12 @@ body{
     left: 950px;
     font-weight: 900;
     font-size: 20px;
+}
+#gameOver{
+    font-size: 100px;
+    font-weight: 900;
+    position: absolute;
+    left: 200px;
+    top: -200px;
+    color: #C82829;
 }
