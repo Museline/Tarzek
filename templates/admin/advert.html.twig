@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {{ form_start(form) }}
+
+    {# en cas d'erreur sur le formulaire #}
+    {{ form_errors(form) }}
+    {{ form_errors(form.title) }}
+    {{ form_errors(form.content) }}
+    {{ form_errors(form.category) }}
+
+    <div>
+        {{ form_label(form.title, "Titre de l'annonce") }}
+        {{ form_widget(form.title) }}
+    </div>
+
+    <div>
+        {{ form_label(form.content, "Contenu de l'annonce") }}
+        {{ form_widget(form.content) }}
+    </div>
+
+    <div>
+        {{ form_label(form.category, "Catégorie de l'annonce") }}
+        {{ form_widget(form.category) }}
+    </div>
+
+    {{ form_widget(form.save) }}
+    {{ form_end(form) }}
+{% endblock %}
