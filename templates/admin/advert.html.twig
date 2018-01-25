@@ -16,7 +16,16 @@
 
     <div>
         {{ form_label(form.content, "Contenu de l'annonce") }}
-        {{ form_widget(form.content) }}
+        <div class="text-editor">
+            <button class="text-editor__btn" type="button" name="add-bold"><i class="fa fa-bold"></i></button>
+            <button class="text-editor__btn" type="button" name="add-italic"><i class="fas fa-italic"></i></button>
+            <button class="text-editor__btn" type="button" name="add-underline"><i class="fas fa-underline"></i></button>
+            <button class="text-editor__btn" type="button" name="add-delete"><i class="fas fa-strikethrough"></i></button>
+            <button class="text-editor__btn" type="button" name="add-list"><i class="fas fa-list-ul"></i></button>
+            <button class="text-editor__btn" type="button" name="add-url"><i class="fas fa-link"></i></button>
+            <button class="text-editor__btn" type="button" name="add-img"><i class="far fa-image"></i></button>
+        </div>
+        {{ form_widget(form.content, {'id':'text-area_content'}) }}
     </div>
 
     <div>

@@ -7,6 +7,6 @@
     {% for advert in list_advert %}
         <h4>{{ advert.category }} : {{ advert.title }}</h4>
         <h6>{{ advert.datePublication|date("m/d/Y") }}</h6>
-        <p>{{ advert.content }}</p>
+        <p>{{ advert.content|bbcode2html }}</p>
     {% endfor %}
 {% endblock %}
