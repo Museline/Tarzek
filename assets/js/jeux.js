@@ -10,8 +10,8 @@ $('document').ready(function(){
             duration: 800,
             esasing: 'easeOutBounce'
         });
-    $(".case").css({top:-100});
-    $(".case").delay(1200).animate(
+    $(".box").css({top:-100});
+    $(".box").delay(1200).animate(
         {top:268},
         {
             duration: 1000,
@@ -29,21 +29,23 @@ $('document').ready(function(){
             duration: 1000,
             easing: 'easeOutBounce'
         });
-    $("#legend").hide().delay(1500).fadeIn(500);
+    $("#sun").hide().delay(1500).fadeIn(500);
 });
 setInterval(function(){
-    $(".s1").animate({top: 45}, 800).animate({top: 50},800);}, 1500);
+    $(".c1").animate({top: 45}, 800).animate({top: 50},800);}, 1500);
 setInterval(function(){
-    $(".s2").animate({top: 45}, 800).animate({top: 50},800);}, 1000);
+    $(".c2").animate({top: 45}, 800).animate({top: 50},800);}, 1000);
 setInterval(function(){
-    $(".s3").animate({top: 45}, 800).animate({top: 50},800);}, 2000);
-$(".smile").hide().css({top: 70}).delay(2000).fadeIn(200);
+    $(".c3").animate({top: 45}, 800).animate({top: 50},800);}, 2000);
+$(".cloud").hide().css({top: 70}).delay(2000).fadeIn(200);
 
 var score = 0;
 var life = 1;
 $(window).keydown(function(event){
     var posX = $("#perso").position().left;
-    console.log(posX);
+    // console.log(posX);
+    
+    $("#lifeNumb").html(life);
     
     if(life == 1){
         if(event.keyCode == '39'){
@@ -99,24 +101,24 @@ $(window).keydown(function(event){
             if($("#perso").hasClass("dos")){
                 if((posX > 60) && (posX < 980)){
                     if((posX < 511)&&(posX > 461)){
-                        $(".c1").delay(160).animate({
+                        $(".b1").delay(160).animate({
                             'top': '210px'
                         }, 200).fadeOut(200, function(){
-                            $("#score").html(score +=50);
+                            $("#scoreNumb").html(score +=50);
                         });
                     };
                     if((posX < 841) && (posX > 791)){
-                        $(".c2").delay(160).animate({
+                        $(".b2").delay(160).animate({
                             'top': '210px'
                         }, 200).fadeOut(200, function(){
-                            $("#score").html(score +=50);
+                            $("#scoreNumb").html(score +=50);
                         });
                     };
                     if ((posX < 941) && (posX >891)){
-                        $(".c3").delay(160).animate({
+                        $(".b3").delay(160).animate({
                             'top': '210px'
                         }, 200).fadeOut(200, function(){
-                            $("#score").html(score +=50);
+                            $("#scoreNumb").html(score +=50);
                         });
                     };
                     $("#perso").stop(true, true).css({
@@ -133,24 +135,24 @@ $(window).keydown(function(event){
             else{
                 if((posX > 0) && (posX < 920)){
                     if ((posX > 411) && (posX < 461)){
-                        $(".c1").delay(160).animate({
+                        $(".b1").delay(160).animate({
                             'top': '210px'
                         }, 200).fadeOut(200, function(){
-                            $("#score").html(score +=50);
+                            $("#scoreNumb").html(score +=50);
                         });
                     };
                     if ((posX > 741) && (posX < 791)){
-                        $(".c2").delay(160).animate({
+                        $(".b2").delay(160).animate({
                             'top': '210px'
                         }, 200).fadeOut(200, function(){
-                            $("#score").html(score +=50);
+                            $("#scoreNumb").html(score +=50);
                         });
                     };
                     if ((posX > 841) && (posX < 891)){
-                        $(".c3").delay(160).animate({
+                        $(".b3").delay(160).animate({
                             'top': '210px'
                         }, 200).fadeOut(200, function(){
-                            $("#score").html(score +=50);
+                            $("#scoreNumb").html(score +=50);
                         });
                     };
                     $("#perso").stop(true, true).css({

@@ -34,7 +34,7 @@ body{
     overflow: hidden;
     z-index: 5;
 }
-.case{
+.box{
     position: absolute;
     top: 268px;
     width: 45px;
@@ -42,24 +42,24 @@ body{
     background: #17324f;
     
 }
-.c1{
+.b1{
     left: 461px;
 }
-.c2{
+.b2{
     left: 791px;
 }
-.c3{
+.b3{
     left: 891px;
 }
-#legend{
+#sun{
     position: absolute;
-    width: 100px;
-    height: 100px;
+    width: 75px;
+    height: 75px;
     background: #F5871F;
-    top: 20px;
+    top: 40px;
     left: 20px;
 }
-.smile{
+.cloud{
     width: 95px;
     height: 51px;
     padding-top: 50px;
@@ -68,13 +68,13 @@ body{
     background: #C9C9C9;
     top: 50px;    
 }
-.s1{
+.c1{
     left: 435px;
 }
-.s2{
+.c2{
     left: 765px;
 }
-.s3{
+.c3{
     left: 865px;
 }
 .ground1{
@@ -94,11 +94,35 @@ body{
     left: 650px;
     border-top-left-radius: 20px;
 }
-#score{
+#scoreTxt{
     color: #AA3333;
     position: absolute;
-    top: 10px;
-    left: 950px;
+    top: 5px;
+    left: 850px;
+    font-weight: 900;
+    font-size: 20px;
+}
+#scoreNumb{
+    color: #AA3333;
+    position: absolute;
+    top: 5px;
+    left: 920px;
+    font-weight: 900;
+    font-size: 20px;
+}
+#lifeTxt{
+    color: #AA3333;
+    position: absolute;
+    top: 5px;
+    left: 20px;
+    font-weight: 900;
+    font-size: 20px;
+}
+#lifeNumb{
+    color: #AA3333;
+    position: absolute;
+    top: 5px;
+    left: 100px;
     font-weight: 900;
     font-size: 20px;
 }
@@ -109,4 +133,11 @@ body{
     left: 200px;
     top: -200px;
     color: #C82829;
+}
+#ui{
+    position: absolute;
+    top: 30px;
+    width: 1000px;
+    height: 1px;
+    background: black;
 }

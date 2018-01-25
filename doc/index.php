@@ -18,19 +18,23 @@
 </head>
 <body>
     <div id="container">
-        <div id="legend"></div>
+        <div id="sun"></div>
         <div id="perso"></div>
-        <div class="case c1"></div>
-        <div class="case c2"></div>
-        <div class="case c3"></div>
-        <div class="smile s1"></div>
-        <div class="smile s2"></div>
-        <div class="smile s3"></div>
+        <div class="box b1"></div>
+        <div class="box b2"></div>
+        <div class="box b3"></div>
+        <div class="cloud c1"></div>
+        <div class="cloud c2"></div>
+        <div class="cloud c3"></div>
         <div class="ground1"></div>
         <div class="ground2"></div>
-        <div id="score">0</div>
+        <div id="scoreTxt">Score:</div>
+        <div id="scoreNumb">0</div>
         <div id="posV"></div>
         <div id="gameOver">Game Over</div>
+        <div id="ui"></div>
+        <div id="lifeTxt">Vie:</div>
+        <div id="lifeNumb"></div>
     </div>
 </body>
 </html>
