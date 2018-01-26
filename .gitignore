@@ -16,3 +16,4 @@
 /public/build/
 ###< symfony/webpack-encore-pack ###
 symfony.lock
+src/Migrations/
