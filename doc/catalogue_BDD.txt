@@ -7,8 +7,10 @@
     nom
     prénom
     adresse
+    Ville
+    Code Postal
     tel
-    rang
+    rang/role
     avatar
 - FIN USER -
 
