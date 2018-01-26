@@ -178,6 +178,18 @@ class User implements UserInterface, \Serializable {
         return $this->avatar;
     }
 
+    public function setUsername($username){
+        $this->username = $username;
+    }
+    
+    public function setPassword($password){
+        $this->password = $password;
+    }
+    
+    public function setEmail($email){
+        $this->email = $email;
+    }
+    
     function setLName($l_name)
     {
         $this->l_name = $l_name;
