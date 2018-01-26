@@ -32,7 +32,7 @@ class UserController extends Controller{
         // verification si les données du form sont envoyées et valides
         if($form_user->isSubmitted() && $form_user->isValid()) {
             
-            $encoded = $encoder->encodePassword($new_user, $new_user->getPassword());
+            $encoded = $encoder->encodePassword($new_user, $new_user->getSalt());
             $new_user->setPassword($encoded);
             
             // mise en DB
@@ -49,9 +49,19 @@ class UserController extends Controller{
         return $this->render('publicsite/registration.html.twig', array("form" => $form_user->createView()));
     }
     
-    public function profilUser(){
+    /**
+     * @Route("/profil", name="profil")
+     * 
+     */
+    public function profilUser($id){
         
+        $user_profil = $this->getDoctrine()
+                ->getRepository(User::class)
+                ->find($id);
         
+        if (!$user_profil){
+            throw $this->createNotFoundException('Pas d\'utilisateur enregistré sous cette Id');
+        }
         
         return $this->render('profil.html.twig', array('user_profil' => $user_profil));
     }
