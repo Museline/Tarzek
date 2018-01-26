@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Repository;
+namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use App\Entity\User;
 use App\Form\UserType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -43,6 +42,13 @@ class UserController extends Controller{
             $this->redirectToRoute('profil');
         }
         
-        return $this->render('', $parameters)
+        return $this->render('publicsite/registration.html.twig', array("form" => $form_user->createView()));
+    }
+    
+    public function profilUser(){
+        
+        
+        
+        return $this->render('profil.html.twig', array('user_profil' => $user_profil));
     }
 }

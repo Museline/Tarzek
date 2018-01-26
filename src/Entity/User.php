@@ -139,6 +139,10 @@ class User implements UserInterface, \Serializable {
         ) = unserialize($serialized);
     }
     
+    public function getEmail(){
+        return $this->email;
+    }
+    
     function getLName()
     {
         return $this->l_name;
