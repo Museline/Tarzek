@@ -19,4 +19,12 @@ class PublicSiteController extends Controller
 
         return $this->render('publicsite/index.html.twig', array( 'list_advert' => $list_advert ));
     }
+
+    /**
+     * @Route("/jeu", name="game")
+     */
+    public function gameAction()
+    {
+        return $this->render('publicsite/game.html.twig');
+    }
 }
