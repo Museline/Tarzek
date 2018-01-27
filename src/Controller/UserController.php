@@ -8,6 +8,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+
 
 /**
  * Description of UserController
@@ -17,7 +19,7 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 class UserController extends Controller{
     
     /**
-     * @Route("/inscription", name="inscription")
+     * @Route("/inscription", name="registration")
      */
     public function newUser(Request $request, UserPasswordEncoderInterface $encoder){
         
@@ -42,8 +44,8 @@ class UserController extends Controller{
             
             $this->addFlash('success', 'Compte utilisateur créé. Bienvenue');
             
-            // redirection vers la page Profil
-            $this->redirectToRoute('homepage');
+            // redirection vers la page de Connexion (vers homepage tant que login non créée)
+            $this->redirectToRoute('login');
         }
         
         return $this->render('publicsite/registration.html.twig', array("form" => $form_user->createView()));
@@ -53,16 +55,24 @@ class UserController extends Controller{
      * @Route("/profil", name="profil")
      * 
      */
-    public function profilUser($id){
+    public function profilUser(){
         
-        $user_profil = $this->getDoctrine()
-                ->getRepository(User::class)
-                ->find($id);
+        return $this->render('privatesite/profil.html.twig');
+    }
+    
+    /**
+    * @Route("/login", name="login")
+    */
+    public function login(Request $request, AuthenticationUtils $auth_utils){
         
-        if (!$user_profil){
-            throw $this->createNotFoundException('Pas d\'utilisateur enregistré sous cette Id');
-        }
+        $error = $auth_utils->getLastAuthenticationError();
         
-        return $this->render('profil.html.twig', array('user_profil' => $user_profil));
+        $last_username = $auth_utils->getLastUsername();
+        
+        return $this->render('publicsite/login.html.twig', array(
+            'last_username' => $last_username,
+            'error' => $error,
+        ));
+   
     }
 }
