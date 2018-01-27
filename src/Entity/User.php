@@ -143,37 +143,37 @@ class User implements UserInterface, \Serializable {
         return $this->email;
     }
     
-    function getLName()
+    public function getLName()
     {
         return $this->l_name;
     }
 
-    function getFName()
+    public function getFName()
     {
         return $this->f_name;
     }
 
-    function getAdress()
+    public function getAdress()
     {
         return $this->adress;
     }
 
-    function getCity()
+    public function getCity()
     {
         return $this->city;
     }
 
-    function getPostCode()
+    public function getPostCode()
     {
         return $this->post_code;
     }
 
-    function getPhoneNumb()
+    public function getPhoneNumb()
     {
         return $this->phone_numb;
     }
 
-    function getAvatar()
+    public function getAvatar()
     {
         return $this->avatar;
     }
@@ -190,37 +190,37 @@ class User implements UserInterface, \Serializable {
         $this->email = $email;
     }
     
-    function setLName($l_name)
+    public function setLName($l_name)
     {
         $this->l_name = $l_name;
     }
 
-    function setFName($f_name)
+    public function setFName($f_name)
     {
         $this->f_name = $f_name;
     }
 
-    function setAdress($adress)
+    public function setAdress($adress)
     {
         $this->adress = $adress;
     }
 
-    function setCity($city)
+    public function setCity($city)
     {
         $this->city = $city;
     }
 
-    function setPostCode($post_code)
+    public function setPostCode($post_code)
     {
         $this->post_code = $post_code;
     }
 
-    function setPhoneNumb($phone_numb)
+    public function setPhoneNumb($phone_numb)
     {
         $this->phone_numb = $phone_numb;
     }
 
-    function setAvatar($avatar)
+    public function setAvatar($avatar)
     {
         $this->avatar = $avatar;
     }
