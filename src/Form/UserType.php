@@ -37,7 +37,8 @@ class UserType extends AbstractType {
                 ->add('city', TextType::class, array('label' => 'Ville'))
                 ->add('post_code', TextType::class, array('label' => 'Code Postal'))
                 ->add('phone_numb', TextType::class, array('label' => 'Numéro de Téléphone'))
-                ->add('avatar', FileType::class, array('label' => 'Avatar'))
+                ->add('avatar_URL', TextType::class, array('label' => 'Avatar'))
+                // ->add('avatar_upload', FileType::class, array('label' => 'Avatar'))              
                 ->add('send', SubmitType::class, array('label' => 'Envoyer'));
     }
                 

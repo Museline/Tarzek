@@ -79,7 +79,13 @@ class User implements UserInterface, \Serializable {
     /**
      * @ORM\Column (type="string", length=255)
      */
-    private $avatar;
+    private $avatar_URL;
+    
+    // /**
+    //  * @ORM\OneToOne(targetEntity="App\Entity\UserAvatar", mappedBy="user", cascade={"persist", "remove"})
+    //  * 
+    //  */
+    // private $avatar_upload;
     
     public function __construct()
     {
@@ -173,9 +179,13 @@ class User implements UserInterface, \Serializable {
         return $this->phone_numb;
     }
 
-    public function getAvatar()
+    public function getAvatarURL()
     {
-        return $this->avatar;
+        return $this->avatar_URL;
+    }
+    
+    public function getAvatarUpload(){
+        return $this->avatar_upload;
     }
 
     public function setUsername($username){
@@ -220,10 +230,12 @@ class User implements UserInterface, \Serializable {
         $this->phone_numb = $phone_numb;
     }
 
-    public function setAvatar($avatar)
+    public function setAvatarURL($avatar_URL)
     {
-        $this->avatar = $avatar;
+        $this->avatar = $avatar_URL;
     }
 
-
+    public function setAvatarUpload($avatar_upload){
+        $this->avatar_upload = $avatar_upload;
+    }
 }

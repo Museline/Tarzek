@@ -34,7 +34,7 @@ class UserController extends Controller{
         // verification si les données du form sont envoyées et valides
         if($form_user->isSubmitted() && $form_user->isValid()) {
             
-            $encoded = $encoder->encodePassword($new_user, $new_user->getSalt());
+            $encoded = $encoder->encodePassword($new_user, $new_user->getPassword());
             $new_user->setPassword($encoded);
             
             // mise en DB
