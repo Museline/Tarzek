@@ -19,3 +19,6 @@ symfony.lock
 src/Migrations/
 doc/Image.php
 doc/Produit.php
+doc/taches
+
+public/images/uploads
