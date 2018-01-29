@@ -9,6 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use App\Entity\UserAvatar;
 
 
 /**
@@ -25,7 +26,9 @@ class UserController extends Controller{
         
         // création d'un nouvel Utilisateur
         $new_user = new User();
-                
+        // $avatar = new UserAvatar;
+        
+        // $new_user->setAvatarUpload($avatar);
         // création du formulaire d'inscription du nouvel utilisateur
         $form_user = $this->createForm(UserType::class, $new_user);
         

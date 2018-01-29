@@ -77,12 +77,12 @@ class User implements UserInterface, \Serializable {
     private $roles;
     
     /**
-     * @ORM\Column (type="string", length=255)
+     * @ORM\Column (type="string", length=255, nullable=true)
      */
     private $avatar_URL;
     
     /**
-    * @ORM\OneToOne(targetEntity="App\Entity\UserAvatar", mappedBy="user", cascade={"persist", "remove"})
+    * @ORM\OneToOne(targetEntity="App\Entity\UserAvatar", cascade={"persist", "remove"})
     * 
     */
      private $avatar_upload;
@@ -235,7 +235,7 @@ class User implements UserInterface, \Serializable {
         $this->avatar_URL = $avatar_URL;
     }
 
-    public function setAvatarUpload($avatar_upload){
+    public function setAvatarUpload(UserAvatar $avatar_upload){
         $this->avatar_upload = $avatar_upload;
     }
 }

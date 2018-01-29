@@ -49,12 +49,6 @@ class UserAvatar {
     private $alt;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\User", inversedBy="avatar_upload")
-     * @ORM\JoinColumn(nullable=true)
-     */
-    private $user;
-
-    /**
      * @Assert\Image()
      */
     private $file;
@@ -101,7 +95,7 @@ class UserAvatar {
         $image = imagecreatefromjpeg($this->file);
         imagecopyresampled($image_p, $image, 0, 0, 0, 0, $width, $height, $width_orig, $height_orig);
         
-        imagejpeg($image_p, $this->getUploadDir().'/temp'.$this->extension, 100);
+        imagejpeg($image_p, $this->getUploadDir().'/temp.'.$this->extension, 100);
     }
     
     /**
@@ -252,27 +246,5 @@ class UserAvatar {
         }
     }
 
-    /**
-     * Set user
-     *
-     * @param \App\Entity\User $user
-     *
-     * @return Image
-     */
-    public function setUser(\App\Entity\User $user)
-    {
-        $this->produit = $user;
 
-        return $this;
-    }
-
-    /**
-     * Get user
-     *
-     * @return \App\Entity\User
-     */
-    public function getUser()
-    {
-        return $this->user;
-    }
 }
