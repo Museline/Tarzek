@@ -8,7 +8,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
+// use App\Form\AvatarType;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
 /**
  * Description of UserType
@@ -38,8 +38,8 @@ class UserType extends AbstractType {
                 ->add('city', TextType::class, array('label' => 'Ville'))
                 ->add('post_code', TextType::class, array('label' => 'Code Postal'))
                 ->add('phone_numb', TextType::class, array('label' => 'Numéro de Téléphone'))
-                ->add('avatar_URL', UrlType::class, array('label' => 'Avatar'))
-                // ->add('avatar_upload', FileType::class, array('label' => 'Avatar'))              
+                ->add('avatar_URL', UrlType::class, array('label' => 'Avatar', 'required' => false))
+                ->add('avatar_upload', AvatarType::class, array('label' => 'Avatar', 'required' => false))              
                 ->add('send', SubmitType::class, array('label' => 'Envoyer'));
     }
                 

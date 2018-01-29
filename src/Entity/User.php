@@ -81,11 +81,11 @@ class User implements UserInterface, \Serializable {
      */
     private $avatar_URL;
     
-    // /**
-    //  * @ORM\OneToOne(targetEntity="App\Entity\UserAvatar", mappedBy="user", cascade={"persist", "remove"})
-    //  * 
-    //  */
-    // private $avatar_upload;
+    /**
+    * @ORM\OneToOne(targetEntity="App\Entity\UserAvatar", mappedBy="user", cascade={"persist", "remove"})
+    * 
+    */
+     private $avatar_upload;
     
     public function __construct()
     {
