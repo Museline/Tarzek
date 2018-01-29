@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {{ form_start(form) }}
+
+    {# Les erreurs générales du formulaire. #}
+    {{ form_errors(form) }}
+
+        {{ form_label(form.username, "Pseudo") }}
+        {{ form_errors(form.username) }}
+        {{ form_widget(form.username) }}
+
+        {{ form_label(form.roles, "Role") }}
+        {{ form_errors(form.roles) }}
+        {{ form_widget(form.roles) }}
+
+    {{ form_widget(form.send) }}
+
+    {{ form_end(form) }}
+{% endblock %}

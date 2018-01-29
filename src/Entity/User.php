@@ -95,6 +95,11 @@ class User implements UserInterface, \Serializable {
         $this->roles = ["ROLE_USER"];
     }
 
+    public function getId()
+    {
+        return $this->id;
+    }
+
     public function getUsername()
     {
         return $this->username;
@@ -228,6 +233,14 @@ class User implements UserInterface, \Serializable {
     public function setPhoneNumb($phone_numb)
     {
         $this->phone_numb = $phone_numb;
+    }
+
+    /**
+     * @param mixed $roles
+     */
+    public function setRoles($roles): void
+    {
+        $this->roles = $roles;
     }
 
     public function setAvatarURL($avatar_URL)

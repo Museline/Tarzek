@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\Advert;
+use App\Entity\User;
 use App\Form\AdvertType;
+use App\Form\UserEditType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
@@ -53,6 +55,53 @@ class AdminController extends Controller
         }
 
         return $this->render('admin/advert.html.twig', array(
+            'form' => $form->createView(),
+        ));
+    }
+
+    /**
+     * @Route("/admin/user", name="admin_user")
+     */
+    public function userAction(Request $request)
+    {
+        $search_username = $request->request->get('search_username');
+
+        if($search_username) {
+            $list_users = $this->getDoctrine()
+                ->getRepository(User::class)
+                ->findUsersSearch($search_username);
+        } else {
+            $list_users = null;
+        }
+
+        return $this->render('admin/user.html.twig', array('list_users' => $list_users));
+    }
+
+    /**
+     * @Route("/admin/user_edit/{id}", name="admin_user_edit")
+     */
+    public function userEditAction(Request $request, $id)
+    {
+        $user = $this->getDoctrine()
+            ->getManager()
+            ->getRepository(User::class)
+            ->find($id)
+        ;
+
+        /*** Création du formulaire ***/
+        $form = $this->createForm(UserEditType::class, $user);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid())
+        {
+            $em = $this->getDoctrine()->getManager();
+            $em->flush();
+
+            return $this->redirect($this->generateUrl('admin_user'));
+        }
+        /*************************************/
+
+        return $this->render('admin/useredit.html.twig', array(
             'form' => $form->createView(),
         ));
     }

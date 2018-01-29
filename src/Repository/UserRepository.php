@@ -16,17 +16,17 @@ class UserRepository extends ServiceEntityRepository {
     {
         parent::__construct($registry, User::class);
     }
-    
-    /*
-    public function findBySomething($value)
+
+    public function findUsersSearch($username)
     {
-        return $this->createQueryBuilder('a')
-            ->where('a.something = :value')->setParameter('value', $value)
-            ->orderBy('a.id', 'ASC')
-            ->setMaxResults(10)
+        $qb = $this->createQueryBuilder('u');
+
+        $qb ->where($qb->expr()->like('u.username', $qb->expr()->literal('%'.$username.'%')))
+            ->getQuery();
+
+        return $qb
             ->getQuery()
             ->getResult()
-        ;
+            ;
     }
-    */
 }
