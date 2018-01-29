@@ -14,6 +14,10 @@
         {{ form_errors(form.roles) }}
         {{ form_widget(form.roles) }}
 
+        {{ form_label(form.isActive, "Activité du compte") }}
+        {{ form_errors(form.isActive) }}
+        {{ form_widget(form.isActive) }}
+
     {{ form_widget(form.send) }}
 
     {{ form_end(form) }}

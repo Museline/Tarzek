@@ -2,7 +2,7 @@
 namespace App\Entity;
 
 use \Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 /**
  * Description of User
  * Object User for registration
@@ -13,7 +13,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  * @ORM\Table(name="app_users")
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  */
-class User implements UserInterface, \Serializable {
+class User implements AdvancedUserInterface, \Serializable {
     /**
      * @ORM\Column(type="integer")
      * @ORM\Id
@@ -122,6 +122,14 @@ class User implements UserInterface, \Serializable {
         return $this->roles;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getIsActive()
+    {
+        return $this->isActive;
+    }
+
     public function eraseCredentials()
     {
     }
@@ -148,6 +156,26 @@ class User implements UserInterface, \Serializable {
             // see section on salt below
             // $this->salt
         ) = unserialize($serialized);
+    }
+
+    public function isAccountNonExpired()
+    {
+        return true;
+    }
+
+    public function isAccountNonLocked()
+    {
+        return true;
+    }
+
+    public function isCredentialsNonExpired()
+    {
+        return true;
+    }
+
+    public function isEnabled()
+    {
+        return $this->isActive;
     }
     
     public function getEmail(){
@@ -203,6 +231,14 @@ class User implements UserInterface, \Serializable {
     
     public function setEmail($email){
         $this->email = $email;
+    }
+
+    /**
+     * @param mixed $isActive
+     */
+    public function setIsActive($isActive): void
+    {
+        $this->isActive = $isActive;
     }
     
     public function setLName($l_name)
