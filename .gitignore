@@ -17,3 +17,5 @@
 ###< symfony/webpack-encore-pack ###
 symfony.lock
 src/Migrations/
+doc/Image.php
+doc/Produit.php

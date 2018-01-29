@@ -45,7 +45,7 @@ class UserController extends Controller{
             $this->addFlash('success', 'Compte utilisateur créé. Bienvenue');
             
             // redirection vers la page de Connexion (vers homepage tant que login non créée)
-            $this->redirectToRoute('login');
+            return $this->redirectToRoute('login');
         }
         
         return $this->render('publicsite/registration.html.twig', array("form" => $form_user->createView()));
