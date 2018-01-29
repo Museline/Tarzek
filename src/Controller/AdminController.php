@@ -97,6 +97,11 @@ class AdminController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->flush();
 
+            $this->addFlash(
+                'success',
+                'L\'utilisateur a bien été modifié'
+            );
+
             return $this->redirect($this->generateUrl('admin_user'));
         }
         /*************************************/
@@ -104,5 +109,25 @@ class AdminController extends Controller
         return $this->render('admin/useredit.html.twig', array(
             'form' => $form->createView(),
         ));
+    }
+
+    /**
+     * @Route("/admin/user_remove/{id}", name="admin_user_remove")
+     */
+    public function userRemoveAction(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user = $em->getRepository(User::class)
+            ->find($id);
+
+        $em->remove($user);
+        $em->flush();
+
+        $this->addFlash(
+            'success',
+            'L\'utilisateur a bien été supprimé'
+        );
+
+        return $this->redirect($this->generateUrl('admin_user'));
     }
 }
