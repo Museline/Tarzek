@@ -232,7 +232,7 @@ class User implements UserInterface, \Serializable {
 
     public function setAvatarURL($avatar_URL)
     {
-        $this->avatar = $avatar_URL;
+        $this->avatar_URL = $avatar_URL;
     }
 
     public function setAvatarUpload($avatar_upload){
