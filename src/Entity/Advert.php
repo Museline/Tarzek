@@ -24,6 +24,12 @@ class Advert
     private $id;
 
     /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $author;
+
+    /**
      * @var string $title titre de l'annonce
      * @ORM\Column(type="string", length=100, unique=true)
      * @Assert\NotBlank()
@@ -81,6 +87,22 @@ class Advert
     public function setId($id)
     {
         $this->id = $id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAuthor()
+    {
+        return $this->author;
+    }
+
+    /**
+     * @param mixed $author
+     */
+    public function setAuthor($author): void
+    {
+        $this->author = $author;
     }
 
     /**

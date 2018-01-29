@@ -34,6 +34,10 @@ class AdminController extends Controller
         // vérification si le formulaire est envoyé et valide
         if ($form->isSubmitted() && $form->isValid()) {
 
+            // ajout de l'auteur
+            $user =  $this->getUser();
+            $advert->setAuthor($user);
+
             // mise en bdd
             $em = $this->getDoctrine()->getManager();
             $em->persist($advert);
