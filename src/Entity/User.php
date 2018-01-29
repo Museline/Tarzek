@@ -3,6 +3,7 @@ namespace App\Entity;
 
 use \Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\AdvancedUserInterface;
+use Symfony\Component\Validator\Constraint as Assert;
 /**
  * Description of User
  * Object User for registration
@@ -23,16 +24,37 @@ class User implements AdvancedUserInterface, \Serializable {
     
     /**
      * @ORM\Column(type="string", length=25, unique=true)
+     * @Assert\NotBlank()
+     * @Assert\Length(
+     *      min = 3,
+     *      max = 25,
+     *      minMessage = "Le Pseudo doit contenir au moins {{ limit }} caractères",
+     *      maxMessage = "Le Pseudo doit contenir au maximum {{ limit }} caractères"
+     * )
+     * 
      */
     private $username;
 
     /**
      * @ORM\Column(type="string", length=64)
+     * @Assert\Regex(
+     *      pattern="/^[A-Za-z0-9]{1,0}$/",
+     *      message="Le Mot de Passe doit contenir au moins une majuscule et un chiffre"
+     * )
+     * @Assert\Length(
+     *      min=5,
+     *      minMessage = "Le mot de passe doit contenir au moins {{ limit }} caractères",
+     * )
      */
     private $password;
 
     /**
      * @ORM\Column(type="string", length=60, unique=true)
+     * @Assert\NotBlank()
+     * @Assert\Email(
+     *     message = "The email '{{ value }}' is not a valid email.",
+     *     checkMX = true
+     * )
      */
     private $email;
 
@@ -43,31 +65,60 @@ class User implements AdvancedUserInterface, \Serializable {
     
     /**
      * @ORM\Column (type="string", length=30)
+     * @Assert\Length(
+     *      min=3, 
+     *      max=30,
+     *      minMessage = "Le nom doit contenir au moins {{ limit }} caractères",
+     *      maxMessage = "Le nom doit contenir au moins {{ limit }} caractères"
+     * )
      */
     private $l_name;
     
     /**
      * @ORM\Column (type="string", length=30)
+     * @Assert\Length(
+     *      min=3, 
+     *      max=30,
+     *      minMessage = "Le prénom doit contenir au moins {{ limit }} caractères",
+     *      maxMessage = "Le prénom doit contenir au moins {{ limit }} caractères"
+     * )
      */
     private $f_name;
     
     /**
      * @ORM\Column (type="string", length=100)
+     * @Assert\Length(
+     *      min=3, 
+     *      max=100,
+     *      minMessage = "L'adresse doit contenir au moins {{ limit }} caractères",
+     *      maxMessage = "L'adresse doit contenir au moins {{ limit }} caractères"
+     * )
      */
     private $adress;
     
     /**
      * @ORM\Column (type="string", length=30)
+     * @Assert\Length(
+     *      min=3, 
+     *      max=30,
+     *      minMessage = "Le nom de la ville doit contenir au moins {{ limit }} caractères",
+     *      maxMessage = "Le nom de la ville doit contenir au moins {{ limit }} caractères"
+     * )
      */
     private $city;
     
     /**
      * @ORM\Column (type="string", length=30)
+     * 
      */
     private $post_code;
     
     /**
      * @ORM\Column (type="string", length=30)
+     * @Assert\Regex(
+     *      pattern="/^(0|\+33)[1-9]([-. ]?[0-9]{2}){4}$/",
+     *      message = "Le numéro de téléphone doit être du type +33X-XX-XX-XX-XX ou 0X.XX.XX.XX.XX"
+     * )
      */
     private $phone_numb;
     
@@ -78,6 +129,7 @@ class User implements AdvancedUserInterface, \Serializable {
     
     /**
      * @ORM\Column (type="string", length=255, nullable=true)
+     * @Assert\Url()
      */
     private $avatar_URL;
     

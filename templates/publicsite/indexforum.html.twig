@@ -1,0 +1,18 @@
+{# empty Twig template #}
+
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    
+    {% for ForumSection in list_section %}
+        {% if ForumSection.order == 0 %}
+            <h3><a href="/forum/?id={{ ForumSection.id }}">{{ ForumSection.SectionName }}</a></h3>
+            <p>{{ ForumSection.Description }}</p>
+        {% endif %}
+        {% if ForumSection.order == 1 %}
+            <h4><a href="/forum/{{ ForumSection.id }}">{{ ForumSection.SectionName }}</a></h4>
+            <p>{{ ForumSection.Description }}</p>
+        {% endif %}
+    {% endfor %}
+    
+{% endblock %}

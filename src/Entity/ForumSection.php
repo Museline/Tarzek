@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraint as Assert;
 
 /**
  * Description of ForumSection
@@ -19,12 +20,24 @@ class ForumSection {
     private $id;
     
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=60, unique=true)
+     * @Assert\Length(
+     *      min=3,
+     *      max=60,
+     *      minMessage = "Le titre de la section doit contenir au moins {{ limit }} caractères",
+     *      maxMessage = "Le titre de la section ne doit pas excéder {{ limit }} caractères"
+     * )
      */
     private $section_name;
     
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(
+     *      min=3,
+     *      max=255,
+     *      minMessage = "Le titre de la section doit contenir au moins {{ limit }} caractères",
+     *      maxMessage = "Le titre de la section ne doit pas excéder {{ limit }} caractères"
+     * )
      */
     private $description;
     
@@ -48,7 +61,7 @@ class ForumSection {
         return $this->id;
     }
     
-    function getSection_name()
+    function getSectionName()
     {
         return $this->section_name;
     }
@@ -69,7 +82,7 @@ class ForumSection {
     }
 
         
-    function setSection_name($section_name)
+    function setSectionName($section_name)
     {
         $this->section_name = $section_name;
     }

@@ -19,18 +19,18 @@ class ForumController extends Controller{
     public function indexForum(){
         
         $list_section = $this->getDoctrine()
-                ->getRepository(Forum::class)
+                ->getRepository(ForumSection::class)
                 ->findAll();
         
-        return $this->render('publicsite/forum.html.twig', array('list_section' => $list_section));
+        return $this->render('publicsite/indexforum.html.twig', array('list_section' => $list_section));
     }
-    
-    
     
     public function postForum(){
         
         $list_subject = $this->getDoctrine()
                 ->getRepository(ForumPost::class)
                 ->findAll();
+        
+        return $this->render('publicsite/sujetforum.html.twig', array('list_subject' => $list_subject));
     }
 }
