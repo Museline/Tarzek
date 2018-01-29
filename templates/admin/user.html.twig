@@ -11,6 +11,7 @@
                 <th>Pseudo</th>
                 <th>Email</th>
                 <th>Roles</th>
+                <th>Compte actif</th>
                 <th>Actions</th>
             </tr>
             {% for user in list_users %}
@@ -22,7 +23,15 @@
                             {{ role }}
                         {% endfor %}
                     </td>
-                    <td><a href="{{ path('admin_user_edit', {'id': user.id}) }}">Edit</a></td>
+                    <td>
+                        {% if user.isActive == 1 %}
+                            Compte actif
+                        {% else %}
+                            Compte inactif
+                        {% endif %}
+                    </td>
+                    <td><a href="{{ path('admin_user_edit', {'id': user.id}) }}">Edit</a>
+                        <a href="{{ path('admin_user_remove', {'id': user.id}) }}">Suppr</a></td>
                 </tr>
             {% endfor %}
         </table>

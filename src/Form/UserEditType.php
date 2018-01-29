@@ -19,7 +19,15 @@ class UserEditType extends AbstractType {
                         'Admin' => 'ROLE_ADMIN',
                         'Super admin' => 'ROLE_SUPER_ADMIN',
                     ),
-                    'multiple' => true
+                    'multiple' => true,
+                    'expanded' => true
+                ))
+                ->add('isActive', ChoiceType::class, array(
+                    'choices'  => array(
+                        'Compte desactivé' => 0,
+                        'Compte actif' => 1,
+                    ),
+                    'expanded' => true
                 ))
                 ->add('send', SubmitType::class);
     }
