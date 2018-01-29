@@ -72,21 +72,21 @@
         id_partie
     -Fin Section-
     -Sujet-
-        id
+        -id
         id_section
-        Titre
-        Description
-        Auteur/pseudo
-        Date
+        -Titre
+        -Description
+        -Auteur/pseudo
+        -Date
     -Fin sujet-
     -Post-
-        id
+       - id
         id_sujet
-        Auteur/pseudo
-        Date
-        contenu
-        edition
-        date_edition
+        -Auteur/pseudo
+        -Date
+        -contenu
+        -edition
+        -date_edition
 	lu/non lu
     -Fin Post-
     -Compte-
