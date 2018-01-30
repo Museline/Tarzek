@@ -63,18 +63,10 @@ class PrivateMessage
      */
     private $sending_date;
 
-    /**
-     * @var bool $reading lecture du message privé par le destinataire
-     * @ORM\Column(type="boolean")
-     * @Assert\Type("bool")
-     */
-    private $reading;
-
     public function __construct()
     {
         $this->recipients = new ArrayCollection();
         $this->sending_date = new \Datetime();
-        $this->reading = false;
     }
 
     /**
@@ -96,7 +88,7 @@ class PrivateMessage
     /**
      * @return User
      */
-    public function getSender(): User
+    public function getSender()
     {
         return $this->sender;
     }
@@ -110,7 +102,7 @@ class PrivateMessage
     }
 
     /**
-     * @return Collection|Recipient[]
+     * @return Collection|User[]
      */
     public function getRecipients()
     {
@@ -189,21 +181,5 @@ class PrivateMessage
     public function setSendingDate(\DateTime $sending_date): void
     {
         $this->sending_date = $sending_date;
-    }
-
-    /**
-     * @return bool
-     */
-    public function isReading(): bool
-    {
-        return $this->reading;
-    }
-
-    /**
-     * @param bool $reading
-     */
-    public function setReading(bool $reading): void
-    {
-        $this->reading = $reading;
     }
 }

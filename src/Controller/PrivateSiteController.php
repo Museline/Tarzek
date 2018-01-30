@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\PrivateMessage;
+use App\Entity\PrivateMessageReading;
 use App\Form\PrivateMessageType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -44,14 +45,30 @@ class PrivateSiteController extends Controller
         // vérification si le formulaire est envoyé et valide
         if ($form->isSubmitted() && $form->isValid()) {
 
+            $em = $this->getDoctrine()->getManager();
+
             // ajout de l'expéditeur
             $user =  $this->getUser();
             $message->setSender($user);
 
             // mise en bdd
-            $em = $this->getDoctrine()->getManager();
             $em->persist($message);
             $em->flush();
+
+            // ajout de la gestion des messages lu/non lu
+            $recipients = $message->getRecipients();
+            $length = count($recipients);
+
+            for($i=0; $i < $length; $i++) {
+
+                $reading = new PrivateMessageReading();
+
+                $reading->setMessage($message);
+                $reading->setRecipient($recipients[$i]);
+
+                $em->persist($reading);
+                $em->flush();
+            }
 
             $this->addFlash(
                 'success',
