@@ -24,7 +24,7 @@ class UserType extends AbstractType {
         $builder
                 ->add('username', TextType::class, array('label' => 'Pseudo'))
                 ->add('password', RepeatedType::class, array(
-                    'type' => TextType::class,
+                    'type' => PasswordType::class,
                     'invalid_message' => 'Les mots de passe doivent correspondrent',
                     'options' => array('attr' => array('class' => 'password-field')),
                     'required' => true,
