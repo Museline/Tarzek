@@ -10,12 +10,19 @@
             <th>Titre du message</th>
             <th>Expediteur</th>
             <th>Date d'envoi</th>
+            <th>Lecture du message</th>
         </tr>
-        {% for message in app.user.messages %}
+        {% for message in list_messages_received %}
             <tr>
-                <td><a href="{{ path('message_view', {'id': message.id}) }}">{{ message.title }}</a></td>
-                <td>{{ message.sender.username }}</td>
-                <td>{{ message.sendingDate|date("d/m/Y") }}</td>
+                <td><a href="{{ path('message_view', {'id': message.message.id}) }}">{{ message.message.title }}</a></td>
+                <td>{{ message.message.sender.username }}</td>
+                <td>{{ message.message.sendingDate|date("d/m/Y") }}</td>
+                <td>{% if message.reading %}
+                        message lu
+                    {% else %}
+                        message non lu
+                    {%  endif %}
+                </td>
             </tr>
         {% endfor %}
     </table>
@@ -28,7 +35,7 @@
             <th>Destinataire(s)</th>
             <th>Date d'envoi</th>
         </tr>
-        {% for message in list_messages %}
+        {% for message in list_messages_sent %}
             <tr>
                 <td><a href="{{ path('message_view', {'id': message.id}) }}">{{ message.title }}</a></td>
                 <td>

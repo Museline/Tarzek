@@ -13,16 +13,15 @@ class PrivateMessageReadingRepository extends ServiceEntityRepository
         parent::__construct($registry, PrivateMessageReading::class);
     }
 
-    /*
-    public function findBySomething($value)
+    public function findByUserAndMessage($user, $message)
     {
-        return $this->createQueryBuilder('p')
-            ->where('p.something = :value')->setParameter('value', $value)
-            ->orderBy('p.id', 'ASC')
-            ->setMaxResults(10)
+        return $this->createQueryBuilder('pmr')
+            ->andWhere('pmr.recipient = :user')
+            ->andWhere('pmr.message = :message')
+            ->setParameter('user', $user)
+            ->setParameter('message', $message)
             ->getQuery()
             ->getResult()
         ;
     }
-    */
 }

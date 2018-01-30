@@ -18,14 +18,22 @@ class PrivateSiteController extends Controller
     {
         $user = $this->getUser();
 
-        $list_messages = $this->getDoctrine()
+        $em = $this->getDoctrine()->getManager();
+
+        // récupération des messages reçus grâce à PrivateMessageReading pour avoir les lu/non lu en même temps
+        $list_messages_received = $em->getRepository(PrivateMessageReading::class)
+                                    ->findByRecipient($user);
+
+        // récupération des messages expédiés
+        $list_messages_sent = $this->getDoctrine()
             ->getManager()
             ->getRepository(PrivateMessage::class)
             ->findBySender($user)
         ;
 
         return $this->render('privatesite/messaging.html.twig', array(
-            'list_messages' => $list_messages,
+            'list_messages_received' => $list_messages_received,
+            'list_messages_sent' => $list_messages_sent
         ));
     }
 
@@ -89,11 +97,27 @@ class PrivateSiteController extends Controller
      */
     public function messageViewAction($id)
     {
-        $message = $this->getDoctrine()
-            ->getManager()
-            ->getRepository(PrivateMessage::class)
-            ->find($id)
-        ;
+        $user = $this->getUser();
+
+        $em = $this->getDoctrine()->getManager();
+
+        $message = $em->getRepository(PrivateMessage::class)
+            ->find($id);
+
+        // vérification du bool de lecture et modification si en non lu
+        $tab_message = $em->getRepository(PrivateMessageReading::class)
+                            ->findByUserAndMessage($user, $message);
+
+        foreach ($tab_message as $message_received) {
+            if($message_received != null)
+            {
+                if($message_received->isReading() == false) {
+                    $message_received->setReading(true);
+
+                    $em->flush();
+                }
+            }
+        }
 
         return $this->render('privatesite/message_view.html.twig', array(
             'message' => $message,
