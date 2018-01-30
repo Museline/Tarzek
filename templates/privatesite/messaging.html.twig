@@ -13,9 +13,31 @@
         </tr>
         {% for message in app.user.messages %}
             <tr>
-                <td>{{ message.title }}</td>
+                <td><a href="{{ path('message_view', {'id': message.id}) }}">{{ message.title }}</a></td>
                 <td>{{ message.sender.username }}</td>
-                <td>{{ message.sendingDate|date("m/d/Y") }}</td>
+                <td>{{ message.sendingDate|date("d/m/Y") }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <h3>Messages envoyés</h3>
+
+    <table>
+        <tr>
+            <th>Titre du message</th>
+            <th>Destinataire(s)</th>
+            <th>Date d'envoi</th>
+        </tr>
+        {% for message in list_messages %}
+            <tr>
+                <td><a href="{{ path('message_view', {'id': message.id}) }}">{{ message.title }}</a></td>
+                <td>
+                    {% for recipient in message.recipients %}
+                        {# on ajoute une virgule après chaque destinataire sauf le dernier #}
+                        {{ recipient.username }}{% if loop.last == false %},{% endif %}
+                    {% endfor %}
+                </td>
+                <td>{{ message.sendingDate|date("d/m/Y") }}</td>
             </tr>
         {% endfor %}
     </table>

@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <a href="{{ path('messaging') }}">Retour à la messagerie</a>
+
+    <h3>{{ message.title }}</h3>
+    <h4>de {{ message.sender.username }}, le {{ message.sendingDate|date("d/m/Y") }}</h4>
+
+    <p>{{ message.message|bbcode2html }}</p>
+{% endblock %}

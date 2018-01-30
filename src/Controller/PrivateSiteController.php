@@ -15,7 +15,17 @@ class PrivateSiteController extends Controller
      */
     public function messagingAction()
     {
-        return $this->render('privatesite/messaging.html.twig');
+        $user = $this->getUser();
+
+        $list_messages = $this->getDoctrine()
+            ->getManager()
+            ->getRepository(PrivateMessage::class)
+            ->findBySender($user)
+        ;
+
+        return $this->render('privatesite/messaging.html.twig', array(
+            'list_messages' => $list_messages,
+        ));
     }
 
     /**
@@ -54,6 +64,22 @@ class PrivateSiteController extends Controller
 
         return $this->render('privatesite/message_create.html.twig', array(
             'form' => $form->createView(),
+        ));
+    }
+
+    /**
+     * @Route("/message/vue/{id}", name="message_view")
+     */
+    public function messageViewAction($id)
+    {
+        $message = $this->getDoctrine()
+            ->getManager()
+            ->getRepository(PrivateMessage::class)
+            ->find($id)
+        ;
+
+        return $this->render('privatesite/message_view.html.twig', array(
+            'message' => $message,
         ));
     }
 }
