@@ -39,7 +39,7 @@ class User implements AdvancedUserInterface, \Serializable {
     /**
      * @ORM\Column(type="string", length=64)
      * @Assert\Regex(
-     *      pattern="/^[A-Za-z0-9]{1,0}$/",
+     *      pattern="/^[A-Za-z0-9]{1,}$/",
      *      message="Le Mot de Passe doit contenir au moins une majuscule et un chiffre"
      * )
      * @Assert\Length(
