@@ -4,23 +4,28 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\Request;
+use App\Entity\ForumSection;
+// use App\Service\ForumService;
+// use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Description of ForumController
  * Controller pour afficher forum
  * @author Khael
  */
-class ForumController extends Controller{
+class ForumSectionController extends Controller{
     
     /**
-     * @Route("/Forum", name="forum")
+     * @Route("/forum", name="forum")
      */
     public function indexForum(){
         
         $list_section = $this->getDoctrine()
                 ->getRepository(ForumSection::class)
                 ->findAll();
+        
+        // dump($list_section);
+        // dump($order->sectionOrder($list_section));
         
         return $this->render('publicsite/indexforum.html.twig', array('list_section' => $list_section));
     }

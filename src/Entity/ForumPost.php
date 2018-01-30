@@ -3,23 +3,29 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Description of ForumPost
- *
+ * Posts du forum
  * @author Khael
+ */
+
+/**
+ * @ORM\Table(name="forum_post")
+ * @ORM\Entity(repositoryClass="App\Repository\ForumPostRepository")
  */
 class ForumPost {
     
     /**
      * @ORM\Column(type="integer")
      * @ORM\Id
-     * @ORM\GeneratedValue(stratedy="AUTO")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
     
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entiry\User")
+     * @ORM\ManyToOne(targetEntity="App\Entity\User")
      */
     private $author;
     
@@ -72,7 +78,7 @@ class ForumPost {
     private $date_edit;
     
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\ForumSection", mappedBy="post")
+     * @ORM\ManyToOne(targetEntity="App\Entity\ForumSection", inversedBy="post")
      */
     private $section;
     

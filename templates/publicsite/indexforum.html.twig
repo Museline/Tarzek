@@ -3,16 +3,20 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    
     {% for ForumSection in list_section %}
-        {% if ForumSection.order == 0 %}
-            <h3><a href="/forum/?id={{ ForumSection.id }}">{{ ForumSection.SectionName }}</a></h3>
+        {% if ForumSection.Hierarchy == 1 %}
+            {% set ascend = ForumSection.SectionName %}
+            <h3>{{ ForumSection.SectionName }}</h3>
             <p>{{ ForumSection.Description }}</p>
-        {% endif %}
-        {% if ForumSection.order == 1 %}
-            <h4><a href="/forum/{{ ForumSection.id }}">{{ ForumSection.SectionName }}</a></h4>
-            <p>{{ ForumSection.Description }}</p>
+        
+            {% for ForumSection in list_section %}                
+                {% if ForumSection.Hierarchy == 2 %}
+                    {% if ForumSection.ParentSection == ascend %}
+                        <h4><a href="/forum/{{ ForumSection.SectionName }}">{{ ForumSection.SectionName }}</a></h4>
+                        <p>{{ ForumSection.Description }}</p>
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
         {% endif %}
     {% endfor %}
-    
 {% endblock %}

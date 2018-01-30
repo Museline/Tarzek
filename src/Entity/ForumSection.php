@@ -3,12 +3,17 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraint as Assert;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Description of ForumSection
  * Sections du forum
  * @author Khael
+ */
+
+/**
+ * @ORM\Table(name="forum_section")
+ * @ORM\Entity(repositoryClass="App\Repository\ForumSectionRepository")
  */
 class ForumSection {
     
@@ -21,6 +26,7 @@ class ForumSection {
     
     /**
      * @ORM\Column(type="string", length=60, unique=true)
+     * @Assert\NotBlank()
      * @Assert\Length(
      *      min=3,
      *      max=60,
@@ -42,18 +48,24 @@ class ForumSection {
     private $description;
     
     /**
-     * @ORM\Column(type="string", length=30)
+     * @ORM\Column(type="integer")
      */
     private $access;
     
     /**
-     * @ORM\Column(type="string", legnth=40)
-     * @var integer $order organisation des sections entre elles (principale, sous-section)
+     * @ORM\Column(type="integer")
+     * @var integer $hierarchy hierarcherisation des sections entre elles (section, sous-section, etc)
      */
-    private $order;
+    private $hierarchy;
     
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\ForumPost", inversedBy="section", cascade={"persist", "remove"})
+     * @ORM\Column(type="string", length=30)
+     * 
+     */
+    private $parent_section;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\ForumPost", mappedBy="section", cascade={"persist", "remove"})
      */
     private $post;
     
@@ -76,12 +88,17 @@ class ForumSection {
         return $this->access;
     }
 
-    function getOrder()
+    function getHierarchy()
     {
-        return $this->order;
+        return $this->hierarchy;
     }
 
-        
+    public function getParentSection()
+    {
+        return $this->parent_section;
+    }
+
+            
     function setSectionName($section_name)
     {
         $this->section_name = $section_name;
@@ -97,9 +114,14 @@ class ForumSection {
         $this->acces = $access;
     }
     
-    function setOrder($order)
+    function setHierarchy($hierarchy)
     {
-        $this->order = $order;
+        $this->hierarchy = $hierarchy;
+    }
+
+    public function setParentSection($parent_section)
+    {
+        $this->parent_section = $parent_section;
     }
 
 
