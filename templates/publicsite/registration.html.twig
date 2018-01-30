@@ -9,14 +9,26 @@
     {# en cas d'erreur sur le formulaire #}
     {{ form_errors(form) }}
     {{ form_errors(form.username) }}
-    {{ form_errors(form.password) }}
+    {{ form_errors(form.password.first) }}
+    {{ form_errors(form.password.second) }}
     {{ form_errors(form.email) }}
+    {{ form_errors(form.l_name) }}
+    {{ form_errors(form.f_name) }}
+    {{ form_errors(form.adress) }}
+    {{ form_errors(form.city) }}
+    {{ form_errors(form.post_code) }}
+    {{ form_errors(form.phone_numb) }}
+    {{ form_errors(form.avatar_URL) }}
+    {{ form_errors(form.avatar_upload) }}
     
     {{ form_label(form.username) }}
     {{ form_widget(form.username) }}
     
-    {{ form_label(form.password) }}
-    {{ form_widget(form.password) }}
+    {{ form_label(form.password.first) }}
+    {{ form_widget(form.password.first) }}
+
+    {{ form_label(form.password.second) }}
+    {{ form_widget(form.password.second) }}
     
     {{ form_label(form.email) }}
     {{ form_widget(form.email) }}
