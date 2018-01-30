@@ -1,9 +1,11 @@
 <?php
 namespace App\Entity;
 
-use \Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\AdvancedUserInterface;
-use Symfony\Component\Validator\Constraint as Assert;
+use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 /**
  * Description of User
  * Object User for registration
@@ -31,7 +33,6 @@ class User implements AdvancedUserInterface, \Serializable {
      *      minMessage = "Le Pseudo doit contenir au moins {{ limit }} caractères",
      *      maxMessage = "Le Pseudo doit contenir au maximum {{ limit }} caractères"
      * )
-     * 
      */
     private $username;
 
@@ -138,6 +139,13 @@ class User implements AdvancedUserInterface, \Serializable {
     * 
     */
      private $avatar_upload;
+
+    /**
+     * @var array $messages messages privés reçus
+     * @ORM\ManyToMany(targetEntity="App\Entity\PrivateMessage", mappedBy="recipients", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=true)
+     */
+     private $messages;
     
     public function __construct()
     {
@@ -145,6 +153,7 @@ class User implements AdvancedUserInterface, \Serializable {
         // may not be needed, see section on salt below
         // $this->salt = md5(uniqid('', true));
         $this->roles = ["ROLE_USER"];
+        $this->messages = new ArrayCollection();
     }
 
     public function getId()
@@ -340,5 +349,37 @@ class User implements AdvancedUserInterface, \Serializable {
 
     public function setAvatarUpload(UserAvatar $avatar_upload){
         $this->avatar_upload = $avatar_upload;
+    }
+
+    /**
+     * @return Collection|Message[]
+     */
+    public function getMessages()
+    {
+        return $this->messages;
+    }
+
+    /**
+     * Méthode pour ajouter un message privé reçu
+     * @param PrivateMessage $message
+     */
+    public function addMessage(PrivateMessage $message)
+    {
+        if ($this->messages->contains($message)) {
+            return;
+        }
+
+        $this->messages[] = $message;
+    }
+
+    /**
+     * Méthode pour supprimer un message de la liste
+     * @param User $recipient
+     */
+    public function removeMessage(PrivateMessage $message)
+    {
+        $this->messages->removeElement($message);
+
+        $message->addRecipient(null);
     }
 }

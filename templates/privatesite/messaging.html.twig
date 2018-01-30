@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <a href="{{ path('message_create') }}">Envoyer un message</a>
+
+    <h3>Messages reçus</h3>
+
+    <table>
+        <tr>
+            <th>Titre du message</th>
+            <th>Expediteur</th>
+            <th>Date d'envoi</th>
+        </tr>
+        {% for message in app.user.messages %}
+            <tr>
+                <td>{{ message.title }}</td>
+                <td>{{ message.sender.username }}</td>
+                <td>{{ message.sendingDate|date("m/d/Y") }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

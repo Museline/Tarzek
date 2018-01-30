@@ -13,7 +13,7 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  * Repository pour les section du forum
  * @author Khael
  */
-class ForumRepository extends ServiceEntityRepository{
+class ForumSectionRepository extends ServiceEntityRepository{
     
     function __construct(RegistryInterface $registry)
     {
