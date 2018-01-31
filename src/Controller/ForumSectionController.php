@@ -24,8 +24,8 @@ class ForumSectionController extends Controller{
                 ->getRepository(ForumSection::class)
                 ->findAll();
         
-        dump($list_section);
-     
+        // dump($list_section);
+      
         
         return $this->render('publicsite/indexforum.html.twig', array('list_section' => $list_section));
     }
@@ -45,18 +45,19 @@ class ForumSectionController extends Controller{
                 ->getRepository(ForumSection::class)
                 ->findBy(array('parent_section' => $pre_query->getSectionName()));
         
-        dump($list_section);
+        // dump($list_section);
         
         $list_subject = $this->getDoctrine()
                 ->getRepository(ForumPost::class)
                 ->findBy(array('section' => $pre_query->getId()));
         
-        dump($list_subject);
+        // dump($list_subject);
         
         return $this->render('publicsite/pageforum.html.twig', array(
                                                                     'pre_query' => $pre_query,
                                                                     'list_subject' => $list_subject,
                                                                     'list_section' => $list_section
-                                                                ));
+                                                                )
+                            );
     }
 }

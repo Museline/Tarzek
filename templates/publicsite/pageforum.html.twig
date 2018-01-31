@@ -12,7 +12,7 @@
                 
                 {% for ForumPost in list_subject %}
                     {% if ForumPost.Section.id == pre_query.Id %}
-                        <h4>{{ ForumPost.title }}</h4>
+                        <h4><a href="/forum/sujet/{{ ForumPost.urlTitle }}">{{ ForumPost.title }}</a></h4>
                         <p>{{ ForumPost.Description }}</p>
                         <p>{{ ForumPost.Author.Username }}</p>
                     {% endif %}

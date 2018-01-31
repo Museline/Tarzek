@@ -1,0 +1,14 @@
+{# empty Twig template #}
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h3>{{ forum_post.0.Title }}</h3>
+    {% for ForumPost in forum_post %}
+        <p>{{ ForumPost.Author.Username }}</P>
+        <p>{{ ForumPost.Content }}</p>
+        <p>{{ ForumPost.DatePostStr }}</p> 
+        {% if ForumPost.DateEditStr != 0 %}       
+            <p>{{ ForumPost.DateEditStr }}</p>
+        {% endif %}
+    {% endfor %}
+{% endblock %}

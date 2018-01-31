@@ -31,7 +31,7 @@ class ForumPost {
     
     /**
      * @var string $title titre du sujet
-     * @ORM\Column(type="string", length=100, unique=true)
+     * @ORM\Column(type="string", length=60, unique=true)
      * @Assert\NotBlank()
      * @Assert\Length(
      *      min = 5,
@@ -71,16 +71,34 @@ class ForumPost {
     private $date_post;
     
     /**
+     * @ORM\Column(type="string", length=50, nullable=true)
+     * @var string $date_post_str date au format str
+     */
+    private $date_post_str;
+    
+    /**
      * @var \DateTime $date_edit date de la dernière edition du message
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      * @Assert\DateTime()
      */
     private $date_edit;
     
     /**
+     * @ORM\Column(type="string", length=50, nullable=true)
+     * @var string $date_edit_str date au format str
+     */
+    private $date_edit_str;
+    
+    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\ForumSection", inversedBy="post")
      */
     private $section;
+    
+    /**
+     * @ORM\Column(type="string", length=60, unique=true)
+     * @var string $url_title nom à utiliser dans l'URL
+     */
+    private $url_title;
     
     function getAuthor()
     {
@@ -122,7 +140,21 @@ class ForumPost {
         return $this->section;
     }
 
-            
+    public function getUrlTitle()
+    {
+        return $this->url_title;
+    }
+
+    public  function getDatePostStr()
+    {
+        return $this->date_post_str;
+    }
+
+    public function getDateEditStr()
+    {
+        return $this->date_edit_str;
+    }
+    
     function setAuthor($author)
     {
         $this->author = $author;
@@ -158,5 +190,38 @@ class ForumPost {
         $this->section = $section;
     }
 
+    public function setUrlTitle($url_title)
+    {
+        $this->url_title = $url_title;
+    }
 
+    public function setDatePostStr($date_post_str)
+    {
+        $this->date_post_str = $date_post_str;
+    }
+
+    public function setDateEditStr($date_edit_str)
+    {
+        $this->date_edit_str = $date_edit_str;
+    }
+
+    public function concatenation()
+    {
+        // recupère le nom de la catégorie
+        $this->url_name = $this->section_name;
+
+        // efface les espaces au début et à la fin de la chaîne
+        $this->url_name = trim($this->url_name);
+
+        // modifie les caractères spéciaux
+        $trans = array("à" => "a", "ç" => "c", "é" => "e", "è" => "e", "ê" => "e", "ë" => "e", "í" => "i", "ì" => "i", "î" => "i", "ï" => "i", "ó" => "o", "ò" => "o", "ô" => "o", "ö" => "o", "ú" => "u", "ù" => "u", "û" => "u", "ü" => "u", "ÿ" => "y", "æ" => "ae", "œ" => "oe", "À" => "a", "Ç" => "c", "É" => "e", "È" => "e", "Ê" =>"e", "Ë" =>"e", "Í" => "i", "Ì" => "i", "Î" => "i", "Ï" => "i", "Ó" => "o", "Ò" => "o", "Ô" => "o", "Ö" => "o", "Ú" => "u", "Ù" => "u", "Û" => "u", "Ü" => "u", "Ÿ" => "y", "Æ" => "ae", "Œ" => "oe");
+
+        $this->url_name = strtr($this->url_name, $trans);
+
+        // transfome la chaine en minuscule
+        $this->url_name = strtolower($this->url_name);
+
+        // transforme les espaces en tiret
+        $this->url_name = strtr($this->url_name, array(" " => "-", "," => "", "'" => ""));
+    }
 }
