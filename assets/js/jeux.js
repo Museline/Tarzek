@@ -204,7 +204,7 @@ module.exports = function () {
             // Lorsque le perso se trouve sur le "game__end", le niveau est fini et le score est envoyé au serveur
             if((posX > 940) && (posX < 950)) {
                 var url = $("#game__url").attr("data-url");
-                console.log(url);
+                $(window).off("keydown");
                 $.post(''+url+'',
                     {
                         level: 1,
@@ -216,7 +216,6 @@ module.exports = function () {
                     "top": "200px"
                 }, 800, function () {
                 });
-                // TODO: arrêter l'animation du perso à la fin du niveau
             }
         }
         if (life == 0) {
