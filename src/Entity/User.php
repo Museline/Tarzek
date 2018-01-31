@@ -148,14 +148,14 @@ class User implements AdvancedUserInterface, \Serializable {
      private $messages;
      
      /**
-      * @ORM\Column(type=datetime)
+      * @ORM\Column(type="datetime")
       * @var \DateTime
       * @Assert\DateTime()
       */
      private $registration_date;
      
      /**    
-      * @ORM\Column(type=datetime)
+      * @ORM\Column(type="datetime", nullable=true)
       * @var \DateTime
       * @Assert\DateTime()
       */
