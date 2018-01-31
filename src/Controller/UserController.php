@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Score;
 use App\Entity\User;
 use App\Form\UserType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -59,8 +60,20 @@ class UserController extends Controller{
      * 
      */
     public function profilUser(){
-        
-        return $this->render('privatesite/profil.html.twig');
+
+        $user = $this->getUser();
+
+        $scoreboard = $this->getDoctrine()
+            ->getRepository(Score::class)
+            ->findOneByUser($user);
+
+        // Si le joueur n'a pas encore de score
+        if(!$scoreboard)
+        {
+            $scoreboard = null;
+        }
+
+        return $this->render('privatesite/profil.html.twig', array('scoreboard' => $scoreboard));
     }
     
     /**

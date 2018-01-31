@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <h3>Classement général Top 10</h3>
+    <table>
+        <tr>
+            <th>Pseudo</th>
+            <th>Score</th>
+        </tr>
+        {% for scoreboard in list_scoreboard|slice(0, 10) %}
+            <tr>
+                <td>{{ scoreboard.user.username }}</td>
+                <td>{{ scoreboard.finalScore }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <h3>Meilleur score par niveau</h3>
+    <table>
+        <tr>
+            <th>Niveau</th>
+            <th>Pseudo</th>
+            <th>Score</th>
+        </tr>
+        {% for level in ladder %}
+            <tr>
+                <td>Niveau {{ loop.index }}</td>
+                <td>{{ level.username }}</td>
+                <td>{{ level.score }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+{% endblock %}

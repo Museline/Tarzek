@@ -22,6 +22,18 @@
         <li>Téléphone: {{ app.user.PhoneNumb }}</li>
     </ul>
 
+    <h1>Score personnel</h1>
+
+    <ul>
+        {% if scoreboard %}
+            {% for score in scoreboard.scoreboard %}
+                <li>Votre meilleur score du niveau {{ loop.index }} : {{ score }} points</li>
+            {% endfor %}
+        {% else %}
+            Vous n'avez encore aucun score enregistré.
+        {% endif %}
+    </ul>
+
 {% endblock %}
 
     
