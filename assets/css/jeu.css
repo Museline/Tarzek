@@ -126,7 +126,8 @@ body{
     font-weight: 900;
     font-size: 20px;
 }
-#gameOver{
+#gameOver,
+#game__end__message{
     font-size: 100px;
     font-weight: 900;
     position: absolute;
@@ -146,4 +147,16 @@ body{
     left: 20px;
     top: 550px;
     font-size: 15px;
+}
+
+#game__end {
+    position: absolute;
+    top: 377px;
+    right: 20px;
+    height: 45px;
+    width: 30px;
+
+    background: #9138a8;
+
+    z-index: 4;
 }

@@ -5,7 +5,10 @@ namespace App\Controller;
 use App\Entity\Advert;
 use App\Entity\Score;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 
 class PublicSiteController extends Controller
 {
@@ -30,6 +33,41 @@ class PublicSiteController extends Controller
     }
 
     /**
+     * @Route("/jeu/score", name="game_score")
+     */
+    public function gameScoreAction(Request $request, AuthorizationCheckerInterface $authChecker)
+    {
+        if (true === $authChecker->isGranted('ROLE_USER')) {
+            $user = $this->getUser();
+            $level = $request->request->get('level');
+            $score = $request->request->get('score');
+
+            $em = $this->getDoctrine()->getManager();
+
+            $scoreboard = $em->getRepository(Score::class)
+                ->findOneByUser($user);
+
+            // si le joueur n'a pas encore de score, on créé un objet Score
+            if (!$scoreboard) {
+                $scoreboard = new Score();
+                $scoreboard->setUser($user);
+                $scoreboard->setScoreboard(array($score));
+
+                $em->persist($scoreboard);
+            } else {
+                $key = $level - 1;
+                $array_score = $scoreboard->getScoreboard();
+                $array_score[$key] =  $score;
+                $scoreboard->setScoreboard($array_score);
+            }
+
+            $em->flush();
+        }
+
+        return new JsonResponse(array('data' => json_decode('fini')));
+    }
+
+    /**
      * @Route("/classement", name="ladder")
      */
     public function ladderAction()
@@ -50,6 +88,7 @@ class PublicSiteController extends Controller
                 // on vérifie si on a déjà une entrée pour ce niveau
                 if(isset($ladder[$key]['score'])) {
 
+                    // TODO: Gérer les 1er ex aequo d'un niveau
                     // si le nouveau score est plus élevé, on enregistre le nouveau score
                     if($score > $ladder[$key]['score']) {
                         $ladder[$key] = ['username' => $username, 'score' => $score];

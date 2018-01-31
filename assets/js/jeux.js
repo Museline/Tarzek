@@ -26,6 +26,8 @@ module.exports = function () {
             easing: 'easeOutBounce'
         });
     $("#sun").hide().delay(1500).fadeIn(500);
+    // affichage de la porte de sortie (fin du niveau)
+    $("#game__end").hide().delay(1500).fadeIn(500);
 
     setInterval(function () {
         $(".c1").animate({top: 45}, 800).animate({top: 50}, 800);
@@ -196,6 +198,25 @@ module.exports = function () {
                         });
                     }
                 }
+            }
+
+            // Gestion de la fin du niveau
+            // Lorsque le perso se trouve sur le "game__end", le niveau est fini et le score est envoyé au serveur
+            if((posX > 940) && (posX < 950)) {
+                var url = $("#game__url").attr("data-url");
+                console.log(url);
+                $.post(''+url+'',
+                    {
+                        level: 1,
+                        score: score
+                    },
+                    function(){
+                    });
+                $("#game__end__message").animate({
+                    "top": "200px"
+                }, 800, function () {
+                });
+                // TODO: arrêter l'animation du perso à la fin du niveau
             }
         }
         if (life == 0) {
