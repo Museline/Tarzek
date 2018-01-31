@@ -5,7 +5,7 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\ForumSection;
-// use App\Service\ForumService;
+use App\Entity\ForumPost;
 // use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -30,12 +30,33 @@ class ForumSectionController extends Controller{
         return $this->render('publicsite/indexforum.html.twig', array('list_section' => $list_section));
     }
     
-    public function postForum(){
+    /**
+    * @Route("/forum/{url_name}")
+    */
+    public function sectionForum($url_name){
+        
+        $pre_query = $this->getDoctrine()
+                ->getRepository(ForumSection::class)
+                ->findBy(array('url_name' => $url_name));
+        
+        dump($pre_query);
+        
+        $list_section = $this->getDoctrine()
+                ->getRepository(ForumSection::class)
+                ->findBy(array('parent_section' => $pre_query[0]->getParentSection()));
+        
+        dump($list_section);
         
         $list_subject = $this->getDoctrine()
                 ->getRepository(ForumPost::class)
-                ->findAll();
+                ->findBy(array('section' => $pre_query[0]->getId()));
         
-        return $this->render('publicsite/sujetforum.html.twig', array('list_subject' => $list_subject));
+        dump($list_section);
+        
+        return $this->render('publicsite/pageforum.html.twig', array(
+                                                                    'pre_query' => $pre_query,
+                                                                    'list_subject' => $list_subject,
+                                                                    'list_section' => $list_section
+                                                                ));
     }
 }

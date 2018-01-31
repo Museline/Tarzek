@@ -5,7 +5,7 @@
 {% block body %}
     
     {% for ForumSection in list_section %}
-        {% if ForumSection.Hierarchy == 1 %}
+        {% if ForumSection.Hierarchy == pre_query.0.ForumSection.Hierarchy + 1 %}
             {% set ascend = ForumSection.SectionName %}
             <h3>{{ ForumSection.SectionName }}</h3>
             <p>{{ ForumSection.Description }}</p>
@@ -16,6 +16,13 @@
                         <h4><a href="/forum/{{ ForumSection.UrlName }}">{{ ForumSection.SectionName }}</a></h4>
                         <p>{{ ForumSection.Description }}</p>
                     {% endif %}
+                {% endif %}
+            {% endfor %}
+            {% for ForumPost in list_subject %}
+                {% if ForumPost.Section == pre_query.ForumSection.Id %}
+                    <h4>{{ ForumPost.title }}</h4>
+                    <p>{{ ForumPost.Description }}</p>
+                    <p>{{ ForumPost.Author }}</p>
                 {% endif %}
             {% endfor %}
         {% endif %}

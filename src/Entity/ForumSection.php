@@ -69,6 +69,12 @@ class ForumSection {
      */
     private $post;
     
+    /**
+     * @ORM\Column(type="string", length=60, unique=true)
+     * @var string $url_name nom à utiliser dans l'URL
+     */
+    private $url_name;
+    
     public function getId(){
         return $this->id;
     }
@@ -98,8 +104,12 @@ class ForumSection {
         return $this->parent_section;
     }
 
-            
-    function setSectionName($section_name)
+    public  function getUrlName()
+    {
+        return $this->url_name;
+    }
+
+        function setSectionName($section_name)
     {
         $this->section_name = $section_name;
     }
@@ -124,5 +134,32 @@ class ForumSection {
         $this->parent_section = $parent_section;
     }
 
+    public function setUrlName($url_name)
+    {
+        $this->url_name = $url_name;
+    }
 
+    /**
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
+    public function concatenation()
+    {
+        // recupère le nom de la catégorie
+        $this->url_name = $this->section_name;
+
+        // efface les espaces au début et à la fin de la chaîne
+        $this->url_name = trim($this->url_name);
+
+        // modifie les caractères spéciaux
+        $trans = array("à" => "a", "ç" => "c", "é" => "e", "è" => "e", "ê" => "e", "ë" => "e", "í" => "i", "ì" => "i", "î" => "i", "ï" => "i", "ó" => "o", "ò" => "o", "ô" => "o", "ö" => "o", "ú" => "u", "ù" => "u", "û" => "u", "ü" => "u", "ÿ" => "y", "æ" => "ae", "œ" => "oe", "À" => "a", "Ç" => "c", "É" => "e", "È" => "e", "Ê" =>"e", "Ë" =>"e", "Í" => "i", "Ì" => "i", "Î" => "i", "Ï" => "i", "Ó" => "o", "Ò" => "o", "Ô" => "o", "Ö" => "o", "Ú" => "u", "Ù" => "u", "Û" => "u", "Ü" => "u", "Ÿ" => "y", "Æ" => "ae", "Œ" => "oe");
+
+        $this->url_name = strtr($this->url_name, $trans);
+
+        // transfome la chaine en minuscule
+        $this->url_name = strtolower($this->url_name);
+
+        // transforme les espaces en tiret
+        $this->url_name = strtr($this->url_name, array(" " => "-", "," => "", "'" => ""));
+    }
 }

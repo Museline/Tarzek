@@ -20,5 +20,4 @@ class ForumSectionRepository extends ServiceEntityRepository{
         parent::__construct($registry, ForumSection::class);
     }
     
-
 }
