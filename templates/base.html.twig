@@ -12,6 +12,23 @@
     </head>
     <body>
 
+        <nav>
+            <ul>
+                <li><a href="{{ path('homepage') }}">Accueil</a></li>
+                <li><a href="{{ path('game') }}">Jeu</a></li>
+                <li><a href="{{ path('ladder') }}">Classement</a></li>
+                <li><a href="{{ path('forum') }}">Forum</a></li>
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                    <li><a href="{{ path('profil') }}">Mon profil</a></li>
+                    <li><a href="{{ path('messaging') }}">Messagerie</a></li>
+                    <li><a href="{{ path('logout') }}">Déconnexion</a></li>
+                {% else %}
+                    <li><a href="{{ path('login') }}">Connexion</a></li>
+                    <li><a href="{{ path('registration') }}">Inscription</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+
         {% for label, messages in app.flashes %}
             {% for message in messages %}
                 <div class="flash-{{ label }}">
