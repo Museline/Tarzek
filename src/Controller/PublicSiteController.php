@@ -57,8 +57,11 @@ class PublicSiteController extends Controller
             } else {
                 $key = $level - 1;
                 $array_score = $scoreboard->getScoreboard();
-                $array_score[$key] =  $score;
-                $scoreboard->setScoreboard($array_score);
+
+                if(!isset($array_score[$key]) || $array_score[$key] < $score) {
+                    $array_score[$key] =  $score;
+                    $scoreboard->setScoreboard($array_score);
+                }
             }
 
             $em->flush();
