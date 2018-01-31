@@ -146,6 +146,20 @@ class User implements AdvancedUserInterface, \Serializable {
      * @ORM\JoinColumn(nullable=true)
      */
      private $messages;
+     
+     /**
+      * @ORM\Column(type=datetime)
+      * @var \DateTime
+      * @Assert\DateTime()
+      */
+     private $registration_date;
+     
+     /**    
+      * @ORM\Column(type=datetime)
+      * @var \DateTime
+      * @Assert\DateTime()
+      */
+     private $last_connection_date;
     
     public function __construct()
     {
@@ -382,4 +396,26 @@ class User implements AdvancedUserInterface, \Serializable {
 
         $message->addRecipient(null);
     }
+    
+    public function getRegistrationDate(): \DateTime
+    {
+        return $this->registration_date;
+    }
+
+    public function getLastConnectionDate(): \DateTime
+    {
+        return $this->last_connection_date;
+    }
+
+    public function setRegistrationDate(\DateTime $registration_date)
+    {
+        $this->registration_date = $registration_date;
+    }
+
+    public function setLastConnectionDate(\DateTime $last_connection_date)
+    {
+        $this->last_connection_date = $last_connection_date;
+    }
+
+
 }

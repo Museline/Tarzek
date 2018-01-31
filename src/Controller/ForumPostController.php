@@ -32,7 +32,7 @@ class ForumPostController extends Controller{
             }
         }
         
-        dump($forum_post);
+        // dump($forum_post);
         
         return $this->render('publicsite/postforum.html.twig', array('forum_post' => $forum_post));
     }
