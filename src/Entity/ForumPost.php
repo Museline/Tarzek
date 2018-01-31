@@ -117,7 +117,12 @@ class ForumPost {
         return $this->id;
     }
 
-        
+    public function getSection()
+    {
+        return $this->section;
+    }
+
+            
     function setAuthor($author)
     {
         $this->author = $author;
@@ -146,6 +151,11 @@ class ForumPost {
     function setDateEdit($date_edit)
     {
         $this->date_edit = $date_edit;
+    }
+
+    public function setSection($section)
+    {
+        $this->section = $section;
     }
 
 

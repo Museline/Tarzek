@@ -20,4 +20,14 @@ class ForumSectionRepository extends ServiceEntityRepository{
         parent::__construct($registry, ForumSection::class);
     }
     
+    public function findPost($id){
+ 
+        $queryBuilder = $conn->createQueryBuilder();
+        $queryBuilder
+                ->select('all')
+                ->from('forum_section')
+                ->where('url_name = ?')
+                ->setParameter(0, $url_name)
+        ;
+    }
 }

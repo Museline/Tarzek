@@ -3,29 +3,21 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    
-    {% for ForumSection in list_section %}
-        {% if ForumSection.Hierarchy == pre_query.0.ForumSection.Hierarchy + 1 %}
-            {% set ascend = ForumSection.SectionName %}
-            <h3>{{ ForumSection.SectionName }}</h3>
-            <p>{{ ForumSection.Description }}</p>
-        
-            {% for ForumSection in list_section %}                
-                {% if ForumSection.Hierarchy == 2 %}
-                    {% if ForumSection.ParentSection == ascend %}
-                        <h4><a href="/forum/{{ ForumSection.UrlName }}">{{ ForumSection.SectionName }}</a></h4>
-                        <p>{{ ForumSection.Description }}</p>
+    <h2>{{ pre_query.SectionName }}</h2>
+        {% for ForumSection in list_section %}
+            {% if ForumSection.Hierarchy == pre_query.Hierarchy + 1 %}
+                <h3>{{ ForumSection.SectionName }}</h3>
+                <p>{{ ForumSection.Description }}</p>
+
+                
+                {% for ForumPost in list_subject %}
+                    {% if ForumPost.Section.id == pre_query.Id %}
+                        <h4>{{ ForumPost.title }}</h4>
+                        <p>{{ ForumPost.Description }}</p>
+                        <p>{{ ForumPost.Author.Username }}</p>
                     {% endif %}
-                {% endif %}
-            {% endfor %}
-            {% for ForumPost in list_subject %}
-                {% if ForumPost.Section == pre_query.ForumSection.Id %}
-                    <h4>{{ ForumPost.title }}</h4>
-                    <p>{{ ForumPost.Description }}</p>
-                    <p>{{ ForumPost.Author }}</p>
-                {% endif %}
-            {% endfor %}
-        {% endif %}
-    {% endfor %}
+                {% endfor %}
+            {% endif %}
+        {% endfor %}
     
 {% endblock %}
