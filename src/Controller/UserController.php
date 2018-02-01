@@ -56,7 +56,7 @@ class UserController extends Controller{
     }
     
     /**
-     * @Route("/profil", name="profil")
+     * @Route("/compte/profil", name="profil")
      * 
      */
     public function profilUser(){

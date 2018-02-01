@@ -45,3 +45,4 @@ security:
 
     access_control:
         - { path: ^/admin, roles: ROLE_SUPER_ADMIN }
+        - { path: ^/compte, roles: ROLE_USER }
