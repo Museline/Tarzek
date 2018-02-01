@@ -19,6 +19,7 @@
                 <li><a href="{{ path('ladder') }}">Classement</a></li>
                 <li><a href="{{ path('forum') }}">Forum</a></li>
                 {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                    <li>{{ app.user.username }}</li>
                     <li><a href="{{ path('profil') }}">Mon profil</a></li>
                     <li><a href="{{ path('messaging') }}">Messagerie</a></li>
                     <li><a href="{{ path('logout') }}">Déconnexion</a></li>
