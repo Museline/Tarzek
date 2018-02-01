@@ -159,7 +159,7 @@ class User implements AdvancedUserInterface, \Serializable {
       * @var \DateTime
       * @Assert\DateTime()
       */
-     private $last_connection_date;
+     private $last_login_date;
     
     public function __construct()
     {
@@ -168,6 +168,7 @@ class User implements AdvancedUserInterface, \Serializable {
         // $this->salt = md5(uniqid('', true));
         $this->roles = ["ROLE_USER"];
         $this->messages = new ArrayCollection();
+        $this->registration_date = new \DateTime();
     }
 
     public function getId()
@@ -402,9 +403,9 @@ class User implements AdvancedUserInterface, \Serializable {
         return $this->registration_date;
     }
 
-    public function getLastConnectionDate(): \DateTime
+    public function getLastLoginDate(): \DateTime
     {
-        return $this->last_connection_date;
+        return $this->last_login_date;
     }
 
     public function setRegistrationDate(\DateTime $registration_date)
@@ -412,9 +413,9 @@ class User implements AdvancedUserInterface, \Serializable {
         $this->registration_date = $registration_date;
     }
 
-    public function setLastConnectionDate(\DateTime $last_connection_date)
+    public function setLastLoginDate(\DateTime $last_login_date)
     {
-        $this->last_connection_date = $last_connection_date;
+        $this->last_login_date = $last_login_date;
     }
 
 
