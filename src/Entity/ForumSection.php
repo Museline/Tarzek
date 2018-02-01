@@ -121,7 +121,7 @@ class ForumSection {
 
     function setAccess($access)
     {
-        $this->acces = $access;
+        $this->access = $access;
     }
     
     function setHierarchy($hierarchy)
