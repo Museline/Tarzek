@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class PrivateSiteController extends Controller
 {
     /**
-     * @Route("/messagerie", name="messaging")
+     * @Route("/compte/messagerie", name="messaging")
      */
     public function messagingAction()
     {
@@ -38,7 +38,7 @@ class PrivateSiteController extends Controller
     }
 
     /**
-     * @Route("/message/creation", name="message_create")
+     * @Route("/compte/message/creation", name="message_create")
      */
     public function messageCreateAction(Request $request)
     {
@@ -93,7 +93,7 @@ class PrivateSiteController extends Controller
     }
 
     /**
-     * @Route("/message/vue/{id}", name="message_view")
+     * @Route("/compte/message/vue/{id}", name="message_view")
      */
     public function messageViewAction($id)
     {
