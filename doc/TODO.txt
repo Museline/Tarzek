@@ -1,0 +1,8 @@
+Forum
+-> finir la création des parties/sections pour l'admin (Pauline)
+-> edit/suppr des parties/sections (Pauline)
+-> création et réponse des sujets (Pierre)
+-> Suppression, Edition, (Verrouillé) (Pierre)
+-> (Visibilité des sections)
+
+-> !!!!!!!! FRONT !!!!!!!
