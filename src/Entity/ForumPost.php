@@ -205,23 +205,27 @@ class ForumPost {
         $this->date_edit_str = $date_edit_str;
     }
 
+    /**
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
     public function concatenation()
     {
         // recupère le nom de la catégorie
-        $this->url_name = $this->section_name;
+        $this->url_title = $this->title;
 
         // efface les espaces au début et à la fin de la chaîne
-        $this->url_name = trim($this->url_name);
+        $this->url_title = trim($this->url_title);
 
         // modifie les caractères spéciaux
         $trans = array("à" => "a", "ç" => "c", "é" => "e", "è" => "e", "ê" => "e", "ë" => "e", "í" => "i", "ì" => "i", "î" => "i", "ï" => "i", "ó" => "o", "ò" => "o", "ô" => "o", "ö" => "o", "ú" => "u", "ù" => "u", "û" => "u", "ü" => "u", "ÿ" => "y", "æ" => "ae", "œ" => "oe", "À" => "a", "Ç" => "c", "É" => "e", "È" => "e", "Ê" =>"e", "Ë" =>"e", "Í" => "i", "Ì" => "i", "Î" => "i", "Ï" => "i", "Ó" => "o", "Ò" => "o", "Ô" => "o", "Ö" => "o", "Ú" => "u", "Ù" => "u", "Û" => "u", "Ü" => "u", "Ÿ" => "y", "Æ" => "ae", "Œ" => "oe");
 
-        $this->url_name = strtr($this->url_name, $trans);
+        $this->url_title = strtr($this->url_title, $trans);
 
         // transfome la chaine en minuscule
-        $this->url_name = strtolower($this->url_name);
+        $this->url_title = strtolower($this->url_title);
 
         // transforme les espaces en tiret
-        $this->url_name = strtr($this->url_name, array(" " => "-", "," => "", "'" => ""));
+        $this->url_title = strtr($this->url_title, array(" " => "-", "," => "", "'" => ""));
     }
 }

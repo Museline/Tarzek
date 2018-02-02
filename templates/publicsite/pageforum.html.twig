@@ -19,5 +19,6 @@
                 {% endfor %}
             {% endif %}
         {% endfor %}
-    
+        <a href="{{ path('response', {'url_title': 'new_subject', 'section': pre_query.UrlName }) }}">Nouveau sujet</a>
+        
 {% endblock %}
