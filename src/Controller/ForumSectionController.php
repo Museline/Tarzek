@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Form\ForumSectionType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\ForumSection;
 use App\Entity\ForumPost;
@@ -27,7 +29,34 @@ class ForumSectionController extends Controller{
         // dump($list_section);
       
         
-        return $this->render('publicsite/indexforum.html.twig', array('list_section' => $list_section));
+        return $this->render('forum/indexforum.html.twig', array('list_section' => $list_section));
+    }
+
+    /**
+     * @Route("/forum/admin/section", name="forum_admin_section")
+     */
+    public function adminSectionForum(Request $request){
+        $section = new ForumSection();
+
+        $form = $this->createForm(ForumSectionType::class, $section);
+
+        $form->handleRequest($request);
+
+        // vérification si le formulaire est envoyé et valide
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            // mise en bdd
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($section);
+            $em->flush();
+
+            // redirection vers l'accueil admin
+            return $this->redirectToRoute('forum');
+        }
+
+        return $this->render('forum/forum_admin_section.html.twig', array(
+            'form' => $form->createView(),
+        ));
     }
     
     /**
@@ -53,7 +82,7 @@ class ForumSectionController extends Controller{
         
         // dump($list_subject);
         
-        return $this->render('publicsite/pageforum.html.twig', array(
+        return $this->render('forum/pageforum.html.twig', array(
                                                                     'pre_query' => $pre_query,
                                                                     'list_subject' => $list_subject,
                                                                     'list_section' => $list_section

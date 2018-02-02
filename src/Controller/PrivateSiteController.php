@@ -97,6 +97,7 @@ class PrivateSiteController extends Controller
      */
     public function messageViewAction($id)
     {
+        // TODO: vérifier si l'utilisateur n'a pas modifier l'url pour accéder à des messages d'autres personnes
         $user = $this->getUser();
 
         $em = $this->getDoctrine()->getManager();
