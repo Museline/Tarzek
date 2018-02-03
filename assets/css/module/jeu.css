@@ -30,7 +30,7 @@ body{
     height: 73px;
     top: 354px;
     left: 100px;
-    background: url("/images/sprite.png");
+    background: url('/images/sprite.png');
     overflow: hidden;
     z-index: 5;
 }

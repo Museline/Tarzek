@@ -9,10 +9,12 @@
         <div>Image js</div>
         <div>Text</div>
     </div>
-    <h3>Les dernières annonces</h3>
-    {% for advert in list_advert %}
-        <h4>{{ advert.category }} : {{ advert.title }}</h4>
-        <h6>{{ advert.datePublication|date("d/m/Y") }} par {{ advert.author.username }}</h6>
-        <p>{{ advert.content|bbcode2html }}</p>
-    {% endfor %}
+    <div class="rope">
+        <h3>Les dernières annonces</h3>
+        {% for advert in list_advert %}
+            <h4>{{ advert.category }} : {{ advert.title }}</h4>
+            <h6>{{ advert.datePublication|date("d/m/Y") }} par {{ advert.author.username }}</h6>
+            <p>{{ advert.content|bbcode2html }}</p>
+        {% endfor %}
+    </div>
 {% endblock %}
