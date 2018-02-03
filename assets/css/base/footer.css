@@ -1,0 +1,13 @@
+.footer_ground {
+    height: 150px;
+    padding: 20px 0;
+    box-sizing: border-box;
+    background: url("/images/ground.png") repeat-x;
+    text-align: center;
+}
+
+    .footer_text {
+        color: white;
+        text-shadow: 0 0 2px rgb(0,0,0);
+        font-size: 0.9rem;
+    }

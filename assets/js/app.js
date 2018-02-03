@@ -1,7 +1,14 @@
 // require css base
-
+require('../css/base/base.css');
+require('../css/base/nav.css');
+require('../css/base/footer.css');
+require('../css/base/body.css');
+require('../css/base/header.css');
 // require css module
 require('../css/module/jeu.css');
+require('../css/module/rope.css');
+require('../css/module/form.css');
+require('../css/module/btn.css');
 
 // charge jquery depuis les package le node_modules
 var $ = require('jquery');

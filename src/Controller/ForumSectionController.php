@@ -45,12 +45,15 @@ class ForumSectionController extends Controller{
         // vérification si le formulaire est envoyé et valide
         if ($form->isSubmitted() && $form->isValid()) {
 
+            $section->setHierarchy(1);
+            $section->setParentSection('index');
+
             // mise en bdd
             $em = $this->getDoctrine()->getManager();
             $em->persist($section);
             $em->flush();
 
-            // redirection vers l'accueil admin
+            // redirection vers l'accueil du forum
             return $this->redirectToRoute('forum');
         }
 

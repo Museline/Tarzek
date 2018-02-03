@@ -5,20 +5,23 @@
 {% block body %}
     
     {% for ForumSection in list_section %}
-        {% if ForumSection.Hierarchy == 1 %}
-            {% set ascend = ForumSection.SectionName %}
-            <h3>{{ ForumSection.SectionName }}</h3>
-            <p>{{ ForumSection.Description }}</p>
-        
-            {% for ForumSection in list_section %}                
-                {% if ForumSection.Hierarchy == 2 %}
-                    {% if ForumSection.ParentSection == ascend %}
-                        <h4><a href="/forum/{{ ForumSection.UrlName }}">{{ ForumSection.SectionName }}</a></h4>
-                        <p>{{ ForumSection.Description }}</p>
+        <div class="forum__partie">
+            {% if ForumSection.Hierarchy == 1 %}
+                {% set ascend = ForumSection.SectionName %}
+                <h3>{{ ForumSection.SectionName }}</h3>
+                <p>{{ ForumSection.Description }}</p>
+
+                {% for ForumSection in list_section %}
+                    {% if ForumSection.Hierarchy == 2 %}
+                        {% if ForumSection.ParentSection == ascend %}
+                            <h4><a href="/forum/{{ ForumSection.UrlName }}">{{ ForumSection.SectionName }}</a></h4>
+                            <p>{{ ForumSection.Description }}</p>
+                        {% endif %}
                     {% endif %}
-                {% endif %}
-            {% endfor %}
-        {% endif %}
+                {% endfor %}
+            {% endif %}
+        </div>
     {% endfor %}
-    
+
+    {{ render(controller('App\\Controller\\ForumSectionController::adminSectionForum')) }}
 {% endblock %}

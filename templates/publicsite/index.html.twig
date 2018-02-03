@@ -1,8 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
-    <h1>Accueil du site</h1>
+{% block header_title %}Tarzek{% endblock %}
 
+{% block header_sub_title %}Mercenaire et épée du roi{% endblock %}
+
+{% block body %}
+    <div class="rope">
+        <div>Image js</div>
+        <div>Text</div>
+    </div>
     <h3>Les dernières annonces</h3>
     {% for advert in list_advert %}
         <h4>{{ advert.category }} : {{ advert.title }}</h4>

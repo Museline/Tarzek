@@ -12,23 +12,28 @@
     </head>
     <body>
 
-        <nav>
-            <ul>
-                <li><a href="{{ path('homepage') }}">Accueil</a></li>
-                <li><a href="{{ path('game') }}">Jeu</a></li>
-                <li><a href="{{ path('ladder') }}">Classement</a></li>
-                <li><a href="{{ path('forum') }}">Forum</a></li>
-                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                    <li>{{ app.user.username }}</li>
-                    <li><a href="{{ path('profil') }}">Mon profil</a></li>
-                    <li><a href="{{ path('messaging') }}">Messagerie</a></li>
-                    <li><a href="{{ path('logout') }}">Déconnexion</a></li>
-                {% else %}
-                    <li><a href="{{ path('login') }}">Connexion</a></li>
-                    <li><a href="{{ path('registration') }}">Inscription</a></li>
-                {% endif %}
-            </ul>
+        <nav class="nav">
+            <a class="nav_link" href="{{ path('homepage') }}">Accueil</a>
+            <a class="nav_link" href="{{ path('game') }}">Jeu</a>
+            <a class="nav_link" href="{{ path('ladder') }}">Classement</a>
+            <a class="nav_link" href="{{ path('forum') }}">Forum</a>
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                {{ app.user.username }}
+                <a class="nav_link" href="{{ path('profil') }}">Mon profil</a>
+                <a class="nav_link" href="{{ path('messaging') }}">Messagerie</a>
+                <a class="nav_link" href="{{ path('logout') }}">Déconnexion</a>
+            {% else %}
+                <a class="nav_link" href="{{ path('login') }}">Connexion</a>
+                <a class="nav_link" href="{{ path('registration') }}">Inscription</a>
+            {% endif %}
         </nav>
+
+        <header class="header">
+            <h1 class="header_title">{% block header_title %}{% endblock %}</h1>
+            <h2 class="header_sub_title">{% block header_sub_title %}{% endblock %}</h2>
+        </header>
+
+        <main class="body_content">
 
         {% for label, messages in app.flashes %}
             {% for message in messages %}
@@ -39,6 +44,15 @@
         {% endfor %}
 
         {% block body %}{% endblock %}
+
+        </main>
+
+        <footer class="footer">
+            <div class="footer_character"></div>
+            <div class="footer_ground">
+                <p class="footer_text">&copy; Copyright Tarzek</p>
+            </div>
+        </footer>
 
         <script defer src="https://use.fontawesome.com/releases/v5.0.4/js/all.js"></script>
         <script src="{{ asset('build/app.js') }}"></script>
