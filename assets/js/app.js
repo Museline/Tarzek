@@ -20,6 +20,7 @@ var jquery_back = require('./jquery.backgroundpos');
 var jquery_easing = require('./jquery.easing.1.3');
 var jquery_path = require('./jquery.path');
 var multi_step_form = require('./multi_step_form');
+var navbar_dropdown = require('./navbar_dropdown');
 
 // une fois le document prêt, lance les scripts js
 $(document).ready(function() {
@@ -29,4 +30,5 @@ $(document).ready(function() {
     jquery_easing();
     jquery_path();
     multi_step_form();
+    navbar_dropdown();
 });
