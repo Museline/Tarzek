@@ -26,11 +26,11 @@ body{
 }
 #perso{
     position: absolute;
-    width: 30px;
-    height: 45px;
-    top: 377px;
+    width: 59px;
+    height: 73px;
+    top: 354px;
     left: 100px;
-    background: #C82829;
+    background: url('/images/sprite.png');
     overflow: hidden;
     z-index: 5;
 }

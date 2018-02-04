@@ -18,7 +18,6 @@ class ForumSectionType extends AbstractType
             ->add('section_name', TextType::class)
             ->add('description', TextareaType::class)
             ->add('access', IntegerType::class)
-            ->add('save', SubmitType::class)
         ;
     }
 

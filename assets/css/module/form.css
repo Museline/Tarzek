@@ -1,0 +1,14 @@
+.form_group {
+    display: block;
+    max-width: 400px;
+    margin: 20px auto;
+
+    text-align: left;
+}
+
+.form_input {
+    display: block;
+    margin: 5px 0;
+    width: 100%;
+    padding: 5px;
+}

@@ -19,7 +19,7 @@ module.exports = function () {
         });
     $("#perso").delay(500).animate(
         {
-            top: 377
+            top: 354
         },
         {
             duration: 1000,
@@ -54,7 +54,7 @@ module.exports = function () {
                     $("#perso")
                         .removeClass("dos")
                         .css({
-                            backgroundPosition: '0px -44px'
+                            backgroundPosition: '0px 0px'
                         })
                         .animate({left: '+=5'}, 20, "linear");
                 }
@@ -64,7 +64,7 @@ module.exports = function () {
                     $("#perso")
                         .addClass("dos")
                         .css({
-                            backgroundPosition: '0px -44px'
+                            backgroundPosition: '0px -73px'
                         })
                         .animate({left: '-=5'}, 20, "linear");
                 }
@@ -73,12 +73,12 @@ module.exports = function () {
             var bezier_paramsdos = {
                 start: {
                     x: posX,
-                    y: 377,
+                    y: 354,
                     angle: 350
                 },
                 end: {
                     x: posX - 60,
-                    y: 377,
+                    y: 354,
                     angle: 100,
                     length: -4
                 }
@@ -87,12 +87,12 @@ module.exports = function () {
             var bezier_params = {
                 start: {
                     x: posX,
-                    y: 377,
+                    y: 354,
                     angle: 10
                 },
                 end: {
                     x: posX + 60,
-                    y: 377,
+                    y: 354,
                     angle: 80,
                     length: 4
                 }
@@ -126,12 +126,12 @@ module.exports = function () {
                         }
                         ;
                         $("#perso").stop(true, true).css({
-                            backgroundPosition: '-30px -44px'
+                            backgroundPosition: '-59px -73px'
                         }).animate({
                             path: new $.path.bezier(bezier_paramsdos)
                         }, 500, function () {
                             $("#perso").css({
-                                backgroundPosition: '0px -44px'
+                                backgroundPosition: '0px -73px'
                             })
                         });
                     }
@@ -163,7 +163,7 @@ module.exports = function () {
                         }
                         ;
                         $("#perso").stop(true, true).css({
-                            backgroundPosition: '-30px 0px'
+                            backgroundPosition: '-59px 0px'
                         }).animate({
                             path: new $.path.bezier(bezier_params)
                         }, 500, function () {

@@ -15,6 +15,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 /**
  * @ORM\Table(name="forum_section")
  * @ORM\Entity(repositoryClass="App\Repository\ForumSectionRepository")
+ * @ORM\HasLifecycleCallbacks
  */
 class ForumSection {
     
@@ -115,7 +116,7 @@ class ForumSection {
         return $this->url_name;
     }
 
-        function setSectionName($section_name)
+    function setSectionName($section_name)
     {
         $this->section_name = $section_name;
     }
