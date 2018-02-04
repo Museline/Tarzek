@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Description of ForumSection
@@ -74,6 +75,11 @@ class ForumSection {
      * @var string $url_name nom à utiliser dans l'URL
      */
     private $url_name;
+    
+    public function __construct()
+    {
+        $this->post = new ArrayCollection();
+    }
     
     public function getId(){
         return $this->id;

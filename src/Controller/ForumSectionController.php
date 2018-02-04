@@ -68,7 +68,7 @@ class ForumSectionController extends Controller{
                 ->getRepository(ForumSection::class)
                 ->findOneBy(array('url_name' => $url_name));
         
-        dump($pre_query);
+        // dump($pre_query);
         
         $list_section = $this->getDoctrine()
                 ->getRepository(ForumSection::class)
