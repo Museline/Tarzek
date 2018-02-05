@@ -7,7 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\ForumSection;
-use App\Entity\ForumPost;
+use App\Entity\ForumPostTitle;
 // use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -63,7 +63,7 @@ class ForumSectionController extends Controller{
     }
     
     /**
-    * @Route("/forum/{url_name}")
+    * @Route("/forum/{url_name}", name="forum_section")
     */
     public function sectionForum($url_name){
         
@@ -80,7 +80,7 @@ class ForumSectionController extends Controller{
         // dump($list_section);
         
         $list_subject = $this->getDoctrine()
-                ->getRepository(ForumPost::class)
+                ->getRepository(ForumPostTitle::class)
                 ->findBy(array('section' => $pre_query->getId()));
         
         // dump($list_subject);

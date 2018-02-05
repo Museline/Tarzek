@@ -67,9 +67,9 @@ class ForumSection {
     private $parent_section;
     
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\ForumPost", mappedBy="section", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity="App\Entity\ForumPostTitle", mappedBy="section", cascade={"persist", "remove"})
      */
-    private $post;
+    private $subject;
     
     /**
      * @ORM\Column(type="string", length=60, unique=true)

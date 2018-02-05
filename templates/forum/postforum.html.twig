@@ -2,13 +2,15 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h3>{{ forum_post.0.Title }}</h3>
+    <h3>{{ forum_post_title.Title }}</h3>
+    <h4>{{ forum_post_title.Description }}</h4>
     {% for ForumPost in forum_post %}
         <p>{{ ForumPost.Author.Username }}</P>
         <p>{{ ForumPost.Content }}</p>
-        <p>{{ ForumPost.DatePostStr }}</p> 
-        {% if ForumPost.DateEditStr != 0 %}       
-            <p>{{ ForumPost.DateEditStr }}</p>
+        <p>{{ ForumPost.DatePost | date('d-m-Y H:i') }}</p> 
+        {% if ForumPost.DateEdit != null %}       
+            <p>{{ ForumPost.DateEdit | date('d-m-Y H:i') }}</p>
         {% endif %}
     {% endfor %}
+    <a href="/forum/reponse/{{ forum_post_title.UrlTitle }}">Répondre</a>
 {% endblock %}

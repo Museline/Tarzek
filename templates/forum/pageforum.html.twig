@@ -10,11 +10,11 @@
                 <p>{{ ForumSection.Description }}</p>
 
                 
-                {% for ForumPost in list_subject %}
-                    {% if ForumPost.Section.id == pre_query.Id %}
-                        <h4><a href="/forum/sujet/{{ ForumPost.urlTitle }}">{{ ForumPost.title }}</a></h4>
-                        <p>{{ ForumPost.Description }}</p>
-                        <p>{{ ForumPost.Author.Username }}</p>
+                {% for ForumPostTitle in list_subject %}
+                    {% if ForumPostTitle.Section.id == pre_query.Id %}
+                        <h4><a href="/forum/sujet/{{ ForumPostTitle.urlTitle }}">{{ ForumPostTitle.Title }}</a></h4>
+                        <p>{{ ForumPostTitle.Description }}</p>
+                        
                     {% endif %}
                 {% endfor %}
             {% endif %}
