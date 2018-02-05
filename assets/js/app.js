@@ -15,6 +15,7 @@ require('../css/module/advert.css');
 require('../css/module/profil.css');
 require('../css/module/messaging.css');
 require('../css/module/forum.css');
+require('../css/module/image_js.css');
 
 // charge jquery depuis les package le node_modules
 var $ = require('jquery');
@@ -27,7 +28,8 @@ var jquery_easing = require('./jquery.easing.1.3');
 var jquery_path = require('./jquery.path');
 var multi_step_form = require('./multi_step_form');
 var navbar_dropdown = require('./navbar_dropdown');
-var move_footer = require('./footer')
+var move_footer = require('./footer');
+var image_js = require('./image_js.js');
 
 // une fois le document prêt, lance les scripts js
 $(document).ready(function() {

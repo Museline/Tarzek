@@ -19,7 +19,7 @@ module.exports = function () {
         });
     $("#perso").delay(500).animate(
         {
-            top: 354
+            top: 388
         },
         {
             duration: 1000,
@@ -73,12 +73,12 @@ module.exports = function () {
             var bezier_paramsdos = {
                 start: {
                     x: posX,
-                    y: 354,
+                    y: 388,
                     angle: 350
                 },
                 end: {
                     x: posX - 60,
-                    y: 354,
+                    y: 388,
                     angle: 100,
                     length: -4
                 }
@@ -87,12 +87,12 @@ module.exports = function () {
             var bezier_params = {
                 start: {
                     x: posX,
-                    y: 354,
+                    y: 388,
                     angle: 10
                 },
                 end: {
                     x: posX + 60,
-                    y: 354,
+                    y: 388,
                     angle: 80,
                     length: 4
                 }

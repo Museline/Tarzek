@@ -1,0 +1,67 @@
+/* 
+    Created on : 5 févr. 2018, 16:19:05
+    Author     : Khael
+*/
+/* .image *{
+    border: 1px solid black;
+    box-sizing: border-box;
+}*/
+
+.image{
+    width: 480px;
+    height: 360px;
+    position: relative;
+    margin: 0 auto;
+    border: 1px solid black;
+    overflow: hidden;
+}
+    #image_character{
+        width: 61px;
+        height: 75px;
+        position: absolute;
+        top: 255px;
+               
+    }
+    .image_ground1{
+        background: url(/images/ground.png);
+        position: absolute;
+        top: 320px;
+        left: 0px;
+        width: 480px;
+        height: 40px;
+    }
+    
+    .image_box{
+        position: absolute;
+        top: 160px;
+        left: 240px;
+        background: url(/images/);
+        width: 33px;
+        height: 33px;
+        
+    }
+    
+    .image_cloud{
+        
+        width: 100px;
+        height: 56px;
+    }
+    
+    .div_cloud{
+        position: absolute;
+        left: 200px;
+        width: 100px;
+        height: 56px;
+    }
+    
+    #image_sun{
+        width: 75px;
+        height: 75px;
+    }
+    #div_sun{
+        position: absolute;
+        left: 10px;
+        top: 10px;
+        width: 75px;
+        height: 75px;
+    }
