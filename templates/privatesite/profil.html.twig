@@ -3,36 +3,40 @@
 {% extends 'base.html.twig' %}
     
 {% block body %}
-    
-    <h1>Profil</h1>
-    
-    {% if app.user.AvatarURL %}
-        <img src="{{ app.user.AvatarURL }}" alt="Avatar de profil"/>
-    {% else %}
-        <img src="{{ asset(app.user.avatarUpload.webPath) }}" alt="{{ app.user.avatarUpload.alt }}">
-    {% endif %}
-    <ul>
-        <li>Pseudo: {{ app.user.username }}</li>
-        <li>e-mail: {{ app.user.email }}</li>
-        <li>Nom: {{ app.user.LName }}</li>
-        <li>Prenom: {{ app.user.FName }}</li>
-        <li>Adresse: {{ app.user.Adress }}</li>
-        <li>Ville: {{ app.user.City }}</li>
-        <li>Code Postal: {{ app.user.PostCode }}</li>
-        <li>Téléphone: {{ app.user.PhoneNumb }}</li>
-    </ul>
 
-    <h1>Score personnel</h1>
+    <div class="rope">
+        <h1>Profil</h1>
 
-    <ul>
-        {% if scoreboard %}
-            {% for score in scoreboard.scoreboard %}
-                <li>Votre meilleur score du niveau {{ loop.index }} : {{ score }} points</li>
-            {% endfor %}
+        {% if app.user.AvatarURL %}
+            <img src="{{ app.user.AvatarURL }}" alt="Avatar de profil"/>
         {% else %}
-            Vous n'avez encore aucun score enregistré.
+            <img src="{{ asset(app.user.avatarUpload.webPath) }}" alt="{{ app.user.avatarUpload.alt }}">
         {% endif %}
-    </ul>
+        <ul>
+            <li>Pseudo: {{ app.user.username }}</li>
+            <li>e-mail: {{ app.user.email }}</li>
+            <li>Nom: {{ app.user.LName }}</li>
+            <li>Prenom: {{ app.user.FName }}</li>
+            <li>Adresse: {{ app.user.Adress }}</li>
+            <li>Ville: {{ app.user.City }}</li>
+            <li>Code Postal: {{ app.user.PostCode }}</li>
+            <li>Téléphone: {{ app.user.PhoneNumb }}</li>
+        </ul>
+    </div>
+
+    <div class="rope">
+        <h1>Score personnel</h1>
+
+        <ul>
+            {% if scoreboard %}
+                {% for score in scoreboard.scoreboard %}
+                    <li>Votre meilleur score du niveau {{ loop.index }} : {{ score }} points</li>
+                {% endfor %}
+            {% else %}
+                Vous n'avez encore aucun score enregistré.
+            {% endif %}
+        </ul>
+    </div>
 
 {% endblock %}
 
