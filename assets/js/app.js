@@ -28,13 +28,9 @@ var jquery_easing = require('./jquery.easing.1.3');
 var jquery_path = require('./jquery.path');
 var multi_step_form = require('./multi_step_form');
 var navbar_dropdown = require('./navbar_dropdown');
-<<<<<<< HEAD
 var move_footer = require('./footer');
 var image_js = require('./image_js.js');
-=======
-var move_footer = require('./footer')
 var navbar_collapse = require('./navbar_collapse');
->>>>>>> d3b40b17dd5d03b79e51baef21814415f3171c62
 
 // une fois le document prêt, lance les scripts js
 $(document).ready(function() {
@@ -47,4 +43,5 @@ $(document).ready(function() {
     navbar_dropdown();
     move_footer();
     navbar_collapse();
+    image_js();
 });
