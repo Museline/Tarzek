@@ -1,2 +1,30 @@
 .btn {
+    margin: 25px auto;
+    text-align: center;
+}
+
+.btn_brown {
+    margin: 0 50px;
+    padding: 10px 20px;
+
+    border: 1px solid #3a3013;
+    border-radius: 15px;
+    box-shadow: 0 3px 3px 0 #60501f, 0 3px 3px 0 #87702c inset;
+
+    background-color: #4d4019;
+
+    color: #fff;
+    font-size: 18px;
+    text-shadow: #87702c 1px 1px;
+
+    cursor: pointer;
+    transition: background-color 0.5s, box-shadow 0.5s;
+}
+
+.btn_brown:hover,
+.btn_brown:focus {
+    border: 1px solid #60501f;
+    box-shadow: 0 3px 3px 0 #87702c, 0 3px 3px 0 #60501f inset;
+
+    background-color: #746025;
 }

@@ -15,35 +15,46 @@
             {% else %}
                 <img src="{{ asset("/images/walk1_2.png") }}" class="profil_img">
             {% endif %}
-            <a href="{{ path('profil_edit_avatar') }}">Modifier mon avatar</a>
+            <div class="btn">
+                <a href="{{ path('profil_edit_avatar') }}"><button class="btn_brown">Modifier mon avatar</button></a>
+            </div>
         </div>
         <div class="col_half">
             <ul>
-                <li>Pseudo: {{ app.user.username }}</li>
-                <li>e-mail: {{ app.user.email }}</li>
-                <li>Nom: {{ app.user.LName }}</li>
-                <li>Prenom: {{ app.user.FName }}</li>
-                <li>Adresse: {{ app.user.Adress }}</li>
-                <li>Ville: {{ app.user.City }}</li>
-                <li>Code Postal: {{ app.user.PostCode }}</li>
-                <li>Téléphone: {{ app.user.PhoneNumb }}</li>
-                <a href="{{ path('profil_edit_infos') }}">Modifier mes informations</a>
+                <li class="profil_item"><span class="profil_item_title">Pseudo:</span> {{ app.user.username }}</li>
+                <li class="profil_item"><span class="profil_item_title">e-mail:</span> {{ app.user.email }}</li>
+                <li class="profil_item"><span class="profil_item_title">Nom:</span> {{ app.user.LName }}</li>
+                <li class="profil_item"><span class="profil_item_title">Prenom:</span> {{ app.user.FName }}</li>
+                <li class="profil_item"><span class="profil_item_title">Adresse:</span> {{ app.user.Adress }}</li>
+                <li class="profil_item"><span class="profil_item_title">Ville:</span> {{ app.user.City }}</li>
+                <li class="profil_item"><span class="profil_item_title">Code Postal:</span> {{ app.user.PostCode }}</li>
+                <li class="profil_item"><span class="profil_item_title">Téléphone:</span> {{ app.user.PhoneNumb }}</li>
+                <div class="btn">
+                    <a href="{{ path('profil_edit_infos') }}"><button class="btn_brown">Modifier mes informations</button></a>
+                </div>
             </ul>
         </div>
     </div>
 
     <div class="rope col_third">
-        <h1>Score personnel</h1>
+        <h3 class="rope_title">Score personnel</h3>
 
-        <ul>
             {% if scoreboard %}
-                {% for score in scoreboard.scoreboard %}
-                    <li>Votre meilleur score du niveau {{ loop.index }} : {{ score }} points</li>
-                {% endfor %}
+                <table class="table">
+                    <tr class="table_row">
+                        <th class="table_col">Niveau</th>
+                        <th class="table_col">Meilleur score</th>
+                    </tr>
+                        {% for score in scoreboard.scoreboard %}
+                            <tr class="table_row">
+                                <td class="table_col">Niveau {{ loop.index }}</td>
+                                <td class="table_col">{{ score }} points</td>
+                            </tr>
+                        {% endfor %}
+                </table>
             {% else %}
                 Vous n'avez encore aucun score enregistré.
             {% endif %}
-        </ul>
     </div>
 
 {% endblock %}

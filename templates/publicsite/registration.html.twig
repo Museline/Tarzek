@@ -5,88 +5,8 @@
 {% block header_title %}Inscription{% endblock %}
 
 {% block body %}
-<<<<<<< HEAD
-    
-    {{ form_start(form) }}
-    
-    {# en cas d'erreur sur le formulaire #}
-    {{ form_errors(form) }}
-    {{ form_errors(form.username) }}
-    {{ form_errors(form.password.first) }}
-    {{ form_errors(form.password.second) }}
-    {{ form_errors(form.email) }}
-    {{ form_errors(form.l_name) }}
-    {{ form_errors(form.f_name) }}
-    {{ form_errors(form.adress) }}
-    {{ form_errors(form.city) }}
-    {{ form_errors(form.post_code) }}
-    {{ form_errors(form.phone_numb) }}
-    {{ form_errors(form.avatar_URL) }}
-    {{ form_errors(form.avatar_upload) }}
-
-    <div class="form_group">
-        {{ form_label(form.username) }}
-        {{ form_widget(form.username, { 'attr': {'class': 'form_input'} }) }}
-    </div>
-
-    <div class="form_group">
-        {{ form_label(form.password.first) }}
-        {{ form_widget(form.password.first, { 'attr': {'class': 'form_input'} }) }}
-    </div>
-
-    <div class="form_group">
-        {{ form_label(form.password.second) }}
-        {{ form_widget(form.password.second, { 'attr': {'class': 'form_input'} }) }}
-    </div>
-
-    <div class="form_group">
-        {{ form_label(form.email) }}
-        {{ form_widget(form.email, { 'attr': {'class': 'form_input'} }) }}
-    </div>
-
-    <div class="form_group">
-        {{ form_label(form.l_name) }}
-        {{ form_widget(form.l_name, { 'attr': {'class': 'form_input'} }) }}
-    </div>
-
-    <div class="form_group">
-        {{ form_label(form.f_name) }}
-        {{ form_widget(form.f_name, { 'attr': {'class': 'form_input'} }) }}
-    </div>
-
-    <div class="form_group">
-        {{ form_label(form.adress) }}
-        {{ form_widget(form.adress, { 'attr': {'class': 'form_input'} }) }}
-    </div>
-
-    <div class="form_group">
-        {{ form_label(form.city) }}
-        {{ form_widget(form.city, { 'attr': {'class': 'form_input'} }) }}
-    </div>
-
-    <div class="form_group">
-        {{ form_label(form.post_code) }}
-        {{ form_widget(form.post_code, { 'attr': {'class': 'form_input'} }) }}
-    </div>
-
-    <div class="form_group">
-        {{ form_label(form.phone_numb) }}
-        {{ form_widget(form.phone_numb, { 'attr': {'class': 'form_input'} }) }}
-    </div>
-
-    <div class="form_group">
-        {{ form_label(form.avatar_URL) }}
-        {{ form_widget(form.avatar_URL, { 'attr': {'class': 'form_input'} }) }}
-    </div>
-
-    <div class="form_group">
-        {{ form_label(form.avatar_upload) }}
-        {{ form_widget(form.avatar_upload, { 'attr': {'class': 'form_input'} }) }}
-    </div>
-=======
-
     <div class="rope">
-    
+
         {{ form_start(form) }}
 
         {# en cas d'erreur sur le formulaire #}
@@ -119,7 +39,6 @@
         <div class="form_group">
             {{ form_widget(form.send) }}
         </div>
->>>>>>> 0b8cf5409f00d32d0689e8df84f956a4394c4e0e
 
         {{ form_end(form) }}
     </div>

@@ -1,0 +1,23 @@
+.messaging_table,
+.messaging_table_col {
+    border: 1px solid black;
+}
+
+.messaging_table {
+    width: 90%;
+    margin: auto;
+}
+
+.messaging_table_header {
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    background: linear-gradient(to bottom, #86702d, #4d4019);
+    font-weight: bold;
+}
+
+    .messaging_table_item {
+        text-align: center;
+    }
+
+        .messaging_table_item {
+            padding: 10px;
+        }

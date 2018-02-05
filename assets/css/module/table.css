@@ -1,0 +1,15 @@
+.table {
+    margin: auto;
+    width: 90%;
+    border-collapse: collapse;
+}
+
+.table, .table_col {
+    border: 2px solid black;
+}
+
+.table_col {
+    padding: 2%;
+
+    text-align: center;
+}

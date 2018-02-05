@@ -1,0 +1,14 @@
+.advert_category,
+.advert_title {
+    display: inline-block;
+    vertical-align: middle;
+    padding: 5px;
+}
+
+.advert_title {
+    font-size: 1.3rem;
+}
+
+    .advert_category_icon {
+        font-size: 5rem;
+    }
