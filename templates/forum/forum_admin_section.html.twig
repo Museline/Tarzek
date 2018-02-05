@@ -1,5 +1,5 @@
-<div class="forum__ajout__partie">
-    <h3>Ajouter une partie</h3>
+<div class="forum_ajout">
+    <h3>Ajouter une {{ type }}</h3>
 
     {{ form_start(form, {'action': path('forum_admin_section') }) }}
         {{ form_errors(form) }}
@@ -7,18 +7,21 @@
         {{ form_errors(form.description) }}
         {{ form_errors(form.access) }}
         <div class="form__step">
-            {{ form_label(form.section_name, "Nom de la partie") }}
+            {{ form_label(form.section_name, 'Nom') }}
             {{ form_widget(form.section_name) }}
             <button type="button" data-form-step="next">Suivant</button>
         </div>
         <div class="form__step">
-            {{ form_label(form.description, "Description de la partie") }}
+            {{ form_label(form.description, "Description") }}
             {{ form_widget(form.description) }}
             <button type="button" data-form-step="next">Suivant</button>
         </div>
         <div class="form__step">
             {{ form_label(form.access, "Droit d'accès") }}
             {{ form_widget(form.access) }}
+
+            {{ form_row(form.hierarchy, { 'attr': {'value': hierarchy}}) }}
+            {{ form_row(form.parent_section, { 'attr': {'value': parent}}) }}
 
             <button type="button" data-form-step="submit" data-url="{{ path('forum_admin_section') }}">Envoyer</button>
         </div>

@@ -33,9 +33,9 @@ class ForumSectionController extends Controller{
     }
 
     /**
-     * @Route("/forum/admin/section", name="forum_admin_section")
+     * @Route("/forum/admin/section", name="forum_admin_section", defaults={"type":"partie", "hierarchy":1, "parent":"index"})
      */
-    public function adminSectionForum(Request $request){
+    public function adminSectionForum(Request $request, $type, $hierarchy, $parent){
         $section = new ForumSection();
 
         $form = $this->createForm(ForumSectionType::class, $section);
@@ -44,10 +44,6 @@ class ForumSectionController extends Controller{
 
         // vérification si le formulaire est envoyé et valide
         if ($form->isSubmitted() && $form->isValid()) {
-
-            $section->setHierarchy(1);
-            $section->setParentSection('index');
-
             // mise en bdd
             $em = $this->getDoctrine()->getManager();
             $em->persist($section);
@@ -59,6 +55,9 @@ class ForumSectionController extends Controller{
 
         return $this->render('forum/forum_admin_section.html.twig', array(
             'form' => $form->createView(),
+            'type' => $type,
+            'hierarchy' => $hierarchy,
+            'parent' => $parent
         ));
     }
     

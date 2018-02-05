@@ -2,23 +2,34 @@ module.exports = function () {
     $(".form__step").hide();
     $(".form__step:first-of-type").show();
 
-    var step =1;
-
     $("[data-form-step]").click(function() {
+
+
         if ($(this).data('form-step') == "next") {
-            $(".form__step:nth-of-type("+step+")").hide();
-            step++;
-            $(".form__step:nth-of-type("+step+")").show();
+            // récupère le div class="form__step" parent du button cliqué et le cache
+            var parent = $(this).parent();
+            $(parent).hide();
+            // récupère le div suivant et l'affiche
+            var next = parent.next();
+            $(next).show();
         }
         else if ($(this).data('form-step') == "submit") {
 
             var form = $(this).closest('form');
 
             var data = {};
-            data[$("#forum_section_section_name").attr('name')] = $("#forum_section_section_name").val();
-            data[$("#forum_section_description").attr('name')] = $("#forum_section_description").val();
-            data[$("#forum_section_access").attr('name')] = $("#forum_section_access").val();
-            data[$("#forum_section__token").attr('name')] = $("#forum_section__token").val();
+            var input = $(form).find('#forum_section_section_name');
+            data[$(input).attr('name')] = $(input).val();
+            var input = $(form).find('#forum_section_description');
+            data[$(input).attr('name')] = $(input).val();
+            var input = $(form).find('#forum_section_access');
+            data[$(input).attr('name')] = $(input).val();
+            var input = $(form).find('#forum_section_hierarchy');
+            data[$(input).attr('name')] = $(input).val();
+            var input = $(form).find('#forum_section_parent_section');
+            data[$(input).attr('name')] = $(input).val();
+            var input = $(form).find('#forum_section__token');
+            data[$(input).attr('name')] = $(input).val();
 
             $.ajax({
                 url : form.attr('action'),
@@ -26,8 +37,6 @@ module.exports = function () {
                 data : data,
                 success: function(result) {
                     console.log(result);
-                    console.log($(result).find(".forum__partie:last-of-type"));
-                    $( ".forum__ajout__partie" ).before($(result).find(".forum__partie:last-of-type"));
                 }
             });
         }

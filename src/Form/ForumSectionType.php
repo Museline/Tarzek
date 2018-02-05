@@ -3,6 +3,8 @@
 namespace App\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -17,7 +19,14 @@ class ForumSectionType extends AbstractType
         $builder
             ->add('section_name', TextType::class)
             ->add('description', TextareaType::class)
-            ->add('access', IntegerType::class)
+            ->add('access', ChoiceType::class, array(
+                'choices'  => array(
+                    'Tous le monde' => 0,
+                    'Modérateur' => 1,
+                    'Admin' => 2,
+                )))
+            ->add('hierarchy', HiddenType::class)
+            ->add('parent_section', HiddenType::class)
         ;
     }
 
