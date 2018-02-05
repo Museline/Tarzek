@@ -6,14 +6,65 @@
 
 {% block body %}
     <div class="rope">
-        <div>Image js</div>
-        <div>Text</div>
+        <div class="col_third">
+            <img src="{{ asset('/images/walk1_2.png') }}">
+        </div>
+        <div class="col_2_third">
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas justo ligula, tristique sed pharetra cursus, rutrum eget purus.
+                Nullam rutrum nunc a sapien varius consequat. Nulla vehicula erat ut ante dignissim vulputate. Proin in nisi volutpat, egestas massa
+                interdum, interdum purus. Mauris non risus at nisl viverra dignissim id eget ante. Interdum et malesuada fames ac ante ipsum primis in
+                faucibus. Donec tempor ex vel odio congue, sed eleifend eros scelerisque.
+            </p>
+            <p>
+                Morbi at cursus velit. Fusce rutrum mi non gravida luctus. Maecenas eu justo ut enim suscipit iaculis. Pellentesque pulvinar posuere
+                finibus. Morbi auctor sagittis ultrices. Mauris rutrum efficitur nisl, posuere elementum tortor malesuada at. Pellentesque habitant morbi
+                tristique senectus et netus et malesuada fames ac turpis egestas. Nunc feugiat tempor justo, a efficitur augue dapibus in. Sed odio erat,
+                facilisis ut eros nec, egestas malesuada ex. Suspendisse gravida convallis leo, a tincidunt nisi lobortis id. Nam neque nibh, pellentesque
+                quis sodales in, rutrum sit amet lectus. Aenean posuere erat quis ipsum vehicula facilisis. Sed ac sapien ut ipsum suscipit placerat
+                maximus in arcu. Nullam sed purus sollicitudin, vulputate libero vel, convallis odio.
+            </p>
+            <p>
+                Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent sed ipsum eget tortor luctus porttitor at
+                non mi. Nam ullamcorper leo justo, in condimentum urna elementum id. Nam varius purus ac porttitor tempus. Curabitur eget tortor eu risus
+                varius faucibus. Mauris dapibus faucibus odio faucibus aliquam. Sed odio urna, mattis vitae tellus commodo, maximus lacinia ante. Morbi a
+                nunc turpis. Quisque quis ornare dolor. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
+                Quisque a imperdiet lorem. Sed fringilla, libero vel ultricies venenatis, magna justo vehicula nunc, id mollis felis ex id risus.
+            </p>
+            <p>
+                Aliquam tempor faucibus neque, quis aliquet nulla volutpat ac. Pellentesque hendrerit cursus diam non luctus. Nunc consequat quis libero
+                a posuere. Donec posuere mauris ut nibh cursus tincidunt. In hac habitasse platea dictumst. Fusce eleifend, dolor sit amet laoreet
+                facilisis, sem erat tempor quam, vel tempor purus urna luctus est. Sed pulvinar eu augue quis ornare.
+            </p>
+            <p>
+                Nunc sed quam euismod massa vestibulum accumsan. Proin feugiat quam sit amet justo accumsan tristique. Ut mollis tempus placerat.
+                Nunc placerat sapien eget justo volutpat, ut posuere lectus finibus. Vestibulum convallis justo mi, eget mattis libero porta at. Duis
+                massa libero, dapibus eget lorem at, blandit tincidunt arcu. Sed ut nunc tortor. Vivamus congue, ipsum iaculis venenatis auctor, ante
+                dolor tincidunt elit, eu accumsan ante mauris ac lacus.
+            </p>
+        </div>
     </div>
     <div class="rope">
-        <h3>Les dernières annonces</h3>
+        <h3 class="rope_title">Les dernières annonces</h3>
         {% for advert in list_advert %}
-            <h4>{{ advert.category }} : {{ advert.title }}</h4>
-            <h6>{{ advert.datePublication|date("d/m/Y") }} par {{ advert.author.username }}</h6>
+            <div class="advert_category">
+                {% if advert.category == 'maj' %}
+                    <i class="fas fa-history advert_category_icon"></i>
+                    <p>Mise à jour</p>
+                {%  elseif advert.category == 'event' %}
+                    <i class="fas fa-flag-checkered advert_category_icon"></i>
+                    <p>Evènement</p>
+                {%  elseif advert.category == 'scoreboard' %}
+                    <i class="fas fa-trophy advert_category_icon"></i>
+                    <p>Tableau des scores</p>
+                {% endif %}
+            </div>
+            <h4 class="advert_title">{{ advert.title }}</h4>
+
+            <h6>
+                <i class="far fa-calendar-alt"></i> {{ advert.datePublication|date("d/m/Y") }}
+                <i class="fas fa-user"></i> {{ advert.author.username }}
+            </h6>
             <p>{{ advert.content|bbcode2html }}</p>
         {% endfor %}
     </div>

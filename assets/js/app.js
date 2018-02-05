@@ -10,7 +10,11 @@ require('../css/module/rope.css');
 require('../css/module/form.css');
 require('../css/module/btn.css');
 require('../css/module/col.css');
+require('../css/module/table.css');
+require('../css/module/advert.css');
 require('../css/module/profil.css');
+require('../css/module/messaging.css');
+require('../css/module/forum.css');
 
 // charge jquery depuis les package le node_modules
 var $ = require('jquery');

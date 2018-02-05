@@ -1,37 +1,39 @@
 {% extends 'base.html.twig' %}
 
+{% block header_title %}Classement{% endblock %}
+
 {% block body %}
 
-    <div class="rope">
+    <div class="rope col_half">
 
-        <h3>Classement général Top 10</h3>
-        <table>
+        <h3 class="rope_title">Classement général Top 10</h3>
+        <table class="table">
             <tr>
-                <th>Pseudo</th>
-                <th>Score</th>
+                <th class="table_col">Pseudo</th>
+                <th class="table_col">Score</th>
             </tr>
             {% for scoreboard in list_scoreboard|slice(0, 10) %}
                 <tr>
-                    <td>{{ scoreboard.user.username }}</td>
-                    <td>{{ scoreboard.finalScore }}</td>
+                    <td class="table_col">{{ scoreboard.user.username }}</td>
+                    <td class="table_col">{{ scoreboard.finalScore }}</td>
                 </tr>
             {% endfor %}
         </table>
     </div>
 
-    <div class="rope">
-        <h3>Meilleur score par niveau</h3>
-        <table>
+    <div class="rope col_half">
+        <h3 class="rope_title">Meilleur score par niveau</h3>
+        <table class="table">
             <tr>
-                <th>Niveau</th>
-                <th>Pseudo</th>
-                <th>Score</th>
+                <th class="table_col">Niveau</th>
+                <th class="table_col">Pseudo</th>
+                <th class="table_col">Score</th>
             </tr>
             {% for level in ladder %}
                 <tr>
-                    <td>Niveau {{ loop.index }}</td>
-                    <td>{{ level.username }}</td>
-                    <td>{{ level.score }}</td>
+                    <td class="table_col">Niveau {{ loop.index }}</td>
+                    <td class="table_col">{{ level.username }}</td>
+                    <td class="table_col">{{ level.score }}</td>
                 </tr>
             {% endfor %}
         </table>

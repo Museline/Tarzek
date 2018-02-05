@@ -1,3 +1,11 @@
 .profil_img {
     max-width: 100%;
 }
+
+.profil_item {
+    margin: 10px 3%;
+}
+
+    .profil_item_title {
+        font-weight: bold;
+    }

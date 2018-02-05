@@ -2,16 +2,19 @@
     display: inline-block;
     box-sizing: border-box;
     width: 49%;
+    vertical-align: top;
 }
 
 .col_2_third {
     display: inline-block;
     box-sizing: border-box;
     width: 66%;
+    vertical-align: top;
 }
 
 .col_third {
     display: inline-block;
     box-sizing: border-box;
     width: 33%;
+    vertical-align: top;
 }

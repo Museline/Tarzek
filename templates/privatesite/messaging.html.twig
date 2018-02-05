@@ -4,23 +4,26 @@
 
 {% block body %}
     <div class="rope">
-        <a href="{{ path('message_create') }}">Envoyer un message</a>
+        <div class="btn">
+            <a href="{{ path('message_create') }}"><button class="btn_brown">Envoyer un message</button></a>
+        </div>
 
-        <h3>Messages reçus</h3>
+        <h3 class="rope_title">Messages reçus</h3>
 
-        <table>
-            <tr>
-                <th>Titre du message</th>
-                <th>Expediteur</th>
-                <th>Date d'envoi</th>
-                <th>Lecture du message</th>
+        <table class="messaging_table">
+            <tr class="messaging_table_col messaging_table_header">
+                <th class="messaging_table_item">Titre du message</th>
+                <th class="messaging_table_item">Expediteur</th>
+                <th class="messaging_table_item">Date d'envoi</th>
+                <th class="messaging_table_item">Lecture du message</th>
             </tr>
             {% for message in list_messages_received %}
-                <tr>
-                    <td><a href="{{ path('message_view', {'id': message.message.id}) }}">{{ message.message.title }}</a></td>
-                    <td>{{ message.message.sender.username }}</td>
-                    <td>{{ message.message.sendingDate|date("d/m/Y") }}</td>
-                    <td>{% if message.reading %}
+                <tr class="messaging_table_col">
+                    <td class="messaging_table_item"><a href="{{ path('message_view', {'id': message.message.id}) }}">{{ message.message.title }}</a></td>
+                    <td class="messaging_table_item">{{ message.message.sender.username }}</td>
+                    <td class="messaging_table_item">{{ message.message.sendingDate|date("d/m/Y") }}</td>
+                    <td class="messaging_table_item">
+                        {% if message.reading %}
                             message lu
                         {% else %}
                             message non lu
@@ -30,24 +33,24 @@
             {% endfor %}
         </table>
 
-        <h3>Messages envoyés</h3>
+        <h3 class="rope_title">Messages envoyés</h3>
 
-        <table>
-            <tr>
-                <th>Titre du message</th>
-                <th>Destinataire(s)</th>
-                <th>Date d'envoi</th>
+        <table class="messaging_table">
+            <tr class="messaging_table_col messaging_table_header">
+                <th class="messaging_table_item">Titre du message</th>
+                <th class="messaging_table_item">Destinataire(s)</th>
+                <th class="messaging_table_item">Date d'envoi</th>
             </tr>
             {% for message in list_messages_sent %}
-                <tr>
-                    <td><a href="{{ path('message_view', {'id': message.id}) }}">{{ message.title }}</a></td>
-                    <td>
+                <tr class="messaging_table_col">
+                    <td class="messaging_table_item"><a href="{{ path('message_view', {'id': message.id}) }}">{{ message.title }}</a></td>
+                    <td class="messaging_table_item">
                         {% for recipient in message.recipients %}
                             {# on ajoute une virgule après chaque destinataire sauf le dernier #}
                             {{ recipient.username }}{% if loop.last == false %},{% endif %}
                         {% endfor %}
                     </td>
-                    <td>{{ message.sendingDate|date("d/m/Y") }}</td>
+                    <td class="messaging_table_item">{{ message.sendingDate|date("d/m/Y") }}</td>
                 </tr>
             {% endfor %}
         </table>
