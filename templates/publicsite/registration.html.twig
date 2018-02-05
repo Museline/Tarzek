@@ -16,14 +16,6 @@
         {{ form_errors(form.password.first) }}
         {{ form_errors(form.password.second) }}
         {{ form_errors(form.email) }}
-        {{ form_errors(form.l_name) }}
-        {{ form_errors(form.f_name) }}
-        {{ form_errors(form.adress) }}
-        {{ form_errors(form.city) }}
-        {{ form_errors(form.post_code) }}
-        {{ form_errors(form.phone_numb) }}
-        {{ form_errors(form.avatar_URL) }}
-        {{ form_errors(form.avatar_upload) }}
 
         <div class="form_group">
             {{ form_label(form.username) }}
@@ -43,46 +35,6 @@
         <div class="form_group">
             {{ form_label(form.email) }}
             {{ form_widget(form.email, { 'attr': {'class': 'form_input'}}) }}
-        </div>
-
-        <div class="form_group">
-            {{ form_label(form.l_name) }}
-            {{ form_widget(form.l_name, { 'attr': {'class': 'form_input'}}) }}
-        </div>
-
-        <div class="form_group">
-            {{ form_label(form.f_name) }}
-            {{ form_widget(form.f_name, { 'attr': {'class': 'form_input'}}) }}
-        </div>
-
-        <div class="form_group">
-            {{ form_label(form.adress) }}
-            {{ form_widget(form.adress, { 'attr': {'class': 'form_input'}}) }}
-        </div>
-
-        <div class="form_group">
-            {{ form_label(form.city) }}
-            {{ form_widget(form.city, { 'attr': {'class': 'form_input'}}) }}
-        </div>
-
-        <div class="form_group">
-            {{ form_label(form.post_code) }}
-            {{ form_widget(form.post_code, { 'attr': {'class': 'form_input'}}) }}
-        </div>
-
-        <div class="form_group">
-            {{ form_label(form.phone_numb) }}
-            {{ form_widget(form.phone_numb, { 'attr': {'class': 'form_input'}}) }}
-        </div>
-
-        <div class="form_group">
-            {{ form_label(form.avatar_URL) }}
-            {{ form_widget(form.avatar_URL, { 'attr': {'class': 'form_input'}}) }}
-        </div>
-
-        <div class="form_group">
-            {{ form_label(form.avatar_upload) }}
-            {{ form_widget(form.avatar_upload, { 'attr': {'class': 'form_input'}}) }}
         </div>
 
         <div class="form_group">

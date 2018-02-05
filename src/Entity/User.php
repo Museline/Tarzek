@@ -65,7 +65,7 @@ class User implements AdvancedUserInterface, \Serializable {
     private $isActive;
     
     /**
-     * @ORM\Column (type="string", length=30)
+     * @ORM\Column (type="string", length=30, nullable=true)
      * @Assert\Length(
      *      min=3, 
      *      max=30,
@@ -76,7 +76,7 @@ class User implements AdvancedUserInterface, \Serializable {
     private $l_name;
     
     /**
-     * @ORM\Column (type="string", length=30)
+     * @ORM\Column (type="string", length=30, nullable=true)
      * @Assert\Length(
      *      min=3, 
      *      max=30,
@@ -87,7 +87,7 @@ class User implements AdvancedUserInterface, \Serializable {
     private $f_name;
     
     /**
-     * @ORM\Column (type="string", length=100)
+     * @ORM\Column (type="string", length=100, nullable=true)
      * @Assert\Length(
      *      min=3, 
      *      max=100,
@@ -98,7 +98,7 @@ class User implements AdvancedUserInterface, \Serializable {
     private $adress;
     
     /**
-     * @ORM\Column (type="string", length=30)
+     * @ORM\Column (type="string", length=30, nullable=true)
      * @Assert\Length(
      *      min=3, 
      *      max=30,
@@ -109,13 +109,13 @@ class User implements AdvancedUserInterface, \Serializable {
     private $city;
     
     /**
-     * @ORM\Column (type="string", length=30)
+     * @ORM\Column (type="string", length=30, nullable=true)
      * 
      */
     private $post_code;
     
     /**
-     * @ORM\Column (type="string", length=30)
+     * @ORM\Column (type="string", length=30, nullable=true)
      * @Assert\Regex(
      *      pattern="/^(0|\+33)[1-9]([-. ]?[0-9]{2}){4}$/",
      *      message = "Le numéro de téléphone doit être du type +33X-XX-XX-XX-XX ou 0X.XX.XX.XX.XX"
@@ -130,13 +130,13 @@ class User implements AdvancedUserInterface, \Serializable {
     
     /**
      * @ORM\Column (type="string", length=255, nullable=true)
+     * @ORM\JoinColumn(nullable=true)
      * @Assert\Url()
      */
     private $avatar_URL;
     
     /**
     * @ORM\OneToOne(targetEntity="App\Entity\UserAvatar", cascade={"persist", "remove"})
-    * 
     */
      private $avatar_upload;
 

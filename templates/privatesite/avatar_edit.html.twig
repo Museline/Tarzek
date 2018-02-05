@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {{ form_start(form) }}
+
+    {# en cas d'erreur sur le formulaire #}
+    {{ form_errors(form) }}
+    {{ form_errors(form.avatar_URL) }}
+    {{ form_errors(form.avatar_upload) }}
+
+    <div>
+        {{ form_label(form.avatar_URL, "Lien de l'avatar") }}
+        {{ form_widget(form.avatar_URL) }}
+    </div>
+
+    <div>
+        {{ form_label(form.avatar_upload, "Avatar à partir de votre ordinateur") }}
+        {{ form_widget(form.avatar_upload) }}
+    </div>
+
+    {{ form_widget(form.save) }}
+    {{ form_end(form) }}
+{% endblock %}

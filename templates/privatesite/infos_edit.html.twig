@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block header_title %}Modification d'informations{% endblock %}
+
+{% block body %}
+    <div class="rope">
+        {{ form_start(form) }}
+
+        {# en cas d'erreur sur le formulaire #}
+        {{ form_errors(form) }}
+        {{ form_errors(form.email) }}
+        {{ form_errors(form.l_name) }}
+        {{ form_errors(form.f_name) }}
+        {{ form_errors(form.adress) }}
+        {{ form_errors(form.post_code) }}
+        {{ form_errors(form.city) }}
+        {{ form_errors(form.phone_numb) }}
+
+        <div class="form_group">
+            {{ form_label(form.email) }}
+            {{ form_widget(form.email, { 'attr': {'class': 'form_input'}}) }}
+        </div>
+
+        <div class="form_group">
+            {{ form_label(form.l_name) }}
+            {{ form_widget(form.l_name, { 'attr': {'class': 'form_input'}}) }}
+        </div>
+
+        <div class="form_group">
+            {{ form_label(form.f_name) }}
+            {{ form_widget(form.f_name, { 'attr': {'class': 'form_input'}}) }}
+        </div>
+
+        <div class="form_group">
+            {{ form_label(form.adress) }}
+            {{ form_widget(form.adress, { 'attr': {'class': 'form_input'}}) }}
+        </div>
+
+        <div class="form_group">
+            {{ form_label(form.post_code) }}
+            {{ form_widget(form.post_code, { 'attr': {'class': 'form_input'}}) }}
+        </div>
+
+        <div class="form_group">
+            {{ form_label(form.city) }}
+            {{ form_widget(form.city, { 'attr': {'class': 'form_input'}}) }}
+        </div>
+
+        <div class="form_group">
+            {{ form_label(form.phone_numb) }}
+            {{ form_widget(form.phone_numb, { 'attr': {'class': 'form_input'}}) }}
+        </div>
+
+        <div class="form_group">
+            {{ form_widget(form.save) }}
+        </div>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

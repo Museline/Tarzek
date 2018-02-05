@@ -32,14 +32,6 @@ class UserType extends AbstractType {
                     'second_options' => array('label' => 'Confirmer Mot de Passe'),
                 ))
                 ->add('email', EmailType::class, array('label' => 'e-mail'))
-                ->add('l_name', TextType::class, array('label' => 'Nom'))
-                ->add('f_name', TextType::class, array('label' => 'Prenom'))
-                ->add('adress', TextType::class, array('label' => 'Adresse'))
-                ->add('city', TextType::class, array('label' => 'Ville'))
-                ->add('post_code', TextType::class, array('label' => 'Code Postal'))
-                ->add('phone_numb', TextType::class, array('label' => 'Numéro de Téléphone'))
-                ->add('avatar_URL', UrlType::class, array('label' => 'Avatar', 'required' => false))
-                ->add('avatar_upload', UserAvatarType::class, array('label' => 'Avatar', 'required' => false))              
                 ->add('send', SubmitType::class, array('label' => 'Envoyer'));
     }
                 
