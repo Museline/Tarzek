@@ -1,0 +1,17 @@
+.col_half {
+    display: inline-block;
+    box-sizing: border-box;
+    width: 49%;
+}
+
+.col_2_third {
+    display: inline-block;
+    box-sizing: border-box;
+    width: 66%;
+}
+
+.col_third {
+    display: inline-block;
+    box-sizing: border-box;
+    width: 33%;
+}

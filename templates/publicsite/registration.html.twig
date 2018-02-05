@@ -5,6 +5,7 @@
 {% block header_title %}Inscription{% endblock %}
 
 {% block body %}
+<<<<<<< HEAD
     
     {{ form_start(form) }}
     
@@ -82,11 +83,45 @@
         {{ form_label(form.avatar_upload) }}
         {{ form_widget(form.avatar_upload, { 'attr': {'class': 'form_input'} }) }}
     </div>
+=======
 
-    <div class="form_group">
-        {{ form_widget(form.send) }}
-    </div>
+    <div class="rope">
     
-    {{ form_end(form) }}
+        {{ form_start(form) }}
+
+        {# en cas d'erreur sur le formulaire #}
+        {{ form_errors(form) }}
+        {{ form_errors(form.username) }}
+        {{ form_errors(form.password.first) }}
+        {{ form_errors(form.password.second) }}
+        {{ form_errors(form.email) }}
+
+        <div class="form_group">
+            {{ form_label(form.username) }}
+            {{ form_widget(form.username, { 'attr': {'class': 'form_input'}}) }}
+        </div>
+
+        <div class="form_group">
+            {{ form_label(form.password.first) }}
+            {{ form_widget(form.password.first, { 'attr': {'class': 'form_input'}}) }}
+        </div>
+
+        <div class="form_group">
+            {{ form_label(form.password.second) }}
+            {{ form_widget(form.password.second, { 'attr': {'class': 'form_input'}}) }}
+        </div>
+
+        <div class="form_group">
+            {{ form_label(form.email) }}
+            {{ form_widget(form.email, { 'attr': {'class': 'form_input'}}) }}
+        </div>
+
+        <div class="form_group">
+            {{ form_widget(form.send) }}
+        </div>
+>>>>>>> 0b8cf5409f00d32d0689e8df84f956a4394c4e0e
+
+        {{ form_end(form) }}
+    </div>
     
 {% endblock %}

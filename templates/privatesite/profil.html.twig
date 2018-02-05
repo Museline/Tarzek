@@ -1,38 +1,50 @@
 {# Profil template #}
 
 {% extends 'base.html.twig' %}
+
+{% block header_title %}Mon compte{% endblock %}
     
 {% block body %}
-    
-    <h1>Profil</h1>
-    
-    {% if app.user.AvatarURL %}
-        <img src="{{ app.user.AvatarURL }}" alt="Avatar de profil"/>
-    {% else %}
-        <img src="{{ asset(app.user.avatarUpload.webPath) }}" alt="{{ app.user.avatarUpload.alt }}">
-    {% endif %}
-    <ul>
-        <li>Pseudo: {{ app.user.username }}</li>
-        <li>e-mail: {{ app.user.email }}</li>
-        <li>Nom: {{ app.user.LName }}</li>
-        <li>Prenom: {{ app.user.FName }}</li>
-        <li>Adresse: {{ app.user.Adress }}</li>
-        <li>Ville: {{ app.user.City }}</li>
-        <li>Code Postal: {{ app.user.PostCode }}</li>
-        <li>Téléphone: {{ app.user.PhoneNumb }}</li>
-    </ul>
 
-    <h1>Score personnel</h1>
+    <div class="rope col_2_third">
+        <div class="col_half">
+            {% if app.user.AvatarURL %}
+                <img src="{{ app.user.AvatarURL }}" alt="Avatar de profil" class="profil_img"/>
+            {% elseif app.user.avatarUpload %}
+                <img src="{{ asset(app.user.avatarUpload.webPath) }}" alt="{{ app.user.avatarUpload.alt }}" class="profil_img">
+            {% else %}
+                <img src="{{ asset("/images/walk1_2.png") }}" class="profil_img">
+            {% endif %}
+            <a href="{{ path('profil_edit_avatar') }}">Modifier mon avatar</a>
+        </div>
+        <div class="col_half">
+            <ul>
+                <li>Pseudo: {{ app.user.username }}</li>
+                <li>e-mail: {{ app.user.email }}</li>
+                <li>Nom: {{ app.user.LName }}</li>
+                <li>Prenom: {{ app.user.FName }}</li>
+                <li>Adresse: {{ app.user.Adress }}</li>
+                <li>Ville: {{ app.user.City }}</li>
+                <li>Code Postal: {{ app.user.PostCode }}</li>
+                <li>Téléphone: {{ app.user.PhoneNumb }}</li>
+                <a href="{{ path('profil_edit_infos') }}">Modifier mes informations</a>
+            </ul>
+        </div>
+    </div>
 
-    <ul>
-        {% if scoreboard %}
-            {% for score in scoreboard.scoreboard %}
-                <li>Votre meilleur score du niveau {{ loop.index }} : {{ score }} points</li>
-            {% endfor %}
-        {% else %}
-            Vous n'avez encore aucun score enregistré.
-        {% endif %}
-    </ul>
+    <div class="rope col_third">
+        <h1>Score personnel</h1>
+
+        <ul>
+            {% if scoreboard %}
+                {% for score in scoreboard.scoreboard %}
+                    <li>Votre meilleur score du niveau {{ loop.index }} : {{ score }} points</li>
+                {% endfor %}
+            {% else %}
+                Vous n'avez encore aucun score enregistré.
+            {% endif %}
+        </ul>
+    </div>
 
 {% endblock %}
 

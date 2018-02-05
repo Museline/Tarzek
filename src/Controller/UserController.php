@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Entity\Score;
 use App\Entity\User;
+use App\Form\UserAvatarEditType;
+use App\Form\UserInfosEditType;
 use App\Form\UserType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Routing\Annotation\Route;
@@ -74,6 +76,74 @@ class UserController extends Controller{
         }
 
         return $this->render('privatesite/profil.html.twig', array('scoreboard' => $scoreboard));
+    }
+
+    /**
+     * @Route("/compte/profil/edit/avatar", name="profil_edit_avatar")
+     */
+    public function profilEditAvatarUser(Request $request){
+
+        $user = $this->getUser();
+
+        // mise en place du formulaire lié à l'annonce créé
+        $form = $this->createForm(UserAvatarEditType::class, $user);
+
+        $form->handleRequest($request);
+
+        // vérification si le formulaire est envoyé et valide
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            // mise en bdd
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
+
+            $this->addFlash(
+                'success',
+                'L\'avatar a bien été modifié'
+            );
+
+            // redirection vers l'accueil admin
+            return $this->redirectToRoute('profil');
+        }
+
+        return $this->render('privatesite/avatar_edit.html.twig', array(
+            'form' => $form->createView(),
+        ));
+    }
+
+    /**
+     * @Route("/compte/profil/edit/infos", name="profil_edit_infos")
+     */
+    public function profilEditInfosUser(Request $request){
+
+        $user = $this->getUser();
+
+        // mise en place du formulaire lié à l'annonce créé
+        $form = $this->createForm(UserInfosEditType::class, $user);
+
+        $form->handleRequest($request);
+
+        // vérification si le formulaire est envoyé et valide
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            // mise en bdd
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
+
+            $this->addFlash(
+                'success',
+                'Vos informations ont bien été modifié'
+            );
+
+            // redirection vers l'accueil admin
+            return $this->redirectToRoute('profil');
+        }
+
+        return $this->render('privatesite/infos_edit.html.twig', array(
+            'form' => $form->createView(),
+        ));
     }
     
     /**

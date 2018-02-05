@@ -9,6 +9,8 @@ require('../css/module/jeu.css');
 require('../css/module/rope.css');
 require('../css/module/form.css');
 require('../css/module/btn.css');
+require('../css/module/col.css');
+require('../css/module/profil.css');
 
 // charge jquery depuis les package le node_modules
 var $ = require('jquery');
