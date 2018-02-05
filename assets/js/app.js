@@ -28,6 +28,7 @@ var jquery_path = require('./jquery.path');
 var multi_step_form = require('./multi_step_form');
 var navbar_dropdown = require('./navbar_dropdown');
 var move_footer = require('./footer')
+var navbar_collapse = require('./navbar_collapse');
 
 // une fois le document prêt, lance les scripts js
 $(document).ready(function() {
@@ -39,4 +40,5 @@ $(document).ready(function() {
     multi_step_form();
     navbar_dropdown();
     move_footer();
+    navbar_collapse();
 });

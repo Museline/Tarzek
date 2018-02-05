@@ -3,22 +3,27 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h2>{{ pre_query.SectionName }}</h2>
+    <h2 class="forum_partie_title">{{ pre_query.SectionName }}</h2>
         {% for ForumSection in list_section %}
             {% if ForumSection.Hierarchy == pre_query.Hierarchy + 1 %}
-                <h3>{{ ForumSection.SectionName }}</h3>
+                <h3 class="forum_section_title">{{ ForumSection.SectionName }}</h3>
                 <p>{{ ForumSection.Description }}</p>
 
                 
                 {% for ForumPostTitle in list_subject %}
                     {% if ForumPostTitle.Section.id == pre_query.Id %}
-                        <h4><a href="/forum/sujet/{{ ForumPostTitle.urlTitle }}">{{ ForumPostTitle.Title }}</a></h4>
+                        <h4 class="forum_section_title"><a href="/forum/sujet/{{ ForumPostTitle.urlTitle }}">{{ ForumPostTitle.Title }}</a></h4>
                         <p>{{ ForumPostTitle.Description }}</p>
-                        
                     {% endif %}
                 {% endfor %}
             {% endif %}
         {% endfor %}
-        <a href="{{ path('response', {'url_title': 'new_subject', 'section': pre_query.UrlName }) }}">Nouveau sujet</a>
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            <div class="btn">
+                <a href="{{ path('response', {'url_title': 'new_subject', 'section': pre_query.UrlName }) }}">
+                    <button class="btn_brown">Nouveau sujet</button>
+                </a>
+            </div>
+        {% endif %}
         
 {% endblock %}

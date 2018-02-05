@@ -2,6 +2,7 @@
     display: inline-block;
     box-sizing: border-box;
     width: 49%;
+    min-width: 220px;
     vertical-align: top;
 }
 

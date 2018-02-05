@@ -61,3 +61,41 @@
             margin: 15px 0;
             color: white;
         }
+
+/** Responsive **/
+
+.nav_large {
+    display: inline-block;
+}
+
+.nav_small {
+    display: none;
+}
+
+@media screen and (max-width: 550px) {
+    .nav_large {
+        display: none;
+    }
+
+    .nav_small {
+        display: inline-block;
+    }
+
+    .nav_collapse {
+        display: none;
+        position: absolute;
+        top: 40px;
+        left: 0;
+        right: 0;
+        background: linear-gradient(to bottom, #86702d, #4d4019);
+    }
+
+    .nav_btn_collapse {
+        color: white;
+        cursor: pointer;
+    }
+
+    .nav_link_collapsed {
+        display: block;
+    }
+}

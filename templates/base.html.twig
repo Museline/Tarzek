@@ -13,10 +13,21 @@
     <body>
 
         <nav class="nav">
-            <a class="nav_link" href="{{ path('homepage') }}">Accueil</a>
-            <a class="nav_link" href="{{ path('game') }}">Jeu</a>
-            <a class="nav_link" href="{{ path('ladder') }}">Classement</a>
-            <a class="nav_link" href="{{ path('forum') }}">Forum</a>
+            <div class="nav_large">
+                <a class="nav_link" href="{{ path('homepage') }}">Accueil</a>
+                <a class="nav_link" href="{{ path('game') }}">Jeu</a>
+                <a class="nav_link" href="{{ path('ladder') }}">Classement</a>
+                <a class="nav_link" href="{{ path('forum') }}">Forum</a>
+            </div>
+            <div class="nav_small">
+                <span data-event='navbar-btn-collapse' class="nav_btn_collapse"><i class="fas fa-bars"></i> Menu</span>
+                <div data-event='navbar-collapse' class="nav_collapse">
+                    <a class="nav_link nav_link_collapsed" href="{{ path('homepage') }}">Accueil</a>
+                    <a class="nav_link nav_link_collapsed" href="{{ path('game') }}">Jeu</a>
+                    <a class="nav_link nav_link_collapsed" href="{{ path('ladder') }}">Classement</a>
+                    <a class="nav_link nav_link_collapsed" href="{{ path('forum') }}">Forum</a>
+                </div>
+            </div>
             {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                 <div class="nav_dropdown">
                     <span class="nav_item">{{ app.user.username }}</span>
