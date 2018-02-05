@@ -4,7 +4,7 @@ module.exports = function () {
         {"backgroundPosition": "0px 0px"},
         {
             duration: 800,
-            esasing: 'easeOutBounce'
+            easing: 'easeOutBounce'
         });
     $(".box").css({top: -100});
     $(".box").delay(1200).animate(

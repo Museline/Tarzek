@@ -11,7 +11,15 @@
         .footer_character {
             position: relative;
             top: 12px;
+            
+            overflow: hidden;
         }
+            #footer_character {
+                position: relative;
+                left: -70px;
+                width: 55px;
+                
+            }
 
         .footer_ground {
             height: 150px;
@@ -26,3 +34,4 @@
                 text-shadow: 0 0 2px rgb(0,0,0);
                 font-size: 0.9rem;
             }
+            
