@@ -2,6 +2,7 @@
     display: inline-block;
     box-sizing: border-box;
     width: 49%;
+    min-width: 220px;
     vertical-align: top;
 }
 
@@ -17,4 +18,16 @@
     box-sizing: border-box;
     width: 33%;
     vertical-align: top;
+}
+
+@media screen and (max-width: 1000px) {
+    .col_2_third {
+        display: block;
+        width: 100%;
+    }
+
+    .col_third {
+        display: block;
+        width: 100%;
+    }
 }

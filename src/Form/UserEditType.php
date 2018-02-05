@@ -29,7 +29,7 @@ class UserEditType extends AbstractType {
                     ),
                     'expanded' => true
                 ))
-                ->add('send', SubmitType::class);
+                ->add('send', SubmitType::class, array('label' => 'Envoyer'));
     }
                 
 }

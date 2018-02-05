@@ -1,5 +1,12 @@
 {% extends 'base.html.twig' %}
 
+{% block header_title %}Panneau d'administration{% endblock %}
+
 {% block body %}
-    <a href="{{ path('admin_advert') }}">Rédiger une annonce</a>
+    <div class="btn">
+        <a href="{{ path('admin_advert') }}"><button class="btn_brown">Rédiger une annonce</button></a>
+    </div>
+    <div class="btn">
+        <a href="{{ path('admin_user') }}"><button class="btn_brown">Gestion utilisateur</button></a>
+    </div>
 {% endblock %}

@@ -1,24 +1,33 @@
 {% extends 'base.html.twig' %}
 
+{% block header_title %}Modification d'utilisateur{% endblock %}
+
 {% block body %}
-    {{ form_start(form) }}
+    <div class="rope">
+        {{ form_start(form) }}
 
-    {# Les erreurs générales du formulaire. #}
-    {{ form_errors(form) }}
+        {# Les erreurs générales du formulaire. #}
+        {{ form_errors(form) }}
 
-        {{ form_label(form.username, "Pseudo") }}
-        {{ form_errors(form.username) }}
-        {{ form_widget(form.username) }}
+        <div class="form_group">
+            {{ form_label(form.username, "Pseudo") }}
+            {{ form_errors(form.username) }}
+            {{ form_widget(form.username, { 'attr': {'class': 'form_input'}}) }}
+        </div>
+        <div class="form_group">
+            {{ form_label(form.roles, "Role") }}
+            {{ form_errors(form.roles) }}
+            {{ form_widget(form.roles, { 'attr': {'class': 'form_input'}}) }}
+        </div>
+        <div class="form_group">
+            {{ form_label(form.isActive, "Activité du compte") }}
+            {{ form_errors(form.isActive) }}
+            {{ form_widget(form.isActive, { 'attr': {'class': 'form_input'}}) }}
+        </div>
+        <div class="form_group">
+            {{ form_widget(form.send) }}
+        </div>
 
-        {{ form_label(form.roles, "Role") }}
-        {{ form_errors(form.roles) }}
-        {{ form_widget(form.roles) }}
-
-        {{ form_label(form.isActive, "Activité du compte") }}
-        {{ form_errors(form.isActive) }}
-        {{ form_widget(form.isActive) }}
-
-    {{ form_widget(form.send) }}
-
-    {{ form_end(form) }}
+        {{ form_end(form) }}
+    </div>
 {% endblock %}

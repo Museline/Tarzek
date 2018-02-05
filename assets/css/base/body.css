@@ -2,3 +2,9 @@
     width: 80%;
     margin: auto;
 }
+
+@media screen and (max-width: 350px) {
+    .body_content {
+        width: 100%;
+    }
+}

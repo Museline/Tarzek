@@ -1,77 +1,84 @@
 {# empty Twig template #}
 {% extends "base.html.twig" %}
 
+{% block header_title %}Message{% endblock %}
+
 {% block body %}
     
     {% if pre_query is defined %}
-    
-        {{ form_start(form) }}
 
-        {# en cas d'erreurs sur le formulaire #}
-        {{ form_errors(form) }}
-        {{ form_errors(form.title) }}
-        {#{ form_errors(form.description) }#}
-        {{ form_errors(form.content) }}
+        <div class="rope">
+            {{ form_start(form) }}
 
-        <div class="form_group">
-            {{ form_label(form.title.title) }}
-            {{ form_widget(form.title.title, { 'attr': {'class': 'form_input'} } ) }}
+            {# en cas d'erreurs sur le formulaire #}
+            {{ form_errors(form) }}
+            {{ form_errors(form.title) }}
+            {#{ form_errors(form.description) }#}
+            {{ form_errors(form.content) }}
+
+            <div class="form_group">
+                {{ form_label(form.title.title) }}
+                {{ form_widget(form.title.title, { 'attr': {'class': 'form_input'} } ) }}
+            </div>
+
+            <div class="form_group">
+                {{ form_label(form.title.description) }}
+                {{ form_widget(form.title.description, { 'attr': {'class': 'form_input'} } ) }}
+            </div>
+
+            <div class="form_group">
+                {{ form_label(form.content) }}
+                {{ form_widget(form.content, { 'attr': {'class': 'form_input'} } ) }}
+            </div>
+
+            <div class="form_group">
+                {{ form_widget(form.send) }}
+            </div>
+
+            {{ form_end(form) }}
         </div>
-        
-        <div class="form_group">
-            {{ form_label(form.title.description) }}
-            {{ form_widget(form.title.description, { 'attr': {'class': 'form_input'} } ) }}
-        </div>
-        
-        <div class="form_group">
-            {{ form_label(form.content) }}
-            {{ form_widget(form.content, { 'attr': {'class': 'form_input'} } ) }}
-        </div>
-        
-        <div class="form_group">
-            {{ form_widget(form.send) }}
-        </div>
-        
-        {{ form_end(form) }}
     
     {% else %}
-        
-        {{ form_start(form) }}
-        
-        {# en cas d'erreurs sur le formulaire #}
-        {{ form_errors(form) }}
-        {{ form_errors(form.title) }}
-        {#{ form_errors(form.description) }#}
-        {{ form_errors(form.content) }}
+        <div class="rope">
+            {{ form_start(form) }}
 
-        <div class="form_group">
-            {{ form_row(form.title.title, { 'attr': {'class': 'form_input', 'value': forum_post_title.title } }) }}
-            {#{ form_widget(form.title.title, { 'attr': {'class': 'form_input', 'value': forum_post.0.title } } ) }#}
-        </div>
-        
-        <div class="form_group">
-            {{ form_row(form.title.description, { 'attr': {'class': 'form_input', 'value': forum_post_title.description } }) }}
-            {#{ form_widget(form.title.description, { 'attr': {'class': 'form_input', 'value': forum_post.0.title } } ) }#}
-        </div>
-        
-        <div class="form_group">
-            {{ form_label(form.content) }}
-            {{ form_widget(form.content, { 'attr': {'class': 'form_input' } } ) }}
-        </div>
+            {# en cas d'erreurs sur le formulaire #}
+            {{ form_errors(form) }}
+            {{ form_errors(form.title) }}
+            {#{ form_errors(form.description) }#}
+            {{ form_errors(form.content) }}
 
-        <div class="form_group">
-            {{ form_widget(form.send) }}
+            <div class="form_group">
+                {{ form_row(form.title.title, { 'attr': {'class': 'form_input', 'value': forum_post_title.title } }) }}
+                {#{ form_widget(form.title.title, { 'attr': {'class': 'form_input', 'value': forum_post.0.title } } ) }#}
+            </div>
+
+            <div class="form_group">
+                {{ form_row(form.title.description, { 'attr': {'class': 'form_input', 'value': forum_post_title.description } }) }}
+                {#{ form_widget(form.title.description, { 'attr': {'class': 'form_input', 'value': forum_post.0.title } } ) }#}
+            </div>
+
+            <div class="form_group">
+                {{ form_label(form.content) }}
+                {{ form_widget(form.content, { 'attr': {'class': 'form_input' } } ) }}
+            </div>
+
+            <div class="form_group">
+                {{ form_widget(form.send) }}
+            </div>
+
+            {{ form_end(form) }}
         </div>
-        
-        {{ form_end(form) }}
                 
         {% for ForumPost in forum_post %}
-            <p>{{ ForumPost.Author.Username }}</P>
-            <p>{{ ForumPost.Content }}</p>
-            <p>{{ ForumPost.DatePost | date('d-m-Y H:i') }}</p> 
-            {% if ForumPost.DateEdit != null %}       
-                <p>{{ ForumPost.DateEdit | date('d-m-Y H:i') }}</p>
-            {% endif %}
+            <div class="rope">
+                <p>{{ ForumPost.Author.Username }}</P>
+                <p>{{ ForumPost.Content }}</p>
+                <p>{{ ForumPost.DatePost | date('d-m-Y H:i') }}</p>
+                {% if ForumPost.DateEdit != null %}
+                    <p>{{ ForumPost.DateEdit | date('d-m-Y H:i') }}</p>
+                {% endif %}
+            </div>
         {% endfor %}
         
     {% endif %}

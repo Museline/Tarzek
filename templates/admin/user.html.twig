@@ -1,39 +1,48 @@
 {% extends 'base.html.twig' %}
 
+{% block header_title %}Gestion d'utilisateur{% endblock %}
+
 {% block body %}
-    <form action="{{ path('admin_user') }}" method="post">
-        <input id="search_username" name="search_username" type="text" placeholder="Recherche par nom d'utilisateur">
-    </form>
+    <div class="rope">
+        <form action="{{ path('admin_user') }}" method="post">
+            <label for="search_username">Rechercher un utilisateur par son pseudo</label>
+            <input id="search_username" name="search_username" type="text" placeholder="Recherche par nom d'utilisateur" class="form_input">
+        </form>
+    </div>
 
     {% if list_users %}
-        <table>
-            <tr>
-                <th>Pseudo</th>
-                <th>Email</th>
-                <th>Roles</th>
-                <th>Compte actif</th>
-                <th>Actions</th>
-            </tr>
-            {% for user in list_users %}
+        <div class="rope">
+            <table class="table">
                 <tr>
-                    <td>{{ user.username }}</td>
-                    <td>{{ user.email }}</td>
-                    <td>
-                        {% for role in user.roles %}
-                            {{ role }}
-                        {% endfor %}
-                    </td>
-                    <td>
-                        {% if user.isActive == 1 %}
-                            Compte actif
-                        {% else %}
-                            Compte inactif
-                        {% endif %}
-                    </td>
-                    <td><a href="{{ path('admin_user_edit', {'id': user.id}) }}">Edit</a>
-                        <a href="{{ path('admin_user_remove', {'id': user.id}) }}">Suppr</a></td>
+                    <th class="table_col">Pseudo</th>
+                    <th class="table_col">Email</th>
+                    <th class="table_col">Roles</th>
+                    <th class="table_col">Compte actif</th>
+                    <th class="table_col">Actions</th>
                 </tr>
-            {% endfor %}
-        </table>
+                {% for user in list_users %}
+                    <tr>
+                        <td class="table_col">{{ user.username }}</td>
+                        <td class="table_col">{{ user.email }}</td>
+                        <td class="table_col">
+                            {% for role in user.roles %}
+                                {{ role }}
+                            {% endfor %}
+                        </td>
+                        <td class="table_col">
+                            {% if user.isActive == 1 %}
+                                Compte actif
+                            {% else %}
+                                Compte inactif
+                            {% endif %}
+                        </td>
+                        <td class="table_col">
+                            <a href="{{ path('admin_user_edit', {'id': user.id}) }}"><i class="fas fa-edit"></i> Modifier</a> |
+                            <a href="{{ path('admin_user_remove', {'id': user.id}) }}"><i class="fas fa-trash-alt"></i> Supprimer</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
     {% endif %}
 {% endblock %}

@@ -23,12 +23,12 @@
                         {% endif %}
                     {% endif %}
                 {% endfor %}
-                <div class="rope forum_section_add">
-                    {% if is_granted('ROLE_SUPER_ADMIN') %}
+                {% if is_granted('ROLE_SUPER_ADMIN') %}
+                    <div class="rope forum_section_add">
                         {{ render(controller('App\\Controller\\ForumSectionController::adminSectionForum',
                             { 'type': 'section', 'hierarchy': 2, 'parent': ascend })) }}
-                    {% endif %}
-                </div>
+                    </div>
+                {% endif %}
             </div>
         {% endif %}
     {% endfor %}
