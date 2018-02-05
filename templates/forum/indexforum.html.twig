@@ -10,21 +10,25 @@
         {% if ForumSection.Hierarchy == 1 %}
             <div class="forum_partie">
                 {% set ascend = ForumSection.SectionName %}
-                <h3>{{ ForumSection.SectionName }}</h3>
+                <h3 class="forum_partie_title">{{ ForumSection.SectionName }}</h3>
                 <p>{{ ForumSection.Description }}</p>
 
                 {% for ForumSection in list_section %}
                     {% if ForumSection.Hierarchy == 2 %}
                         {% if ForumSection.ParentSection == ascend %}
-                            <h4><a href="/forum/{{ ForumSection.UrlName }}">{{ ForumSection.SectionName }}</a></h4>
-                            <p>{{ ForumSection.Description }}</p>
+                            <div class="rope forum_section">
+                                <h4 class="forum_section_title"><a href="/forum/{{ ForumSection.UrlName }}">{{ ForumSection.SectionName }}</a></h4>
+                                <p>{{ ForumSection.Description }}</p>
+                            </div>
                         {% endif %}
                     {% endif %}
                 {% endfor %}
-                {% if is_granted('ROLE_SUPER_ADMIN') %}
-                    {{ render(controller('App\\Controller\\ForumSectionController::adminSectionForum',
-                        { 'type': 'section', 'hierarchy': 2, 'parent': ascend })) }}
-                {% endif %}
+                <div class="rope forum_section_add">
+                    {% if is_granted('ROLE_SUPER_ADMIN') %}
+                        {{ render(controller('App\\Controller\\ForumSectionController::adminSectionForum',
+                            { 'type': 'section', 'hierarchy': 2, 'parent': ascend })) }}
+                    {% endif %}
+                </div>
             </div>
         {% endif %}
     {% endfor %}

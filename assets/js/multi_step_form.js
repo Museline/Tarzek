@@ -1,6 +1,6 @@
 module.exports = function () {
-    $(".form__step").hide();
-    $(".form__step:first-of-type").show();
+    $(".form_step").hide();
+    $(".form_step:first-of-type").show();
 
     $("[data-form-step]").click(function() {
 

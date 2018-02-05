@@ -1,0 +1,20 @@
+.forum_partie_title {
+    font-family: 'EnchantedLand', serif;
+    font-size: 3rem;
+}
+
+    .forum_section,
+    .forum_section_add {
+        display: inline-block;
+        height: 70px;
+        width: 250px;
+        margin: 2%;
+        padding: 5px;
+        vertical-align: top;
+    }
+
+        .forum_section_title {
+            text-align: center;
+            font-weight: bold;
+            margin: 3px;
+        }

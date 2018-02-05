@@ -1,22 +1,22 @@
 <div class="forum_ajout">
-    <h3>Ajouter une {{ type }}</h3>
+    <h3 class="forum_{{ type }}_title">Ajouter une {{ type }}</h3>
 
     {{ form_start(form, {'action': path('forum_admin_section') }) }}
         {{ form_errors(form) }}
         {{ form_errors(form.section_name) }}
         {{ form_errors(form.description) }}
         {{ form_errors(form.access) }}
-        <div class="form__step">
+        <div class="form_step form_step_{{ type }}">
             {{ form_label(form.section_name, 'Nom') }}
-            {{ form_widget(form.section_name) }}
+            {{ form_widget(form.section_name, { 'attr': {'class': 'form_step_input'}}) }}
             <button type="button" data-form-step="next">Suivant</button>
         </div>
-        <div class="form__step">
+        <div class="form_step form_step_{{ type }}">
             {{ form_label(form.description, "Description") }}
-            {{ form_widget(form.description) }}
+            {{ form_widget(form.description, { 'attr': {'class': 'form_step_textarea'}}) }}
             <button type="button" data-form-step="next">Suivant</button>
         </div>
-        <div class="form__step">
+        <div class="form_step form_step_{{ type }}">
             {{ form_label(form.access, "Droit d'accès") }}
             {{ form_widget(form.access) }}
 
