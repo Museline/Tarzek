@@ -4,7 +4,9 @@
 
 {% block body %}
     <div class="rope">
-        <a href="{{ path('messaging') }}">Retour à la messagerie</a>
+        <div class="btn">
+            <a href="{{ path('messaging') }}"><button class="btn_brown">Retour à la messagerie</button></a>
+        </div>
 
         <h3 class="rope_title">{{ message.title }}</h3>
         <h4><i class="far fa-calendar-alt"></i> {{ message.sendingDate|date("d/m/Y") }} <i class="fas fa-user"></i> {{ message.sender.username }}</h4>

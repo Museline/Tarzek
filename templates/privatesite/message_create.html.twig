@@ -7,10 +7,18 @@
         {{ form_start(form) }}
 
         {# en cas d'erreur sur le formulaire #}
-        {{ form_errors(form) }}
-        {{ form_errors(form.recipients) }}
-        {{ form_errors(form.title) }}
-        {{ form_errors(form.message) }}
+        {% if form_errors(form) or
+                form_errors(form.recipients) or
+                form_errors(form.title) or
+                form_errors(form.message)
+        %}
+            <div class="notification notification_error">
+                {{ form_errors(form) }}
+                {{ form_errors(form.recipients) }}
+                {{ form_errors(form.title) }}
+                {{ form_errors(form.message) }}
+            </div>
+        {% endif %}
 
         <div class="form_group">
             {{ form_label(form.recipients, "Destinataire(s)") }}
@@ -33,12 +41,16 @@
                 <button class="text-editor__btn" type="button" name="add-url"><i class="fas fa-link"></i></button>
                 <button class="text-editor__btn" type="button" name="add-img"><i class="far fa-image"></i></button>
             </div>
-            {{ form_widget(form.message, {'id':'text-area_content'}) }}
+            {{ form_widget(form.message, {'id':'text-area_content', 'attr': {'class': 'form_input'} }) }}
         </div>
 
-        <div class="form_group">
-            {{ form_widget(form.save) }}
+        <div class="form_group btn">
+            {{ form_widget(form.save, { 'attr': {'class': 'btn_brown'} }) }}
         </div>
         {{ form_end(form) }}
+
+        <div class="btn">
+            <a href="{{ path('messaging') }}"><button class="btn_brown">Retour à la messagerie</button></a>
+        </div>
     </div>
 {% endblock %}

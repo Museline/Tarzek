@@ -48,7 +48,7 @@
             display: none;
             position: absolute;
             top: 40px;
-            padding: 5px 20px;
+            width: 150px;
 
             box-shadow: 0 0 5px rgba(0,0,0,0.5);
             background: linear-gradient(to bottom, #86702d, #4d4019);
@@ -58,8 +58,15 @@
 
         .nav_dropdown_link {
             display: block;
-            margin: 15px 0;
+            height: 20px;
+            width: 110px;
+            padding: 5px 20px;
             color: white;
+        }
+
+        .nav_dropdown_link:hover {
+            background: rgba(255,255,255,0.1);
+            text-shadow: 0 0 5px rgb(0,0,0);
         }
 
 /** Responsive **/
