@@ -24,7 +24,7 @@
 }
 /* .page_sujet_post *{
     border: 1px solid black;
-}*/
+} */
     .page_sujet_user{
         display: inline-block;
         margin: 5px;
@@ -35,6 +35,7 @@
         
         .page_sujet_author{
             text-align: center;
+            font-weight: 900;
         }
         
     .page_sujet_message{
@@ -42,6 +43,7 @@
         min-height: 150px;
         vertical-align: top;
         margin-left: 40px;
+        width: calc(100% - 185px);
     }
     
     .page_sujet_content{
