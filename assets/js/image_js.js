@@ -18,7 +18,7 @@ module.exports = function() {
         $('#image_character').animate({
         left: 90
         },
-        2000,
+        1000,
         'linear',
         function(){
             item_loot();
@@ -30,7 +30,7 @@ module.exports = function() {
                     $('#image_character').animate({
                         left:300 
                     },
-                    2000,
+                    1000,
                     'linear',
                     function(){
                         $('#image_character').delay(3000).attr("style", "left: 0");
@@ -51,7 +51,7 @@ module.exports = function() {
                 }, 
                 200).fadeOut(200,
                 function () {
-                    $('.image_box').delay(5800).attr("style", "top: 160px").fadeIn(200);
+                    $('.image_box').delay(4000).attr("style", "top: 160px").fadeIn(200);
                     });
     };
     

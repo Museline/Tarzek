@@ -83,18 +83,31 @@
 
             {{ form_end(form) }}
         </div>
-                
-        {% for ForumPost in forum_post %}
-            <div class="rope">
-                <p>{{ ForumPost.Author.Username }}</P>
-                <p>{{ ForumPost.Content }}</p>
-                <p>{{ ForumPost.DatePost | date('d-m-Y H:i') }}</p>
-                {% if ForumPost.DateEdit != null %}
-                    <p>{{ ForumPost.DateEdit | date('d-m-Y H:i') }}</p>
-                {% endif %}
-            </div>
-        {% endfor %}
-        
+        <div class="rope reponse">   
+            <div class="page_sujet_separator"></div>
+            {% for ForumPost in forum_post %}
+                <div class="page_sujet_post">
+                    <div class="page_sujet_user">
+                        {% if ForumPost.Author.AvatarURL %}
+                            <img src="{{ ForumPost.Author.AvatarURL }}" class="page_sujet_avatar">
+                        {% elseif ForumPost.Author.AvatarUpload %}
+                            <img src="{{ asset(ForumPost.Author.avatarUpload.webPath) }}" class="page_sujet_avatar">
+                        {% else %}
+                            <img src="{{ asset("/images/walk1_2.png") }}" class="page_sujet_avatar">
+                        {% endif %}
+                        <p>{{ ForumPost.Author.Username }}</P>
+                    </div>
+                    <div class="page_sujet_message">
+                        <p>{{ ForumPost.DatePost | date('d-m-Y H:i') }}</p>
+                        <p>{{ ForumPost.Content }}</p>
+                        
+                        {% if ForumPost.DateEdit != null %}
+                            <p>{{ ForumPost.DateEdit | date('d-m-Y H:i') }}</p>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
     {% endif %}
             
 {% endblock %}
