@@ -62,9 +62,11 @@ class UserController extends Controller{
      * 
      */
     public function profilUser(){
-
+        
+        // récup de l'user connecté
         $user = $this->getUser();
 
+        // récup des score enregistré de l'user
         $scoreboard = $this->getDoctrine()
             ->getRepository(Score::class)
             ->findOneByUser($user);
@@ -131,13 +133,14 @@ class UserController extends Controller{
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
-
+            
+            // message de réussite
             $this->addFlash(
                 'success',
                 'Vos informations ont bien été modifié'
             );
 
-            // redirection vers l'accueil admin
+            // redirection vers le profil
             return $this->redirectToRoute('profil');
         }
 
@@ -151,6 +154,7 @@ class UserController extends Controller{
     */
     public function login(Request $request, AuthenticationUtils $auth_utils){
         
+        // erreur de connexion
         $error = $auth_utils->getLastAuthenticationError();
         
         $last_username = $auth_utils->getLastUsername();
