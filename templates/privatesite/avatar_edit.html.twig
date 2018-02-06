@@ -1,23 +1,40 @@
 {% extends 'base.html.twig' %}
 
+{% block header_title %}Modification avatar{% endblock %}
+
 {% block body %}
-    {{ form_start(form) }}
+    <div class="rope">
+        {{ form_start(form) }}
 
-    {# en cas d'erreur sur le formulaire #}
-    {{ form_errors(form) }}
-    {{ form_errors(form.avatar_URL) }}
-    {{ form_errors(form.avatar_upload) }}
+        {# en cas d'erreur sur le formulaire #}
+        {% if form_errors(form) or
+                form_errors(form.avatar_URL) or
+                form_errors(form.avatar_upload)
+        %}
+            <div class="notification notification_error">
+                {{ form_errors(form) }}
+                {{ form_errors(form.avatar_URL) }}
+                {{ form_errors(form.avatar_upload) }}
+            </div>
+        {% endif %}
 
-    <div>
-        {{ form_label(form.avatar_URL, "Lien de l'avatar") }}
-        {{ form_widget(form.avatar_URL) }}
+        <div class="form_group">
+            {{ form_label(form.avatar_URL, "Lien de l'avatar (site exterieur)") }}
+            {{ form_widget(form.avatar_URL, { 'attr': {'class': 'form_input'}}) }}
+        </div>
+
+        <div class="form_group">
+            {{ form_label(form.avatar_upload, "Avatar à partir de votre ordinateur") }}
+            {{ form_widget(form.avatar_upload, { 'attr': {'class': 'form_input'}}) }}
+        </div>
+
+        <div class="form_group btn">
+            {{ form_widget(form.save, { 'attr': {'class': 'btn_brown'}}) }}
+        </div>
+        {{ form_end(form) }}
+
+        <div class="btn">
+            <a href="{{ path('profil') }}"><button class="btn_brown">Retour au profil</button></a>
+        </div>
     </div>
-
-    <div>
-        {{ form_label(form.avatar_upload, "Avatar à partir de votre ordinateur") }}
-        {{ form_widget(form.avatar_upload) }}
-    </div>
-
-    {{ form_widget(form.save) }}
-    {{ form_end(form) }}
 {% endblock %}
