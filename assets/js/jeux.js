@@ -28,6 +28,7 @@ module.exports = function () {
     $("#sun").hide().delay(1500).fadeIn(500);
     // affichage de la porte de sortie (fin du niveau)
     $("#game__end").hide().delay(1500).fadeIn(500);
+    $("#wall").hide().delay(1500).fadeIn(500);
 
     setInterval(function () {
         $(".c1").animate({top: 45}, 800).animate({top: 50}, 800);
@@ -128,11 +129,7 @@ module.exports = function () {
                         $("#perso").stop(true, true).css({
                             backgroundPosition: '-59px -73px'
                         }).animate({
-                            path: new $.path.bezier(bezier_paramsdos)
-                        }, 500, function () {
-                            $("#perso").css({
-                                backgroundPosition: '0px -73px'
-                            })
+                            
                         });
                     }
                 }
@@ -169,7 +166,7 @@ module.exports = function () {
                         }, 500, function () {
                             $("#perso").css({
                                 backgroundPosition: '0px 0px'
-                            })
+                            });
                         });
                     }
                 }

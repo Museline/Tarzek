@@ -55,14 +55,14 @@ body{
 }
 #sun{
     position: absolute;
-    width: 75px;
-    height: 75px;
+    width: 100px;
+    height: 100px;
     top: 40px;
     left: 20px;
 }
 #game_sun{
-    width: 75px;
-    height: 75px;
+    width: 100px;
+    height: 100px;
 }
 .cloud{
     width: 100px;
@@ -102,6 +102,7 @@ body{
     top: 452px;
     left: 650px;
     border-top-left-radius: 20px;
+    z-index: 5;
 }
 #scoreTxt{
     color: #AA3333;
@@ -166,12 +167,18 @@ body{
 
 #game__end {
     position: absolute;
-    top: 377px;
-    right: 20px;
+    top: 332px;
+    right: 50px;
     height: 45px;
     width: 30px;
 
-    background: #9138a8;
-
     z-index: 4;
+}
+.game_door{
+    height: 150px;
+    width: 100px;
+}
+#wall{
+    position: absolute;
+    left: 910px;
 }
