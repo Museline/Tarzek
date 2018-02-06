@@ -15,7 +15,7 @@
 
         <form action="{{ path('login') }}" method="post" class="form">
             <div class="form_group">
-                <label for="username">Pseudo ou e-mail:</label>
+                <label for="username">Pseudo:</label>
                 <input type="text" id="username" name="_username" value="{{ last_username }}" class="form_input" />
             </div>
 
@@ -30,8 +30,8 @@
                 <input type="hidden" name="_target_path" value="/account" />
             #}
 
-            <div class="form_group">
-                <button type="submit" class="btn">Connexion</button>
+            <div class="form_group btn">
+                <button type="submit" class="btn_brown">Connexion</button>
             </div>
         </form>
     </div>
