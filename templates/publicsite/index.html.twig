@@ -52,26 +52,32 @@
     </div>
     <div class="rope">
         <h3 class="rope_title">Les dernières annonces</h3>
-        {% for advert in list_advert %}
-            <div class="advert_category">
-                {% if advert.category == 'maj' %}
-                    <i class="fas fa-history advert_category_icon"></i>
-                    <p>Mise à jour</p>
-                {%  elseif advert.category == 'event' %}
-                    <i class="fas fa-flag-checkered advert_category_icon"></i>
-                    <p>Evènement</p>
-                {%  elseif advert.category == 'scoreboard' %}
-                    <i class="fas fa-trophy advert_category_icon"></i>
-                    <p>Tableau des scores</p>
-                {% endif %}
-            </div>
-            <h4 class="advert_title">{{ advert.title }}</h4>
+        <div class="advert_bock">
+            <div class="col advert_chevron advert_chevron_left" data-event="carousel_prec"><i class="fas fa-chevron-left advert_icon_fa advert_icon_fa_left"></i></div>
+            {% for advert in list_advert %}
+                <div class="advert" data-event="carousel">
+                    <div class="advert_category">
+                        {% if advert.category == 'maj' %}
+                            <i class="fas fa-history advert_category_icon"></i>
+                            <p>Mise à jour</p>
+                        {%  elseif advert.category == 'event' %}
+                            <i class="fas fa-flag-checkered advert_category_icon"></i>
+                            <p>Evènement</p>
+                        {%  elseif advert.category == 'scoreboard' %}
+                            <i class="fas fa-trophy advert_category_icon"></i>
+                            <p>Tableau des scores</p>
+                        {% endif %}
+                    </div>
+                    <h4 class="advert_title">{{ advert.title }}</h4>
 
-            <h6>
-                <i class="far fa-calendar-alt"></i> {{ advert.datePublication|date("d/m/Y") }}
-                <i class="fas fa-user"></i> {{ advert.author.username }}
-            </h6>
-            <p>{{ advert.content|bbcode2html }}</p>
-        {% endfor %}
+                    <h6>
+                        <i class="far fa-calendar-alt"></i> {{ advert.datePublication|date("d/m/Y") }}
+                        <i class="fas fa-user"></i> {{ advert.author.username }}
+                    </h6>
+                    <p>{{ advert.content|bbcode2html }}
+                </div>
+            {% endfor %}
+            <div class="col advert_chevron advert_chevron_right" data-event="carousel_next"><i class="fas fa-chevron-right advert_icon_fa"></i></div>
+        </div>
     </div>
 {% endblock %}
