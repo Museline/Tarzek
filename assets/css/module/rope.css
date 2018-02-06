@@ -5,6 +5,7 @@
     border-image-source: url(/images/rope.png);
     border-image-slice: 33%;
     border-image-repeat: round;
+    background: rgba(255,255,255,0.4);
 }
 
     .rope_title {
@@ -14,7 +15,7 @@
         text-align: center;
     }
 
-@media screen and (max-width: 350px) {
+@media screen and (max-width: 500px) {
     .rope {
         margin: 10px 0;
         padding: 1%;

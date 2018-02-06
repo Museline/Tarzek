@@ -16,6 +16,7 @@ require('../css/module/profil.css');
 require('../css/module/messaging.css');
 require('../css/module/forum.css');
 require('../css/module/image_js.css');
+require('../css/module/notification.css');
 
 // charge jquery depuis les package le node_modules
 var $ = require('jquery');
@@ -31,6 +32,7 @@ var navbar_dropdown = require('./navbar_dropdown');
 var move_footer = require('./footer');
 var image_js = require('./image_js.js');
 var navbar_collapse = require('./navbar_collapse');
+var carousel = require('./carousel');
 
 // une fois le document prêt, lance les scripts js
 $(document).ready(function() {
@@ -44,4 +46,5 @@ $(document).ready(function() {
     move_footer();
     navbar_collapse();
     image_js();
+    carousel();
 });

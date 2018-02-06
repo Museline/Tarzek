@@ -1,3 +1,7 @@
+.col {
+    display: inline-block;
+}
+
 .col_half {
     display: inline-block;
     box-sizing: border-box;

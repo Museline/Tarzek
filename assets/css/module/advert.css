@@ -1,3 +1,26 @@
+.advert {
+    display: inline-block;
+    width: 90%;
+    margin: 0 1%;
+    padding: 1%;
+    vertical-align: middle;
+    border: 1px solid black;
+    box-sizing: border-box;
+    box-shadow: 0 0 3px rgba(0,0,0,0.5);
+    text-align: left;
+}
+
+.advert_chevron {
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+.advert_bock {
+    margin: auto;
+    width: 80%;
+    text-align: center;
+}
+
 .advert_category,
 .advert_title {
     display: inline-block;
@@ -12,3 +35,46 @@
     .advert_category_icon {
         font-size: 5rem;
     }
+
+    .advert_icon_fa {
+        font-size: 3em;
+    }
+
+@media screen and (max-width: 1290px) {
+    .advert_bock {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 1050px) {
+    .advert {
+        width: 85%;
+    }
+    .advert_icon_fa {
+        font-size: 2em;
+    }
+}
+
+@media screen and (max-width: 370px) {
+    .advert_bock {
+        position: relative;
+    }
+
+    .advert_chevron_left,
+    .advert_chevron_right {
+        position: absolute;
+        top:0;
+    }
+
+    .advert_chevron_left {
+        left: 120px;
+    }
+
+    .advert_chevron_right {
+        right: 120px;
+    }
+
+    .advert {
+        margin-top: 40px;
+    }
+}

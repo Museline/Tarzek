@@ -53,7 +53,11 @@
 
         {% for label, messages in app.flashes %}
             {% for message in messages %}
-                <div class="flash-{{ label }}">
+                <div class="notification notification_{{ label }}">
+                    {% if label == 'success' %}<i class="fa fa-check"></i>
+                    {% elseif label == 'alert' %}<i class="fa fa-exclamation-triangle"></i>
+                    {% elseif label == 'error' %}<i class="fa fa-times"></i>
+                    {% endif %}
                     {{ message }}
                 </div>
             {% endfor %}

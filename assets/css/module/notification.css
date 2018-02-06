@@ -1,0 +1,29 @@
+.notification {
+    margin: 5px 15px;
+    padding : 15px;
+}
+
+.notification ul {
+    list-style-type: none;
+}
+
+.notification i {
+    margin-right: 10px;
+
+    font-size: 25px;
+
+    float: left;
+}
+
+.notification_success {
+    border: 1px solid rgba(42,111,42,0.4);
+
+    background: rgba(63,166,63,0.7);
+}
+
+.notification_error,
+.notification_alert {
+    border: 1px solid rgba(153,0,0,0.4);
+
+    background: rgba(210,45,45,0.7);
+}
