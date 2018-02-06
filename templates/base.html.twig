@@ -65,11 +65,13 @@
 
         <footer class="footer">
             <div class="footer_block">
+                {% block footer_character %}
                 <div class="footer_character">
                     <div id="footer_character">
                         <img src="{{ asset('/images/walk1_2d.png') }}">
                     </div>
                 </div>
+                {% endblock %}
                 <div class="footer_ground">
                     
                     <p class="footer_text">&copy; Copyright Tarzek</p>

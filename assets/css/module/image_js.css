@@ -8,11 +8,13 @@
 }*/
 
 .image{
+    display: inline-block;
     width: 480px;
     height: 360px;
     position: relative;
-    margin: 0 auto;
+    margin: 20px auto;
     border: 1px solid black;
+    vertical-align: top;
     overflow: hidden;
 }
     #image_character{

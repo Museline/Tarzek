@@ -20,6 +20,12 @@
     vertical-align: top;
 }
 
+.col_rest_index {
+    display: inline-block;
+    width: calc(100% - 500px);
+    vertical-align: top;
+}
+
 @media screen and (max-width: 1000px) {
     .col_2_third {
         display: block;
@@ -27,6 +33,11 @@
     }
 
     .col_third {
+        display: block;
+        width: 100%;
+    }
+
+    .col_rest_index {
         display: block;
         width: 100%;
     }
