@@ -8,16 +8,16 @@
             {% if ForumSection.Hierarchy == pre_query.Hierarchy + 1 %}
                 <h3 class="forum_section_title">{{ ForumSection.SectionName }}</h3>
                 <p>{{ ForumSection.Description }}</p>
-
-                
-                {% for ForumPostTitle in list_subject %}
-                    {% if ForumPostTitle.Section.id == pre_query.Id %}
-                        <h4 class="forum_section_title"><a href="/forum/sujet/{{ ForumPostTitle.urlTitle }}">{{ ForumPostTitle.Title }}</a></h4>
-                        <p>{{ ForumPostTitle.Description }}</p>
-                    {% endif %}
-                {% endfor %}
             {% endif %}
         {% endfor %}
+
+        
+        {% for ForumPostTitle in list_subject %}
+                <h4 class="forum_section_title"><a href="/forum/sujet/{{ ForumPostTitle.urlTitle }}">{{ ForumPostTitle.Title }}</a></h4>
+                <p>{{ ForumPostTitle.Description }}</p>
+        {% endfor %}
+            
+        
         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
             <div class="btn">
                 <a href="{{ path('response', {'url_title': 'new_subject', 'section': pre_query.UrlName }) }}">

@@ -26,13 +26,13 @@ class ForumPostController extends Controller{
                 ->getRepository(ForumPostTitle::class)
                 ->findOneBy(array('url_title' => $url_title));
         
-        dump($forum_post_title);
+        // dump($forum_post_title);
         
         $forum_post = $this->getDoctrine()
                 ->getRepository(ForumPost::class)
                 ->findBy(array('title' => $forum_post_title), array('date_post' => 'asc'));
         
-        dump($forum_post);        
+        // dump($forum_post);        
         
         return $this->render('forum/postforum.html.twig', array('forum_post_title' => $forum_post_title,
                                                                 'forum_post' => $forum_post));

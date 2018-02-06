@@ -66,18 +66,21 @@ class ForumSectionController extends Controller{
     */
     public function sectionForum($url_name){
         
+        // récupère la section dans laquelle on est
         $pre_query = $this->getDoctrine()
                 ->getRepository(ForumSection::class)
                 ->findOneBy(array('url_name' => $url_name));
         
         // dump($pre_query);
         
+        // on récupère les section qui sont à l'interieur
         $list_section = $this->getDoctrine()
                 ->getRepository(ForumSection::class)
                 ->findBy(array('parent_section' => $pre_query->getSectionName()));
         
         // dump($list_section);
         
+        // on récupère les sujets qui sont à l'intérireur
         $list_subject = $this->getDoctrine()
                 ->getRepository(ForumPostTitle::class)
                 ->findBy(array('section' => $pre_query->getId()));
