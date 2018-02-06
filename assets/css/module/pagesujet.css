@@ -1,0 +1,54 @@
+/* 
+    Created on : 6 févr. 2018, 11:48:09
+    Author     : Khael
+*/
+
+.page_sujet_title{
+    font-family: 'EnchantedLand', serif;
+    font-size: 3rem;
+    text-align: center;
+    margin: 10px auto;
+}
+.page_sujet_description{
+    font-size: 1.5rem;
+    text-align: center;
+    margin: 10px auto;
+}
+.page_sujet_separator{
+    height: 1px;
+    background: black;
+}
+.page_sujet_post{
+
+    border-bottom: 1px solid black;
+}
+/* .page_sujet_post *{
+    border: 1px solid black;
+}*/
+    .page_sujet_user{
+        display: inline-block;
+        margin: 5px;
+    }
+        .page_sujet_avatar{
+            width: 125px;            
+        }
+        
+        .page_sujet_author{
+            text-align: center;
+        }
+        
+    .page_sujet_message{
+        display: inline-block;
+        min-height: 150px;
+        vertical-align: top;
+        margin-left: 40px;
+    }
+    
+    .page_sujet_content{
+        
+    }
+    
+    .page_sujet_date{
+        
+    }
+

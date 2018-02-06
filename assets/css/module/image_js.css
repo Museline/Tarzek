@@ -16,6 +16,7 @@
     border: 1px solid black;
     vertical-align: top;
     overflow: hidden;
+    background: linear-gradient(to bottom, #5882FA, white);
 }
     #image_character{
         width: 61px;

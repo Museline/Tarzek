@@ -2,15 +2,36 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h3>{{ forum_post_title.Title }}</h3>
-    <h4>{{ forum_post_title.Description }}</h4>
-    {% for ForumPost in forum_post %}
-        <p>{{ ForumPost.Author.Username }}</P>
-        <p>{{ ForumPost.Content }}</p>
-        <p>{{ ForumPost.DatePost | date('d-m-Y H:i') }}</p> 
-        {% if ForumPost.DateEdit != null %}       
-            <p>{{ ForumPost.DateEdit | date('d-m-Y H:i') }}</p>
-        {% endif %}
-    {% endfor %}
-    <a href="/forum/reponse/{{ forum_post_title.UrlTitle }}">Répondre</a>
+    <h3 class="page_sujet_title">{{ forum_post_title.Title }}</h3>
+    <h4 class="page_sujet_description">{{ forum_post_title.Description }}</h4>
+    
+    <div class="rope">
+        <div class="page_sujet_separator"></div>
+        {% for ForumPost in forum_post %}
+            
+            <div class="page_sujet_post">
+                <div class="page_sujet_user">
+                    {% if ForumPost.Author.AvatarURL %}
+                        <img src="{{ ForumPost.Author.AvatarURL }}" class="page_sujet_avatar">
+                    {% elseif ForumPost.Author.AvatarUpload %}
+                        <img src="{{ asset(ForumPost.Author.avatarUpload.webPath) }}" class="page_sujet_avatar">
+                    {% else %}
+                        <img src="{{ asset("/images/walk1_2.png") }}" class="page_sujet_avatar">
+                    {% endif %}
+                    <p class="page_sujet_author">{{ ForumPost.Author.Username }}</p>
+                </div>
+                <div class="page_sujet_message">
+                    <p class="page_sujet_date">{{ ForumPost.DatePost | date('d-m-Y H:i') }}</p>
+                    <p class="page_sujet_content">{{ ForumPost.Content }}</p>
+
+                </div>
+                {% if ForumPost.DateEdit != null %}       
+                    <p>Dernière modification: {{ ForumPost.DateEdit | date('d-m-Y H:i') }}</p>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+    <div class="btn">
+        <a href="/forum/reponse/{{ forum_post_title.UrlTitle }}" class="btn_brown">Répondre</a>
+    </div>
 {% endblock %}

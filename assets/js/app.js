@@ -17,6 +17,7 @@ require('../css/module/messaging.css');
 require('../css/module/forum.css');
 require('../css/module/image_js.css');
 require('../css/module/notification.css');
+require('../css/module/pagesujet.css');
 
 // charge jquery depuis les package le node_modules
 var $ = require('jquery');
