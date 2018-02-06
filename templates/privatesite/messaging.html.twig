@@ -15,7 +15,7 @@
                 <th class="messaging_table_item">Titre du message</th>
                 <th class="messaging_table_item">Expediteur</th>
                 <th class="messaging_table_item">Date d'envoi</th>
-                <th class="messaging_table_item">Lecture du message</th>
+                <th class="messaging_table_item"></th>
             </tr>
             {% for message in list_messages_received %}
                 <tr class="messaging_table_col">
@@ -24,9 +24,9 @@
                     <td class="messaging_table_item">{{ message.message.sendingDate|date("d/m/Y") }}</td>
                     <td class="messaging_table_item">
                         {% if message.reading %}
-                            message lu
+                            <i class="far fa-envelope-open"></i>
                         {% else %}
-                            message non lu
+                            <i class="far fa-envelope"></i>
                         {%  endif %}
                     </td>
                 </tr>

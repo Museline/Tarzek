@@ -12,7 +12,8 @@
         {# en cas d'erreur sur le formulaire #}
         {% if form_errors(form) or
                 form_errors(form.username) or
-                form_errors(form.password) or
+                form_errors(form.password.first) or
+                form_errors(form.password.second) or
                 form_errors(form.email)
         %}
             <div class="notification notification_error">

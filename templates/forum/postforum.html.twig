@@ -31,7 +31,9 @@
             </div>
         {% endfor %}
     </div>
-    <div class="btn">
-        <a href="/forum/reponse/{{ forum_post_title.UrlTitle }}" class="btn_brown">Répondre</a>
-    </div>
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <div class="btn">
+            <a href="/forum/reponse/{{ forum_post_title.UrlTitle }}" class="btn_brown">Répondre</a>
+        </div>
+    {% endif %}
 {% endblock %}
