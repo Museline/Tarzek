@@ -129,8 +129,13 @@ module.exports = function () {
                         $("#perso").stop(true, true).css({
                             backgroundPosition: '-59px -73px'
                         }).animate({
-                            
-                        });
+                            path: new $.path.bezier(bezier_paramsdos)},
+                            500,
+                            function () {
+                                $("#perso").css({
+                                    backgroundPosition: '0px -73px'
+                                });
+                            });
                     }
                 }
                 else {
@@ -187,7 +192,7 @@ module.exports = function () {
             }
             else {
                 if ((posX > 585) && (posX < 625)) {
-                    if ((posY < 378)) {
+                    if ((posY < 389)) {
                         $("#perso").animate({
                             'top': '600px'
                         }, 2000, function () {
