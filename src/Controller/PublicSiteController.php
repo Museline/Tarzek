@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 class PublicSiteController extends Controller
 {
@@ -37,37 +38,41 @@ class PublicSiteController extends Controller
      */
     public function gameScoreAction(Request $request, AuthorizationCheckerInterface $authChecker)
     {
-        if (true === $authChecker->isGranted('ROLE_USER')) {
-            $user = $this->getUser();
-            $level = $request->request->get('level');
-            $score = $request->request->get('score');
+        if($request->isXmlHttpRequest()) {
+            if (true === $authChecker->isGranted('ROLE_USER')) {
+                $user = $this->getUser();
+                $level = $request->request->get('level');
+                $score = $request->request->get('score');
 
-            $em = $this->getDoctrine()->getManager();
+                $em = $this->getDoctrine()->getManager();
 
-            $scoreboard = $em->getRepository(Score::class)
-                ->findOneByUser($user);
+                $scoreboard = $em->getRepository(Score::class)
+                    ->findOneByUser($user);
 
-            // si le joueur n'a pas encore de score, on créé un objet Score
-            if (!$scoreboard) {
-                $scoreboard = new Score();
-                $scoreboard->setUser($user);
-                $scoreboard->setScoreboard(array($score));
+                // si le joueur n'a pas encore de score, on créé un objet Score
+                if (!$scoreboard) {
+                    $scoreboard = new Score();
+                    $scoreboard->setUser($user);
+                    $scoreboard->setScoreboard(array($score));
 
-                $em->persist($scoreboard);
-            } else {
-                $key = $level - 1;
-                $array_score = $scoreboard->getScoreboard();
+                    $em->persist($scoreboard);
+                } else {
+                    $key = $level - 1;
+                    $array_score = $scoreboard->getScoreboard();
 
-                if(!isset($array_score[$key]) || $array_score[$key] < $score) {
-                    $array_score[$key] =  $score;
-                    $scoreboard->setScoreboard($array_score);
+                    if (!isset($array_score[$key]) || $array_score[$key] < $score) {
+                        $array_score[$key] = $score;
+                        $scoreboard->setScoreboard($array_score);
+                    }
                 }
+
+                $em->flush();
             }
 
-            $em->flush();
+            return new JsonResponse(array('data' => json_decode('fini')));
+        } else {
+            throw new AccessDeniedException('Vous ne pouvez pas accéder à cette page');
         }
-
-        return new JsonResponse(array('data' => json_decode('fini')));
     }
 
     /**

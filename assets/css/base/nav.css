@@ -53,7 +53,7 @@
             box-shadow: 0 0 5px rgba(0,0,0,0.5);
             background: linear-gradient(to bottom, #86702d, #4d4019);
             text-align: left;
-            z-index: 1;
+            z-index: 5;
         }
 
         .nav_dropdown_link {
@@ -88,7 +88,7 @@
         left: 0;
         right: 0;
         background: linear-gradient(to bottom, #86702d, #4d4019);
-        z-index: 1;
+        z-index: 5;
     }
 
     .nav_btn_collapse {

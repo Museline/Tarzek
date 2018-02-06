@@ -18,3 +18,17 @@
             font-weight: bold;
             margin: 3px;
         }
+
+        .forum_list_post {
+            text-align: left;
+            padding: 1%;
+        }
+
+            .forum_list_post_title {
+                font-weight: bold;
+            }
+
+            .forum_list_post_descrition {
+                display: inline-block;
+                font-style: italic;
+            }

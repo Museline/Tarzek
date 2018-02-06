@@ -36,7 +36,8 @@ module.exports = function () {
                 type: form.attr('method'),
                 data : data,
                 success: function(result) {
-                    console.log(result);
+                    // TODO: essayer d'afficher la partie nouvellement créé en AJAX
+                    window.location.reload();
                 }
             });
         }

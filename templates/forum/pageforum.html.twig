@@ -2,8 +2,9 @@
 
 {% extends 'base.html.twig' %}
 
+{% block header_title %}{{ pre_query.SectionName }}{% endblock %}
+
 {% block body %}
-    <h2 class="forum_partie_title">{{ pre_query.SectionName }}</h2>
         {% for ForumSection in list_section %}
             {% if ForumSection.Hierarchy == pre_query.Hierarchy + 1 %}
                 <h3 class="forum_section_title">{{ ForumSection.SectionName }}</h3>
@@ -11,11 +12,16 @@
             {% endif %}
         {% endfor %}
 
-        
-        {% for ForumPostTitle in list_subject %}
-                <h4 class="forum_section_title"><a href="/forum/sujet/{{ ForumPostTitle.urlTitle }}">{{ ForumPostTitle.Title }}</a></h4>
-                <p>{{ ForumPostTitle.Description }}</p>
-        {% endfor %}
+        <table class="table">
+            {% for ForumPostTitle in list_subject %}
+                <tr>
+                    <td class="table_col forum_list_post">
+                        <a class="forum_list_post_title" href="/forum/sujet/{{ ForumPostTitle.urlTitle }}">{{ ForumPostTitle.Title }}</a>
+                        <p class="forum_list_post_descrition">{{ ForumPostTitle.Description }}</p>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
             
         
         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
