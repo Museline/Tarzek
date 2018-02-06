@@ -36,6 +36,11 @@
                         <a class="nav_dropdown_link" href="{{ path('profil') }}">Mon profil</a>
                         <a class="nav_dropdown_link" href="{{ path('messaging') }}">Messagerie</a>
                         <a class="nav_dropdown_link" href="{{ path('logout') }}">Déconnexion</a>
+                        {% if is_granted('ROLE_SUPER_ADMIN') %}
+                            <hr>
+                            <a class="nav_dropdown_link" href="{{ path('admin_advert') }}">Annonce</a>
+                            <a class="nav_dropdown_link" href="{{ path('admin_user') }}">Utilisateur</a>
+                        {% endif %}
                     </div>
                 </div>
             {% else %}

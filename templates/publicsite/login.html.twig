@@ -8,7 +8,9 @@
     <div class="rope">
     
         {% if error %}
-            <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            <div class="notification notification_error">
+                {{ error.messageKey|trans(error.messageData, 'security') }}
+            </div>
         {% endif %}
 
         <form action="{{ path('login') }}" method="post" class="form">

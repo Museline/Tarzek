@@ -10,11 +10,19 @@
         {{ form_start(form) }}
 
         {# en cas d'erreur sur le formulaire #}
-        {{ form_errors(form) }}
-        {{ form_errors(form.username) }}
-        {{ form_errors(form.password.first) }}
-        {{ form_errors(form.password.second) }}
-        {{ form_errors(form.email) }}
+        {% if form_errors(form) or
+                form_errors(form.username) or
+                form_errors(form.password) or
+                form_errors(form.email)
+        %}
+            <div class="notification notification_error">
+                {{ form_errors(form) }}
+                {{ form_errors(form.username) }}
+                {{ form_errors(form.password.first) }}
+                {{ form_errors(form.password.second) }}
+                {{ form_errors(form.email) }}
+            </div>
+        {% endif %}
 
         <div class="form_group">
             {{ form_label(form.username) }}

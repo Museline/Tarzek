@@ -11,10 +11,18 @@
             {{ form_start(form) }}
 
             {# en cas d'erreurs sur le formulaire #}
-            {{ form_errors(form) }}
-            {{ form_errors(form.title) }}
-            {#{ form_errors(form.description) }#}
-            {{ form_errors(form.content) }}
+            {% if form_errors(form) or
+                form_errors(form.title.title) or
+                form_errors(form.title.description) or
+                form_errors(form.content)
+            %}
+                <div class="notification notification_error">
+                    {{ form_errors(form) }}
+                    {{ form_errors(form.title.title) }}
+                    {{ form_errors(form.title.description) }}
+                    {{ form_errors(form.content) }}
+                </div>
+            {% endif %}
 
             <div class="form_group">
                 {{ form_label(form.title.title) }}
@@ -31,8 +39,8 @@
                 {{ form_widget(form.content, { 'attr': {'class': 'form_input'} } ) }}
             </div>
 
-            <div class="form_group">
-                {{ form_widget(form.send) }}
+            <div class="form_group btn">
+                {{ form_widget(form.send, { 'attr': {'class': 'btn_brown'}}) }}
             </div>
 
             {{ form_end(form) }}
@@ -43,10 +51,16 @@
             {{ form_start(form) }}
 
             {# en cas d'erreurs sur le formulaire #}
-            {{ form_errors(form) }}
-            {{ form_errors(form.title) }}
-            {#{ form_errors(form.description) }#}
-            {{ form_errors(form.content) }}
+            {% if form_errors(form) or
+                form_errors(form.title.title) or
+                form_errors(form.title.description) or
+                form_errors(form.content)
+            %}
+                {{ form_errors(form) }}
+                {{ form_errors(form.title.title) }}
+                {{ form_errors(form.title.description) }}
+                {{ form_errors(form.content) }}
+            {% endif %}
 
             <div class="form_group">
                 {{ form_row(form.title.title, { 'attr': {'class': 'form_input', 'value': forum_post_title.title } }) }}
@@ -63,8 +77,8 @@
                 {{ form_widget(form.content, { 'attr': {'class': 'form_input' } } ) }}
             </div>
 
-            <div class="form_group">
-                {{ form_widget(form.send) }}
+            <div class="form_group btn">
+                {{ form_widget(form.send, { 'attr': {'class': 'btn_brown'}}) }}
             </div>
 
             {{ form_end(form) }}

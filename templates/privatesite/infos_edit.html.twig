@@ -7,14 +7,26 @@
         {{ form_start(form) }}
 
         {# en cas d'erreur sur le formulaire #}
-        {{ form_errors(form) }}
-        {{ form_errors(form.email) }}
-        {{ form_errors(form.l_name) }}
-        {{ form_errors(form.f_name) }}
-        {{ form_errors(form.adress) }}
-        {{ form_errors(form.post_code) }}
-        {{ form_errors(form.city) }}
-        {{ form_errors(form.phone_numb) }}
+        {% if form_errors(form) or
+                form_errors(form.email) or
+                form_errors(form.l_name) or
+                form_errors(form.f_name) or
+                form_errors(form.adress) or
+                form_errors(form.post_code) or
+                form_errors(form.city) or
+                form_errors(form.phone_numb)
+        %}
+            <div class="notification notification_error">
+                {{ form_errors(form) }}
+                {{ form_errors(form.email) }}
+                {{ form_errors(form.l_name) }}
+                {{ form_errors(form.f_name) }}
+                {{ form_errors(form.adress) }}
+                {{ form_errors(form.post_code) }}
+                {{ form_errors(form.city) }}
+                {{ form_errors(form.phone_numb) }}
+            </div>
+        {% endif %}
 
         <div class="form_group">
             {{ form_label(form.email) }}
@@ -51,9 +63,13 @@
             {{ form_widget(form.phone_numb, { 'attr': {'class': 'form_input'}}) }}
         </div>
 
-        <div class="form_group">
-            {{ form_widget(form.save) }}
+        <div class="form_group btn">
+            {{ form_widget(form.save, { 'attr': {'class': 'btn_brown'}}) }}
         </div>
         {{ form_end(form) }}
+
+        <div class="btn">
+            <a href="{{ path('profil') }}"><button class="btn_brown">Retour au profil</button></a>
+        </div>
     </div>
 {% endblock %}

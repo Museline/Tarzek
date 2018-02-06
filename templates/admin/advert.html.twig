@@ -7,10 +7,18 @@
         {{ form_start(form) }}
 
         {# en cas d'erreur sur le formulaire #}
-        {{ form_errors(form) }}
-        {{ form_errors(form.title) }}
-        {{ form_errors(form.content) }}
-        {{ form_errors(form.category) }}
+        {% if form_errors(form) or
+                form_errors(form.title) or
+                form_errors(form.content) or
+                form_errors(form.category)
+        %}
+            <div class="notification notification_error">
+                {{ form_errors(form) }}
+                {{ form_errors(form.title) }}
+                {{ form_errors(form.content) }}
+                {{ form_errors(form.category) }}
+            </div>
+        {% endif %}
 
         <div class="form_group">
             {{ form_label(form.title, "Titre de l'annonce") }}
@@ -36,8 +44,8 @@
             {{ form_widget(form.category, { 'attr': {'class': 'form_input'}}) }}
         </div>
 
-        <div class="form_group">
-            {{ form_widget(form.save) }}
+        <div class="btn">
+            {{ form_widget(form.save, { 'attr': {'class': 'btn_brown'}}) }}
         </div>
         {{ form_end(form) }}
     </div>

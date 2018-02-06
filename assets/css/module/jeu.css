@@ -111,7 +111,7 @@ body{
     left: 850px;
     font-weight: 900;
     font-size: 20px;
-    z-index: 5;
+    z-index: 4;
 }
 #scoreNumb{
     color: #AA3333;
@@ -120,7 +120,7 @@ body{
     left: 920px;
     font-weight: 900;
     font-size: 20px;
-    z-index: 5;
+    z-index: 4;
 }
 #lifeTxt{
     color: #AA3333;
@@ -129,7 +129,7 @@ body{
     left: 20px;
     font-weight: 900;
     font-size: 20px;
-    z-index: 5;
+    z-index: 4;
 }
 #lifeNumb{
     color: #AA3333;
@@ -138,7 +138,7 @@ body{
     left: 100px;
     font-weight: 900;
     font-size: 20px;
-    z-index: 5;
+    z-index: 4;
 }
 #gameOver,
 #game__end__message{

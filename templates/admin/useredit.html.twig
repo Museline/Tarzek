@@ -7,25 +7,33 @@
         {{ form_start(form) }}
 
         {# Les erreurs générales du formulaire. #}
-        {{ form_errors(form) }}
+        {% if form_errors(form) or
+                form_errors(form.username) or
+                form_errors(form.roles) or
+                form_errors(form.isActive)
+        %}
+            <div class="notification notification_error">
+                {{ form_errors(form) }}
+                {{ form_errors(form.username) }}
+                {{ form_errors(form.roles) }}
+                {{ form_errors(form.isActive) }}
+            </div>
+        {% endif %}
 
         <div class="form_group">
             {{ form_label(form.username, "Pseudo") }}
-            {{ form_errors(form.username) }}
             {{ form_widget(form.username, { 'attr': {'class': 'form_input'}}) }}
         </div>
         <div class="form_group">
             {{ form_label(form.roles, "Role") }}
-            {{ form_errors(form.roles) }}
             {{ form_widget(form.roles, { 'attr': {'class': 'form_input'}}) }}
         </div>
         <div class="form_group">
             {{ form_label(form.isActive, "Activité du compte") }}
-            {{ form_errors(form.isActive) }}
             {{ form_widget(form.isActive, { 'attr': {'class': 'form_input'}}) }}
         </div>
-        <div class="form_group">
-            {{ form_widget(form.send) }}
+        <div class="btn">
+            {{ form_widget(form.send, { 'attr': {'class': 'btn_brown'}}) }}
         </div>
 
         {{ form_end(form) }}
