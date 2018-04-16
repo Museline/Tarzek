@@ -1,5 +1,5 @@
 # Tarzek
-Site communautaire d'un jeu de plate-forme
+Site communautaire d'un jeu de plate-forme (réalisé en 2 semaines)
 
 Au moment où l'on récupère le dossier faire :
 * composer update (pour mettre à jour les dépendances et installer les éventuelles manquantes)
