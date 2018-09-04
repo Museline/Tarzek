@@ -1,16 +1,18 @@
 {
-  "devDependencies": {
-    "@symfony/webpack-encore": "^0.20.1"
+  "name": "tarzek",
+  "version": "1.0.0",
+  "description": "Site communautaire d'un jeu de plate-forme (réalisé dans le cadre d'une formation pour la soutenance de fin)",
+  "main": "webpack.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Museline/Tarzek.git"
   },
-  "license": "UNLICENSED",
-  "private": true,
-  "scripts": {
-    "dev-server": "encore dev-server",
-    "dev": "encore dev",
-    "watch": "encore dev --watch",
-    "build": "encore production"
+  "bugs": {
+    "url": "https://github.com/Museline/Tarzek/issues"
   },
+  "homepage": "https://github.com/Museline/Tarzek#readme",
   "dependencies": {
+    "@symfony/webpack-encore": "^0.20.1",
     "jquery": "^3.3.1"
   }
 }
